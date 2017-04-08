@@ -1,4 +1,4 @@
-local lsocket  = require("lsocket")
+--local lsocket  = require("lsocket")--
 
 local sudos = {
     "lang_install",
