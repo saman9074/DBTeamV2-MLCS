@@ -622,7 +622,6 @@ local function run(msg, matches)
 			redis:set("settings:flood:" .. msg.to.id, true)
 			--welcome--
 			redis:del("settings:welcome:" .. msg.to.id)
-			
 			send_msg(msg.to.id, lang_text(msg.to.id, 'allOFFMSG'), 'md')
 			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
 			-- tgservices --
