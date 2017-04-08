@@ -580,6 +580,95 @@ local function run(msg, matches)
 			redis:del("settings:rules:" .. msg.to.id, matches[2])
 			send_msg(msg.to.id, lang_text(msg.to.id, 'rulesDefault'), 'md')
 		end
+		elseif matches[1] == "all" or matches[1] == lang_text(msg.to.id, 'allCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
+			-- tgservices --
+			redis:set("settings:tgservices:" .. msg.to.id, true)
+			-- invite --
+			redis:set("settings:invite:" .. msg.to.id, true)
+			-- bots--
+			redis:set("settings:bots:" .. msg.to.id, true)
+			--photos--
+			redis:set("settings:photos:" .. msg.to.id, true)
+			-- videos --
+			redis:set("settings:videos:" .. msg.to.id, true)
+			-- stickers --
+			redis:set("settings:stickers:" .. msg.to.id, true)
+			-- gifs --
+			redis:set("settings:gifs:" .. msg.to.id, true)
+			-- voices --
+			redis:set("settings:voice:" .. msg.to.id, true)
+			-- audios --
+			redis:set("settings:audios:" .. msg.to.id, true)
+			-- documents --
+			redis:set("settings:documents:" .. msg.to.id, true)			
+			-- location --
+			redis:set("settings:location:" .. msg.to.id, true)
+			-- games -- 
+			redis:set("settings:games:" .. msg.to.id, true)
+			-- forward --
+			redis:set("settings:forward:" .. msg.to.id, true)
+			-- spam --
+			redis:set("settings:spam:" .. msg.to.id, true)
+			-- reports --
+			redis:del("settings:reports:" .. msg.to.id)
+			--arabic--
+			redis:set("settings:arabic:" .. msg.to.id, true)
+			--english--
+			redis:set("settings:english:" .. msg.to.id, true)
+			--emoji--
+			redis:set("settings:emojis:" .. msg.to.id, true)
+			--flood--
+			redis:set("settings:flood:" .. msg.to.id, true)
+			--welcome--
+			redis:del("settings:welcome:" .. msg.to.id)
+			
+			send_msg(msg.to.id, lang_text(msg.to.id, 'allOFFMSG'), 'md')
+			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
+			-- tgservices --
+			redis:del("settings:tgservices:" .. msg.to.id)
+			-- invite --
+			redis:del("settings:invite:" .. msg.to.id)
+			-- bots--
+			redis:del("settings:bots:" .. msg.to.id)
+			--photos--
+			redis:del("settings:photos:" .. msg.to.id)
+			-- videos --
+			redis:del("settings:videos:" .. msg.to.id)
+			-- stickers --
+			redis:del("settings:stickers:" .. msg.to.id)
+			-- gifs --
+			redis:del("settings:gifs:" .. msg.to.id)
+			-- voices --
+			redis:del("settings:voice:" .. msg.to.id)
+			-- audios --
+			redis:del("settings:audios:" .. msg.to.id)
+			-- documents --
+			redis:del("settings:documents:" .. msg.to.id)
+			-- location --
+			redis:del("settings:location:" .. msg.to.id)
+			-- games -- 
+			redis:del("settings:games:" .. msg.to.id)
+			-- forward --
+			redis:del("settings:forward:" .. msg.to.id)
+			-- spam --
+			redis:del("settings:spam:" .. msg.to.id)
+			-- reports --
+			redis:set("settings:reports:" .. msg.to.id, true)
+			--arabic--
+			redis:del("settings:arabic:" .. msg.to.id)
+			--english--
+			redis:del("settings:english:" .. msg.to.id)
+			--emoji--
+			redis:del("settings:emojis:" .. msg.to.id)
+			--flood--
+			redis:del("settings:flood:" .. msg.to.id)
+			--welcome--
+			redis:set("settings:welcome:" .. msg.to.id, true)
+			send_msg(msg.to.id, lang_text(msg.to.id, 'allONMSG'), 'md')
+			end
+		
+		end
 	
 end
 
