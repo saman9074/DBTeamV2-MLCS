@@ -128,7 +128,7 @@ local function pre_process(msg)
 						else
 							user_ = msg.from.first_name
 						end
-						reply_msg(msg.to.id, lang_text(msg.to.id, 'user') .. " *" .. user_ .. "* (" .. msg.from.id .. ") " .. lang_text(msg.to.id, 'isSpamming'), msg.id, 'md')
+						--reply_msg(msg.to.id, lang_text(msg.to.id, 'user') .. " *" .. user_ .. "* (" .. msg.from.id .. ") " .. lang_text(msg.to.id, 'isSpamming'), msg.id, 'md')--
 						delete_msg(msg.to.id, msg.id)
 						if redis:get("settings:reports:" .. msg.to.id) then
 							send_report(msg,pattern)
