@@ -580,11 +580,103 @@ local function run(msg, matches)
 		elseif matches[1]:lower() == "remrules" or matches[1] == lang_text(msg.to.id, 'remrulesCommand') and not matches[2] and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
 			redis:del("settings:rules:" .. msg.to.id, matches[2])
 			send_msg(msg.to.id, lang_text(msg.to.id, 'rulesDefault'), 'md')
-		
+		 elseif matches[1] == "all" or matches[1] == lang_text(msg.to.id, 'allCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+			if matches[2] == 'media' or matches[2] == lang_text(msg.to.id, 'mediaCommand') then
+					if matches[3] == 'off' or matches[3] == lang_text(msg.to.id, 'offCommand') then
+							--photos--
+							redis:set("settings:photos:" .. msg.to.id, true)
+							-- videos --
+							redis:set("settings:videos:" .. msg.to.id, true)
+							-- stickers --
+							redis:set("settings:stickers:" .. msg.to.id, true)
+							-- gifs --
+							redis:set("settings:gifs:" .. msg.to.id, true)
+							-- voices --
+							redis:set("settings:voice:" .. msg.to.id, true)
+							-- audios --
+							redis:set("settings:audios:" .. msg.to.id, true)
+							-- documents --
+							redis:set("settings:documents:" .. msg.to.id, true)			
+							-- location --
+							redis:set("settings:location:" .. msg.to.id, true)
+							-- games -- 
+							redis:set("settings:games:" .. msg.to.id, true)
+							send_msg(msg.to.id, lang_text(msg.to.id, 'mediaoffMSG'), 'md')
+					elseif matches[3] == 'on' or matches[3] == lang_text(msg.to.id, 'onCommand') then
+								--photos--
+								redis:del("settings:photos:" .. msg.to.id)
+								-- videos --
+								redis:del("settings:videos:" .. msg.to.id)
+								-- stickers --
+								redis:del("settings:stickers:" .. msg.to.id)
+								-- gifs --
+								redis:del("settings:gifs:" .. msg.to.id)
+								-- voices --
+								redis:del("settings:voice:" .. msg.to.id)
+								-- audios --
+								redis:del("settings:audios:" .. msg.to.id)
+								-- documents --
+								redis:del("settings:documents:" .. msg.to.id)
+								-- location --
+								redis:del("settings:location:" .. msg.to.id)
+								-- games -- 
+								redis:del("settings:games:" .. msg.to.id)
+								send_msg(msg.to.id, lang_text(msg.to.id, 'mediaonMSG'), 'md')
+					end
+				elseif matches[2] == 'text' or matches[2] == lang_text(msg.to.id, 'textCommand') then
+						if matches[3] == 'off' or matches[3] == lang_text(msg.to.id, 'offCommand') then
+								-- forward --
+								redis:set("settings:forward:" .. msg.to.id, true)
+								-- spam --	
+								redis:set("settings:spam:" .. msg.to.id, true)
+								-- reports --
+								redis:del("settings:reports:" .. msg.to.id)
+								--arabic--
+								redis:set("settings:arabic:" .. msg.to.id, true)
+								--english--
+								redis:set("settings:english:" .. msg.to.id, true)
+								--emoji--
+								redis:set("settings:emojis:" .. msg.to.id, true)
+								--flood--
+								redis:set("settings:flood:" .. msg.to.id, true)
+								send_msg(msg.to.id, lang_text(msg.to.id, 'textoffMSG'), 'md')
+						elseif matches[3] == 'on' or matches[3] == lang_text(msg.to.id, 'onCommand') then
+								-- forward --
+								redis:del("settings:forward:" .. msg.to.id)
+								-- spam --
+								redis:del("settings:spam:" .. msg.to.id)
+								-- reports --
+								redis:set("settings:reports:" .. msg.to.id, true)
+								--arabic--
+								redis:del("settings:arabic:" .. msg.to.id)
+								--english--
+								redis:del("settings:english:" .. msg.to.id)
+								--emoji--
+								redis:del("settings:emojis:" .. msg.to.id)
+								--flood--
+								redis:del("settings:flood:" .. msg.to.id)
+								send_msg(msg.to.id, lang_text(msg.to.id, 'textonMSG'), 'md')
+						end
+			elseif matches[2] == 'text' or matches[2] == lang_text(msg.to.id, 'textCommand') then
+						if matches[3] == 'off' or matches[3] == lang_text(msg.to.id, 'offCommand') then
+								-- tgservices --
+								redis:set("settings:tgservices:" .. msg.to.id, true)
+								-- invite --
+								redis:set("settings:invite:" .. msg.to.id, true)
+								-- bots--
+								redis:set("settings:bots:" .. msg.to.id, true)
+								send_msg(msg.to.id, lang_text(msg.to.id, 'groupoffMSG'), 'md')
+						elseif matches[3] == 'on' or matches[3] == lang_text(msg.to.id, 'onCommand') then
+								-- tgservices --
+								redis:del("settings:tgservices:" .. msg.to.id)
+								-- invite --
+								redis:del("settings:invite:" .. msg.to.id)
+								-- bots--
+								redis:del("settings:bots:" .. msg.to.id)
+								send_msg(msg.to.id, lang_text(msg.to.id, 'grouponMSG'), 'md')
+						end
 	    elseif matches[1] == "all" or matches[1] == lang_text(msg.to.id, 'allCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
-	print("it enters 1")
 			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
-		print("it enters 2")
 			-- tgservices --
 			redis:set("settings:tgservices:" .. msg.to.id, true)
 			-- invite --
@@ -708,6 +800,7 @@ return {
 		'^[!/#]([Rr]em[Rr]ules)$',
 		'^[!/#]([Nn]o[Rr]ules)$',
 		'^[!/#]([Aa]ll) (.*)$',
+		'^[!/#]([Aa]ll) (.*) (.*)$',
 		--persian--
 		'^(تنظیمات)$',
 		'^(زبان) (.*)$',
@@ -742,6 +835,7 @@ return {
 		'^(قوانینست) (.*)$',
 		'^(حذفقوانین)$',
 		'^(همه) (.*)$',
+		'^(همه) (.*) (.*)$',
 		'^(نوقوانین)$'
   	},
   	run = run,
