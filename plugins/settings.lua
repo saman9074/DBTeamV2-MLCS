@@ -517,10 +517,10 @@ local function run(msg, matches)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'floodT'), 'md')
 			end
 		elseif matches[1] == "welcome" or matches[1] == lang_text(msg.to.id, 'welcomeCommand') and permissions(msg.from.id, msg.to.id, "settings") then
-			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
+			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'welcomeremCommand') then
 				redis:del("settings:welcome:" .. msg.to.id)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'noWelcomeT'), 'md')
-			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
+			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'welcomeonCommand') then
 				redis:set("settings:welcome:" .. msg.to.id, true)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'welcomeT'), 'md')
 			end
