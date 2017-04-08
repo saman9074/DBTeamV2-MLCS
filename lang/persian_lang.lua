@@ -254,6 +254,8 @@ local function run(msg, matches)
 		set_text(LANG, 'setrulesCommand', 'قوانینست')
 		set_text(LANG, 'norulesCommand', 'نوقوانین')
 		set_text(LANG, 'remrulesCommand', 'حذفقوانین')
+		set_text(LANG, 'welcomeremCommand', 'حذف')
+		set_text(LANG, 'welcomeonCommand', 'نصب')
 				
 		
 		
