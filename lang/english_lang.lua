@@ -40,6 +40,15 @@ local function run(msg, matches)
 		set_text(LANG, 'allOFFMSG', '`>`*all settings off.*')
 		set_text(LANG, 'allONMSG', '`>`*all settings on*')
 		
+		set_text(LANG, 'textoffMSG', '`>`*text settings off.*')
+		set_text(LANG, 'textonMSG', '`>`*text settings on*')
+		
+		set_text(LANG, 'mediaoffMSG', '`>`*media settings off.*')
+		set_text(LANG, 'mediaonMSG', '`>`*media settings on*')
+		
+		set_text(LANG, 'groupoffMSG', '`>`*group settings off.*')
+		set_text(LANG, 'grouponMSG', '`>`*group settings on*')
+		
 		set_text(LANG, 'user', 'User')
 		set_text(LANG, 'isFlooding', '*is flooding.*')
 		set_text(LANG, 'isSpamming', '*is spamming.*')
@@ -289,6 +298,8 @@ local function run(msg, matches)
 		set_text(LANG, 'welcomeremCommand', 'off')
 		set_text(LANG, 'welcomeonCommand', 'on')
 		set_text(LANG, 'allCommand', 'all')
+		set_text(LANG, 'textCommand', 'text')
+		set_text(LANG, 'mediaCommand', 'media')
 --[[		set_text(LANG, 'Command', 'delall')
 		set_text(LANG, 'Command', 'delall')]]--
 		
