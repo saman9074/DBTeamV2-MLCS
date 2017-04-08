@@ -580,7 +580,7 @@ local function run(msg, matches)
 		elseif matches[1]:lower() == "remrules" or matches[1] == lang_text(msg.to.id, 'remrulesCommand') and not matches[2] and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
 			redis:del("settings:rules:" .. msg.to.id, matches[2])
 			send_msg(msg.to.id, lang_text(msg.to.id, 'rulesDefault'), 'md')
-		end
+		
 	    elseif matches[1] == "all" or matches[1] == lang_text(msg.to.id, 'allCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
 	print("it enters 1")
 			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
@@ -669,7 +669,7 @@ local function run(msg, matches)
 			redis:set("settings:welcome:" .. msg.to.id, true)
 			send_msg(msg.to.id, lang_text(msg.to.id, 'allONMSG'), 'md')
 			end
-	
+	end
 end
 
 return {
