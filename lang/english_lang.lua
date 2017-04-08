@@ -37,6 +37,9 @@ local function run(msg, matches)
 		set_text(LANG, 'stats', '*Chat stats*')
 
 		-- settings.lua --
+		set_text(LANG, 'allOFFMSG', '`>`*all settings off.*')
+		set_text(LANG, 'allONMSG', '`>`*all settings on*')
+		
 		set_text(LANG, 'user', 'User')
 		set_text(LANG, 'isFlooding', '*is flooding.*')
 		set_text(LANG, 'isSpamming', '*is spamming.*')
@@ -285,6 +288,7 @@ local function run(msg, matches)
 		set_text(LANG, 'remrulesCommand', 'remrules')
 		set_text(LANG, 'welcomeremCommand', 'off')
 		set_text(LANG, 'welcomeonCommand', 'on')
+		set_text(LANG, 'allCommand', 'all')
 --[[		set_text(LANG, 'Command', 'delall')
 		set_text(LANG, 'Command', 'delall')]]--
 		
