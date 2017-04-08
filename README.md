@@ -1,4 +1,4 @@
-# **DBTeamV2** #
+# **DBTeamV2-MLCS** #
 
 [![Library](https://img.shields.io/badge/TDLib-beta-brightgreen.svg)](https://core.telegram.org/tdlib)
 [![Telegram-cli](https://img.shields.io/badge/TDCli-Bitbucket-green.svg)](https://bitbucket.org/vysheng/tdcli)
@@ -9,10 +9,10 @@
 
 ### An administration Telegram bot using Telegram-cli
 
-DBTeamV2 is a a powerful administration userbot that uses [Telegram-Cli](https://valtman.name/telegram-cli).  
+DBTeamV2-MLCS is a a powerful administration userbot that uses [Telegram-Cli](https://valtman.name/telegram-cli).  
 It is programmed in [Lua](https://www.lua.org/) and uses the rapid [Redis](https://redis.io/) database.
 
-The difference among the old [DBTeamV1](https://github.com/Josepdal/DBTeamV1) and [DBTeamV2](https://github.com/Josepdal/DBTeamV2) is that this one uses a much newer *Tg-Cli* with new stuff and also the bot has improved in usability, stability and has new functions.
+The difference among the old [DBTeamV2](https://github.com/saman9074/DBTeamV2) and [DBTeamV2-MLCS](https://github.com/saman9074/DBTeamV2-MLCS) is that  Multi-Language Commands Support
 
 # Summary
 
@@ -25,7 +25,7 @@ The difference among the old [DBTeamV1](https://github.com/Josepdal/DBTeamV1) an
 - Simple and intuitive command usages.
 - Compatible with most of recent added telegram additions.
 - Really fast and stable.
-- Up-to-date documentation at http://telegra.ph/DBTeamV2-Tutorial-English-02-26
+- Multi-Language commands Support
 
 
 # Installation
@@ -54,8 +54,8 @@ sudo dnf install git redis-server libconfig8-dev libjansson-dev lua5.2 liblua5.2
 
 After installing the dependencies, lets install the bot:
 ```bash
- git clone https://github.com/Josepdal/DBTeamV2.git
- cd DBTeamV2
+ git clone https://github.com/saman9074/DBTeamV2-MLCS.git
+ cd DBTeamV2-MLCS
  chmod +x launch.sh
  ./launch.sh install # you can use the option --no-download and only configure DBTeam
  ./launch.sh # Will ask you for a phone number & confirmation code.
@@ -80,16 +80,12 @@ You can also run the bot in a Tmux session if you want:
 ./launch.sh kill # close session tmux
 ```
 
-DBTeamV2 Developers:
---------------------
-[![https://telegram.me/Josepdal](https://img.shields.io/badge/%F0%9F%92%AC_Telegram-Josepdal-blue.svg)](https://t.me/Josepdal)
-[![https://telegram.me/Jarriz](https://img.shields.io/badge/%F0%9F%92%AC_Telegram-Jarriz-blue.svg)](https://t.me/Jarriz)
-[![https://telegram.me/iicc1](https://img.shields.io/badge/%F0%9F%92%AC_Telegram-iicc1-blue.svg)](https://t.me/iicc1)
 
-DBTeamV2 Channels:
+DBTeamV2-MLCS Developers:
 --------------------
-[![https://telegram.me/DBTeamEN](https://img.shields.io/badge/%F0%9F%92%AC_Telegram-DBTeamEN-blue.svg)](https://t.me/DBTeamEN)
-[![https://telegram.me/DBTeamES](https://img.shields.io/badge/%F0%9F%92%AC_Telegram-DBTeamES-blue.svg)](https://t.me/DBTeamES)
+[![https://telegram.me/Golden3_ir_admin](https://img.shields.io/badge/%F0%9F%92%AC_Telegram-AliAbdi-blue.svg)](https://t.me/Golden3_ir_admin)
+
+
 
 Special thanks to:
 ==================
@@ -114,5 +110,11 @@ vysheng and his new tg-cli
 rizaumami and his tdcli lib
 ---------------------------
 [![https://github.com/rizaumami/tdcli.lua](https://img.shields.io/badge/%F0%9F%92%AC_GitHub-rizaumami-green.svg)](https://github.com/rizaumami/tdcli.lua)
+
+Josepdal and his DBTeamV2
+---------------------------
+[![https://github.com/Josepdal/DBTeamV2](https://img.shields.io/badge/%F0%9F%92%AC_GitHub-Josepdal-green.svg)](https://github.com/Josepdal/DBTeamV2)
+
+
 
 Thanks to [@Reload_Life](https://t.me/Reload_Life) for [settings design](https://github.com/Reload-Life).
