@@ -206,7 +206,7 @@ local function pre_process(msg)
 end
 
 local function run(msg, matches)
-		if matches[1] == 'lang' then
+		if matches[1] == 'lang' or matches[1] == lang_text(msg.to.id, 'langCommand') then
 		    if permissions(msg.from.id, msg.to.id, 'set_lang') then
 		        hash = 'langset:'..msg.to.id
 		        redis:set(hash, matches[2])
@@ -214,7 +214,7 @@ local function run(msg, matches)
 		    else
 		        return '🚫 '..lang_text(msg.to.id, 'require_sudo')
 		    end
-		elseif matches[1]:lower() == "settings" and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+		elseif matches[1]:lower() == "settings" or matches[1] == lang_text(msg.to.id, 'settingsCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
 			local settings = "*" .. lang_text(msg.to.id, 'groupSettings') .. ":*\n"
 			-- Check TgServices
 			if redis:get("settings:tgservices:" .. msg.to.id) then
@@ -361,170 +361,170 @@ local function run(msg, matches)
 			end
 
 			send_msg(msg.to.id, settings, 'md')
-		elseif matches[1] == "tgservices" and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
-			if matches[2] == 'off' then
+		elseif matches[1] == "tgservices" or matches[1] == lang_text(msg.to.id, 'tgsCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 				redis:set("settings:tgservices:" .. msg.to.id, true)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'noTgservicesT'), 'md')
-			elseif matches[2] == 'on' then
+			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
 				redis:del("settings:tgservices:" .. msg.to.id)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'tgservicesT'), 'md')
 			end
-		elseif matches[1] == "invite" and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
-			if matches[2] == 'off' then
+		elseif matches[1] == "invite" or matches[1] == lang_text(msg.to.id, 'inviteCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 				redis:set("settings:invite:" .. msg.to.id, true)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'noInviteT'), 'md')
-			elseif matches[2] == 'on' then
+			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
 				redis:del("settings:invite:" .. msg.to.id)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'inviteT'), 'md')
 			end
-		elseif matches[1] == "bots" then
-			if matches[2] == 'off' then
+		elseif matches[1] == "bots" or matches[1] == lang_text(msg.to.id, 'botsCommand') then
+			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 				redis:set("settings:bots:" .. msg.to.id, true)
 				send_msg(msg.to.id, "`>` *Bots* are now *not allowed* in this chat.", 'md')
-			elseif matches[2] == 'on' then
+			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
 				redis:del("settings:bots:" .. msg.to.id)
 				send_msg(msg.to.id, "`>` *Bots* are now *allowed* in this chat.", 'md')
 			end
-		elseif matches[1] == "photos" and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
-			if matches[2] == 'off' then
+		elseif matches[1] == "photos" or matches[1] == lang_text(msg.to.id, 'picCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 				redis:set("settings:photos:" .. msg.to.id, true)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'noPhotosT'), 'md')
-			elseif matches[2] == 'on' then
+			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
 				redis:del("settings:photos:" .. msg.to.id)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'photosT'), 'md')
 			end
-		elseif matches[1] == "videos" and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
-			if matches[2] == 'off' then
+		elseif matches[1] == "videos" or matches[1] == lang_text(msg.to.id, 'vidCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 				redis:set("settings:videos:" .. msg.to.id, true)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'noVideosT'), 'md')
-			elseif matches[2] == 'on' then
+			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
 				redis:del("settings:videos:" .. msg.to.id)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'videosT'), 'md')
 			end
-		elseif matches[1] == "stickers" and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
-			if matches[2] == 'off' then
+		elseif matches[1] == "stickers" or matches[1] == lang_text(msg.to.id, 'stickersCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 				redis:set("settings:stickers:" .. msg.to.id, true)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'noStickersT'), 'md')
-			elseif matches[2] == 'on' then
+			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
 				redis:del("settings:stickers:" .. msg.to.id)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'stickersT'), 'md')
 			end
-		elseif matches[1] == "gifs" and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
-			if matches[2] == 'off' then
+		elseif matches[1] == "gifs" or matches[1] == lang_text(msg.to.id, 'gifsCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 				redis:set("settings:gifs:" .. msg.to.id, true)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'noGifsT'), 'md')
-			elseif matches[2] == 'on' then
+			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
 				redis:del("settings:gifs:" .. msg.to.id)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'gifsT'), 'md')
 			end
-		elseif matches[1] == "voice" and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
-			if matches[2] == 'off' then
+		elseif matches[1] == "voice" or matches[1] == lang_text(msg.to.id, 'voiceCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 				redis:set("settings:voice:" .. msg.to.id, true)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'noVoiceT'), 'md')
-			elseif matches[2] == 'on' then
+			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
 				redis:del("settings:voice:" .. msg.to.id)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'voiceT'), 'md')
 			end
-		elseif matches[1] == "audios" and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
-			if matches[2] == 'off' then
+		elseif matches[1] == "audios" or matches[1] == lang_text(msg.to.id, 'audiosCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 				redis:set("settings:audios:" .. msg.to.id, true)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'noAudiosT'), 'md')
-			elseif matches[2] == 'on' then
+			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
 				redis:del("settings:audios:" .. msg.to.id)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'audiosT'), 'md')
 			end
-		elseif matches[1] == "documents" and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
-			if matches[2] == 'off' then
+		elseif matches[1] == "documents" or matches[1] == lang_text(msg.to.id, 'docCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 				redis:set("settings:documents:" .. msg.to.id, true)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'noDocumentsT'), 'md')
-			elseif matches[2] == 'on' then
+			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
 				redis:del("settings:documents:" .. msg.to.id)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'documentsT'), 'md')
 			end
-		elseif matches[1] == "location" and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
-			if matches[2] == 'off' then
+		elseif matches[1] == "location" or matches[1] == lang_text(msg.to.id, 'locCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 				redis:set("settings:location:" .. msg.to.id, true)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'noLocationT'), 'md')
-			elseif matches[2] == 'on' then
+			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
 				redis:del("settings:location:" .. msg.to.id)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'locationT'), 'md')
 			end
-		elseif matches[1] == "games" and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
-			if matches[2] == 'off' then
+		elseif matches[1] == "games" or matches[1] == lang_text(msg.to.id, 'gamesCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 				redis:set("settings:games:" .. msg.to.id, true)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'noGamesT'), 'md')
-			elseif matches[2] == 'on' then
+			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
 				redis:del("settings:games:" .. msg.to.id)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'gamesT'), 'md')
 			end
-		elseif matches[1] == "forward" and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
-			if matches[2] == 'off' then
+		elseif matches[1] == "forward" or matches[1] == lang_text(msg.to.id, 'fwrCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 				redis:set("settings:forward:" .. msg.to.id, true)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'noForwardT'), 'md')
-			elseif matches[2] == 'on' then
+			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
 				redis:del("settings:forward:" .. msg.to.id)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'forwardT'), 'md')
 			end
-		elseif matches[1] == "spam" and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
-			if matches[2] == 'off' then
+		elseif matches[1] == "spam"  or matches[1] == lang_text(msg.to.id, 'spamCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 				redis:set("settings:spam:" .. msg.to.id, true)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'noSpamT'), 'md')
-			elseif matches[2] == 'on' then
+			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
 				redis:del("settings:spam:" .. msg.to.id)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'spamT'), 'md')
 			end
-		elseif matches[1] == "setspam" and permissions(msg.from.id, msg.to.id, "settings") and matches[2] and redis:get("moderation_group: " .. msg.to.id) then
+		elseif matches[1] == "setspam" or matches[1] == lang_text(msg.to.id, 'setspamCommand') and permissions(msg.from.id, msg.to.id, "settings") and matches[2] and redis:get("moderation_group: " .. msg.to.id) then
 			redis:set("settings:setspam:" .. msg.to.id, matches[2])
 			send_msg(msg.to.id, lang_text(msg.to.id, 'setSpam') .. "*" .. matches[2] .. "*.", 'md')
-		elseif matches[1] == "reports" and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
-			if matches[2] == 'on' then
+		elseif matches[1] == "reports"  or matches[1] == lang_text(msg.to.id, 'repCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+			if matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
 				redis:set("settings:reports:" .. msg.to.id, true)
 				send_msg(msg.to.id, "`>` *Spam reports* are now *activated* in this chat.", 'md') -- translations
-			elseif matches[2] == 'off' then
+			elseif matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 				redis:del("settings:reports:" .. msg.to.id)
 				send_msg(msg.to.id, "`>` *Spam reports* are *disabled* in this chat.", 'md') -- translations
 			end			
-		elseif matches[1] == "arabic" and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
-			if matches[2] == 'off' then
+		elseif matches[1] == "arabic" or matches[1] == lang_text(msg.to.id, 'arabicCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 				redis:set("settings:arabic:" .. msg.to.id, true)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'noArabicT'), 'md')
-			elseif matches[2] == 'on' then
+			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
 				redis:del("settings:arabic:" .. msg.to.id)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'arabicT'), 'md')
 			end
-		elseif matches[1] == "english" and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
-			if matches[2] == 'off' then
+		elseif matches[1] == "english" or matches[1] == lang_text(msg.to.id, 'enCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 				redis:set("settings:english:" .. msg.to.id, true)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'noEnglishT'), 'md')
-			elseif matches[2] == 'on' then
+			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
 				redis:del("settings:english:" .. msg.to.id)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'englishT'), 'md')
 			end
-		elseif matches[1] == "emojis" and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
-			if matches[2] == 'off' then
+		elseif matches[1] == "emojis" or matches[1] == lang_text(msg.to.id, 'emojisCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 				redis:set("settings:emojis:" .. msg.to.id, true)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'noEmojisT'), 'md')
-			elseif matches[2] == 'on' then
+			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
 				redis:del("settings:emojis:" .. msg.to.id)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'emojisT'), 'md')
 			end
-		elseif matches[1] == "flood" and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
-			if matches[2] == 'off' then
+		elseif matches[1] == "flood" or matches[1] == lang_text(msg.to.id, 'floodCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 				redis:set("settings:flood:" .. msg.to.id, true)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'noFloodT'), 'md')
-			elseif matches[2] == 'on' then
+			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
 				redis:del("settings:flood:" .. msg.to.id)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'floodT'), 'md')
 			end
-		elseif matches[1] == "welcome" and permissions(msg.from.id, msg.to.id, "settings") then
-			if matches[2] == 'off' then
+		elseif matches[1] == "welcome" or matches[1] == lang_text(msg.to.id, 'welcomeCommand') and permissions(msg.from.id, msg.to.id, "settings") then
+			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 				redis:del("settings:welcome:" .. msg.to.id)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'noWelcomeT'), 'md')
-			elseif matches[2] == 'on' then
+			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
 				redis:set("settings:welcome:" .. msg.to.id, true)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'welcomeT'), 'md')
 			end
-		elseif matches[1] == "setwelcome" and permissions(msg.from.id, msg.to.id, "settings") then
+		elseif matches[1] == "setwelcome" or matches[1] == lang_text(msg.to.id, 'setwelcomeCommand') and permissions(msg.from.id, msg.to.id, "settings") then
 			if tonumber(matches[2]) == 0 then
 				redis:del("settings:welcome:msg:" .. msg.to.id)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'weldefault'), 'md')
@@ -532,7 +532,7 @@ local function run(msg, matches)
 				redis:set("settings:welcome:msg:" .. msg.to.id, matches[2])
 				send_msg(msg.to.id, lang_text(msg.to.id, 'welnew') .. matches[2], 'md')
 			end
-		elseif matches[1] == "max" and is_number(matches[2]) and permissions(msg.from.id, msg.to.id, "settings")and redis:get("moderation_group: " .. msg.to.id) then
+		elseif matches[1] == "max" or matches[1] == lang_text(msg.to.id, 'maxCommand') and is_number(matches[2]) and permissions(msg.from.id, msg.to.id, "settings")and redis:get("moderation_group: " .. msg.to.id) then
 			if tonumber(matches[2]) == 0 then
 				redis:del("settings:maxFlood:" .. msg.to.id)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'floodTime') .. ": `3`", 'md')
@@ -540,7 +540,7 @@ local function run(msg, matches)
 				redis:set("settings:maxFlood:" .. msg.to.id, tonumber(matches[2]))
 				send_msg(msg.to.id, lang_text(msg.to.id, 'floodTime') .. ": `" .. matches[2] .. "`", 'md')
 			end
-		elseif matches[1] == "time" and is_number(matches[2]) and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+		elseif matches[1] == "time" or matches[1] == lang_text(msg.to.id, 'timeCommand') and is_number(matches[2]) and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
 			if tonumber(matches[2]) == 0 then
 				redis:del("settings:floodTime:" .. msg.to.id)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'floodMax') .. ": `5`", 'md')
@@ -548,19 +548,19 @@ local function run(msg, matches)
 				redis:set("settings:floodTime:" .. msg.to.id, tonumber(matches[2]))
 				send_msg(msg.to.id, lang_text(msg.to.id, 'floodMax') .. ": `" .. matches[2] .. "`", 'md')
 			end
-		elseif matches[1]:lower() == "setlink" and matches[2] and permissions(msg.from.id, msg.to.id, "settings") then
+		elseif matches[1]:lower() == "setlink"  or matches[1] == lang_text(msg.to.id, 'setlinkCommand') and matches[2] and permissions(msg.from.id, msg.to.id, "settings") then
 				redis:set("settings:link:" .. msg.to.id, matches[2])
 				send_msg(msg.to.id, lang_text(msg.to.id, 'linkSet'), 'md')
-		elseif matches[1]:lower() == "newlink" and not matches[2] and permissions(msg.from.id, msg.to.id, "settings") then
+		elseif matches[1]:lower() == "newlink" or matches[1] == lang_text(msg.to.id, 'newlinkCommand') and not matches[2] and permissions(msg.from.id, msg.to.id, "settings") then
 			export_link(msg.to.id, get_exported_link, msg.to.id)
-		elseif matches[1]:lower() == "link" and not matches[2] then
+		elseif matches[1]:lower() == "link" or matches[1] == lang_text(msg.to.id, 'linkCommand') and not matches[2] then
 			local link = redis:get("settings:link:" .. msg.to.id)
 			if link then
 				send_msg(msg.to.id, link, 'html')
 			else
 				getChannelFull(msg.to.id,  getlink)
 			end
-		elseif matches[1]:lower() == "rules" and not matches[2] and redis:get("moderation_group: " .. msg.to.id) then
+		elseif matches[1]:lower() == "rules" or matches[1] == lang_text(msg.to.id, 'rulesCommand') and not matches[2] and redis:get("moderation_group: " .. msg.to.id) then
 			if not redis:get("settings:norules:" .. msg.to.id) then
 				if redis:get("settings:rules:" .. msg.to.id) then
 					send_msg(msg.to.id, redis:get("settings:rules:" .. msg.to.id), 'md')
@@ -568,15 +568,15 @@ local function run(msg, matches)
 					send_msg(msg.to.id, lang_text(msg.to.id, 'defaultRules'), 'md')
 				end
 			end
-		elseif matches[1]:lower() == "setrules" and matches[2] and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+		elseif matches[1]:lower() == "setrules" or matches[1] == lang_text(msg.to.id, 'setrulesCommand') and matches[2] and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
 			redis:set("settings:rules:" .. msg.to.id, matches[2])
 			redis:del("settings:norules:" .. msg.to.id)
 			send_msg(msg.to.id, lang_text(msg.to.id, 'newRules'), 'md')
-		elseif matches[1]:lower() == "norules" and not matches[2] and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+		elseif matches[1]:lower() == "norules" or matches[1] == lang_text(msg.to.id, 'norulesCommand') and not matches[2] and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
 			redis:del("settings:rules:" .. msg.to.id, matches[2])
 			redis:set("settings:norules:" .. msg.to.id, true)
 			send_msg(msg.to.id, lang_text(msg.to.id, 'noRules'), 'md')
-		elseif matches[1]:lower() == "remrules" and not matches[2] and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+		elseif matches[1]:lower() == "remrules" or matches[1] == lang_text(msg.to.id, 'remrulesCommand') and not matches[2] and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
 			redis:del("settings:rules:" .. msg.to.id, matches[2])
 			send_msg(msg.to.id, lang_text(msg.to.id, 'rulesDefault'), 'md')
 		end
@@ -618,6 +618,40 @@ return {
 		'^[!/#]([Ss]et[Rr]ules) (.*)$',
 		'^[!/#]([Rr]em[Rr]ules)$',
 		'^[!/#]([Nn]o[Rr]ules)$'
+		--persian--
+		'^(تنظیمات)$',
+		'^(زبان) (.*)$',
+		'^(سرویس) (.*)$',
+		'^(دعوت) (.*)$',
+		'^(ربات) (.*)$',
+		'^(عکس) (.*)$',
+		'^(فیلم) (.*)$',
+		'^(استیکر) (.*)$',
+		'^(گیف) (.*)$',
+		'^(ضبط) (.*)$',
+		'^(صدا) (.*)$',
+		'^(فایل) (.*)$',
+		'^(مکان) (.*)$',
+		'^(بازی) (.*)$',
+		'^(فوروارد) (.*)$',
+		'^(اسپم) (.*)$',
+		'^(اسپمست) (.*)$',
+		'^(ریپورت) (.*)$',
+		'^(عربی) (.*)$',
+		'^(انگلیسی) (.*)$',
+		'^(اموجی) (.*)$',
+		'^(فلود) (.*)$',
+		'^(ولکام) (.*)$',
+		'^(ولکامست) (.*)$',
+		'^(مکس) (.*)$',
+		'^(زمان) (.*)$',
+		'^(لینکست) (.*)$',
+		'^(لینکجدید)$',
+		'^(لینک)$',
+		'^(قوانین)$',
+		'^(قوانینست) (.*)$',
+		'^(حذفقوانین)$',
+		'^(نوقوانین)$'
   	},
   	run = run,
   	pre_process = pre_process
