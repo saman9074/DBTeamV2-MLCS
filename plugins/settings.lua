@@ -675,6 +675,7 @@ local function run(msg, matches)
 								redis:del("settings:bots:" .. msg.to.id)
 								send_msg(msg.to.id, lang_text(msg.to.id, 'grouponMSG'), 'md')
 						end
+			end
 	    elseif matches[1] == "all" or matches[1] == lang_text(msg.to.id, 'allCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
 			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 			-- tgservices --
