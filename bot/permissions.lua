@@ -67,15 +67,15 @@ local function send_warning(user_id, chat_id, user_need)
 	if user_need == 3 then
 		send_msg(chat_id, lang_text(chat_id, 'require_sudo'), 'md')
 		sleep(5)
-		delete_msg(msg.to.id, msg.id)
+		delete_msg(msg.to.id, msg.to.id)
 	elseif user_need == 2 then
 		send_msg(chat_id, lang_text(chat_id, 'require_admin'), 'md')
 		sleep(5)
-		delete_msg(msg.to.id, msg.id)
+		delete_msg(msg.to.id, msg.to.id)
 	elseif user_need == 1 then
 		send_msg(chat_id, lang_text(chat_id, 'require_mod'), 'md')
 		sleep(5)
-		delete_msg(msg.to.id, msg.id)
+		delete_msg(msg.to.id, msg.to.id)
 	end
 end
 
