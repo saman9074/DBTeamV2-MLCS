@@ -36,6 +36,15 @@ local function run(msg, matches)
 		set_text(LANG, 'allOFFMSG', '`>`*تمام تنظیمات غیرفعال شد*')
 		set_text(LANG, 'allONMSG', '`>`*تمام تنظیمات فعال شد*')
 		
+		set_text(LANG, 'textoffMSG', '`>`*تنظیمات متن غیر فعال شد*')
+		set_text(LANG, 'textonMSG', '`>`*تنظیمات متن فعال شد*')
+		
+		set_text(LANG, 'mediaoffMSG', '`>`*تنظیمات رسانه غیرفعال شد*')
+		set_text(LANG, 'mediaonMSG', '`>`*تنظیمات رسانه فعال شد*')
+		
+		set_text(LANG, 'groupoffMSG', '`>`*تنظیمات گروه غیر فعال شد*')
+		set_text(LANG, 'grouponMSG', '`>`*تنظیمات گروه فعال شد*')
+		
 		set_text(LANG, 'user', 'کاربر')
 		set_text(LANG, 'isFlooding', '*در حال فرستادن پيام هاي مکرر و سريع است*')
 
@@ -260,6 +269,8 @@ local function run(msg, matches)
 		set_text(LANG, 'welcomeremCommand', 'حذف')
 		set_text(LANG, 'welcomeonCommand', 'نصب')
 		set_text(LANG, 'allCommand', 'همه')
+		set_text(LANG, 'textCommand', 'متن')
+		set_text(LANG, 'mediaCommand', 'رسانه')
 				
 		
 		
