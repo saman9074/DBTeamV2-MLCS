@@ -230,6 +230,63 @@ local function run(msg, matches)
 		set_text(LANG, 'privateSuper', '`>` Group created, migrated to supergroup and promoted to admin!')
 		
 		
+		-- MLCS --
+		-- stats.lua --
+		set_text(LANG, 'statsCommand', 'stats')
+		-- commands.lua --
+		set_text(LANG, 'commandsCommand', 'commands')
+		-- mod.lua --
+		set_text(LANG, 'delCommand', 'del')
+		set_text(LANG, 'banCommand', 'ban')
+		set_text(LANG, 'unbanCommand', 'unban')
+		set_text(LANG, 'kickCommand', 'kick')
+		set_text(LANG, 'gbanCommand', 'gban')
+		set_text(LANG, 'ungbanCommand', 'ungban')
+		set_text(LANG, 'muteCommand', 'mute')
+		set_text(LANG, 'unmuteCommand', 'unmute')
+		set_text(LANG, 'muteallCommand', 'muteall')
+		set_text(LANG, 'unmuteallCommand', 'unmuteall')
+		set_text(LANG, 'delallCommand', 'delall')
+		-- setting.lua --
+		set_text(LANG, 'langCommand', 'lang')
+		set_text(LANG, 'settingsCommand', 'settings')
+		set_text(LANG, 'tgsCommand', 'tgservices')
+		set_text(LANG, 'offCommand', 'off')
+		set_text(LANG, 'onCommand', 'on')
+		set_text(LANG, 'inviteCommand', 'invite')
+		set_text(LANG, 'botsCommand', 'bots')
+		set_text(LANG, 'picCommand', 'photos')
+		set_text(LANG, 'vidCommand', 'videos')
+		set_text(LANG, 'stickersCommand', 'stickers')
+		set_text(LANG, 'gifsCommand', 'gifs')
+		set_text(LANG, 'voiceCommand', 'voice')
+		set_text(LANG, 'audiosCommand', 'audios')
+		set_text(LANG, 'docCommand', 'documents')
+		set_text(LANG, 'locCommand', 'location')
+		set_text(LANG, 'gamesCommand', 'games')
+		set_text(LANG, 'fwrCommand', 'forward')
+		set_text(LANG, 'spamCommand', 'spam')
+		set_text(LANG, 'setspamCommand', 'setspam')
+		set_text(LANG, 'repCommand', 'reports')
+		set_text(LANG, 'arabicCommand', 'arabic')
+		set_text(LANG, 'enCommand', 'english')
+		set_text(LANG, 'emojisCommand', 'emojis')
+		set_text(LANG, 'floodCommand', 'flood')
+		set_text(LANG, 'welcomeCommand', 'welcome')
+		set_text(LANG, 'setwelcomeCommand', 'setwelcome')
+		set_text(LANG, 'maxCommand', 'max')
+		set_text(LANG, 'timeCommand', 'time')
+		set_text(LANG, 'setlinkCommand', 'setlink')
+		set_text(LANG, 'newlinkCommand', 'newlink')
+		set_text(LANG, 'linkCommand', 'link')
+		set_text(LANG, 'rulesCommand', 'rules')
+		set_text(LANG, 'setrulesCommand', 'setrules')
+		set_text(LANG, 'norulesCommand', 'norules')
+		set_text(LANG, 'remrulesCommand', 'remrules')
+--[[		set_text(LANG, 'Command', 'delall')
+		set_text(LANG, 'Command', 'delall')]]--
+		
+		
 		------------
 		-- Usages --
 		------------
