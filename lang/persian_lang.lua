@@ -33,6 +33,9 @@ local function run(msg, matches)
 		set_text(LANG, 'statsCommand', 'وضعیت')
 
 		-- settings.lua --
+		set_text(LANG, 'allOFFMSG', '`>`*تمام تنظیمات غیرفعال شد*')
+		set_text(LANG, 'allONMSG', '`>`*تمام تنظیمات فعال شد*')
+		
 		set_text(LANG, 'user', 'کاربر')
 		set_text(LANG, 'isFlooding', '*در حال فرستادن پيام هاي مکرر و سريع است*')
 
@@ -256,6 +259,7 @@ local function run(msg, matches)
 		set_text(LANG, 'remrulesCommand', 'حذفقوانین')
 		set_text(LANG, 'welcomeremCommand', 'حذف')
 		set_text(LANG, 'welcomeonCommand', 'نصب')
+		set_text(LANG, 'allCommand', 'همه')
 				
 		
 		
