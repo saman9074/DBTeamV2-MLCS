@@ -206,6 +206,7 @@ local function pre_process(msg)
 end
 
 local function run(msg, matches)
+	    
 		if matches[1] == 'lang' or matches[1] == lang_text(msg.to.id, 'langCommand') then
 		    if permissions(msg.from.id, msg.to.id, 'set_lang') then
 		        hash = 'langset:'..msg.to.id
@@ -580,7 +581,7 @@ local function run(msg, matches)
 			redis:del("settings:rules:" .. msg.to.id, matches[2])
 			send_msg(msg.to.id, lang_text(msg.to.id, 'rulesDefault'), 'md')
 		end
-		--[[elseif matches[1] == "all" or matches[1] == lang_text(msg.to.id, 'allCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+	    elseif matches[1] == "all" or matches[1] == lang_text(msg.to.id, 'allCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
 	print("it enters 1")
 			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 		print("it enters 2")
@@ -668,8 +669,6 @@ local function run(msg, matches)
 			redis:set("settings:welcome:" .. msg.to.id, true)
 			send_msg(msg.to.id, lang_text(msg.to.id, 'allONMSG'), 'md')
 			end
-		
-		end]]--
 	
 end
 
