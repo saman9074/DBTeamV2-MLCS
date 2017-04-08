@@ -43,7 +43,7 @@ local function pre_process(msg)
 			delete_msg(msg.to.id, msg.id)
 			if not redis:get("muted:alert:" .. msg.to.id .. ":" .. msg.from.id) then
 				redis:setex("muted:alert:" .. msg.to.id .. ":" .. msg.from.id, 300, true)
-				send_msg(msg.to.id, 'Trying to speak...', 'md')
+				--send_msg(msg.to.id, 'Trying to speak...', 'md')--
 			end
 		end
 	end
