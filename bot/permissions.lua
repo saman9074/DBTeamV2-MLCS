@@ -58,8 +58,8 @@ local function user_num(user_id, chat_id)
 end
 
 
-function sleep(sec)
-    lsocket.select(sec)
+function sleep(n)
+  os.execute("sleep " .. tonumber(n))
 end
 
 
