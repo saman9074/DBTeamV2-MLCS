@@ -283,6 +283,8 @@ local function run(msg, matches)
 		set_text(LANG, 'setrulesCommand', 'setrules')
 		set_text(LANG, 'norulesCommand', 'norules')
 		set_text(LANG, 'remrulesCommand', 'remrules')
+		set_text(LANG, 'welcomeremCommand', 'off')
+		set_text(LANG, 'welcomeonCommand', 'on')
 --[[		set_text(LANG, 'Command', 'delall')
 		set_text(LANG, 'Command', 'delall')]]--
 		
