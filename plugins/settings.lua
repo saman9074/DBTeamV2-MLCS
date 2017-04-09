@@ -580,10 +580,9 @@ local function run(msg, matches)
 		elseif matches[1]:lower() == "remrules" or matches[1] == lang_text(msg.to.id, 'remrulesCommand') and not matches[2] and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
 			redis:del("settings:rules:" .. msg.to.id, matches[2])
 			send_msg(msg.to.id, lang_text(msg.to.id, 'rulesDefault'), 'md')
-		--[[
-		 elseif matches[1] == "all" or matches[1] == lang_text(msg.to.id, 'allCommand') and matches[2] and matches[3] and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
-			if matches[2] == 'media' or matches[2] == lang_text(msg.to.id, 'mediaCommand') then
-					if matches[3] == 'off' or matches[3] == lang_text(msg.to.id, 'offCommand') then
+		
+		 elseif matches[1] == "all" or matches[1] == lang_text(msg.to.id, 'allCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+			if matches[2] == 'mediaoff' or matches[2] == lang_text(msg.to.id, 'mediaoffCommand') then
 							--photos--
 							redis:set("settings:photos:" .. msg.to.id, true)
 							-- videos --
@@ -603,7 +602,7 @@ local function run(msg, matches)
 							-- games -- 
 							redis:set("settings:games:" .. msg.to.id, true)
 							send_msg(msg.to.id, lang_text(msg.to.id, 'mediaoffMSG'), 'md')
-					elseif matches[3] == 'on' or matches[3] == lang_text(msg.to.id, 'onCommand') then
+			elseif matches[2] == 'mediaon' or matches[2] == lang_text(msg.to.id, 'mediaonCommand') then
 								--photos--
 								redis:del("settings:photos:" .. msg.to.id)
 								-- videos --
@@ -623,9 +622,7 @@ local function run(msg, matches)
 								-- games -- 
 								redis:del("settings:games:" .. msg.to.id)
 								send_msg(msg.to.id, lang_text(msg.to.id, 'mediaonMSG'), 'md')
-					end
-				elseif matches[2] == 'text' or matches[2] == lang_text(msg.to.id, 'textCommand') then
-						if matches[3] == 'off' or matches[3] == lang_text(msg.to.id, 'offCommand') then
+				elseif matches[2] == 'textoff' or matches[2] == lang_text(msg.to.id, 'textoffCommand') then
 								-- forward --
 								redis:set("settings:forward:" .. msg.to.id, true)
 								-- spam --	
@@ -641,7 +638,7 @@ local function run(msg, matches)
 								--flood--
 								redis:set("settings:flood:" .. msg.to.id, true)
 								send_msg(msg.to.id, lang_text(msg.to.id, 'textoffMSG'), 'md')
-						elseif matches[3] == 'on' or matches[3] == lang_text(msg.to.id, 'onCommand') then
+				elseif matches[2] == 'texton' or matches[2] == lang_text(msg.to.id, 'textonCommand') then
 								-- forward --
 								redis:del("settings:forward:" .. msg.to.id)
 								-- spam --
@@ -657,9 +654,8 @@ local function run(msg, matches)
 								--flood--
 								redis:del("settings:flood:" .. msg.to.id)
 								send_msg(msg.to.id, lang_text(msg.to.id, 'textonMSG'), 'md')
-						end
-			elseif matches[2] == 'text' or matches[2] == lang_text(msg.to.id, 'textCommand') then
-						if matches[3] == 'off' or matches[3] == lang_text(msg.to.id, 'offCommand') then
+						
+			elseif matches[2] == 'groupoff' or matches[2] == lang_text(msg.to.id, 'groupoffCommand') then
 								-- tgservices --
 								redis:set("settings:tgservices:" .. msg.to.id, true)
 								-- invite --
@@ -667,7 +663,7 @@ local function run(msg, matches)
 								-- bots--
 								redis:set("settings:bots:" .. msg.to.id, true)
 								send_msg(msg.to.id, lang_text(msg.to.id, 'groupoffMSG'), 'md')
-						elseif matches[3] == 'on' or matches[3] == lang_text(msg.to.id, 'onCommand') then
+			elseif matches[2] == 'groupon' or matches[2] == lang_text(msg.to.id, 'grouponCommand') then
 								-- tgservices --
 								redis:del("settings:tgservices:" .. msg.to.id)
 								-- invite --
@@ -675,11 +671,7 @@ local function run(msg, matches)
 								-- bots--
 								redis:del("settings:bots:" .. msg.to.id)
 								send_msg(msg.to.id, lang_text(msg.to.id, 'grouponMSG'), 'md')
-						end
-			end
-]]--
-	    elseif matches[1] == "all" or matches[1] == lang_text(msg.to.id, 'allCommand') and matches[2] and not matches[3] and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
-			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
+			elseif matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 			-- tgservices --
 			redis:set("settings:tgservices:" .. msg.to.id, true)
 			-- invite --
