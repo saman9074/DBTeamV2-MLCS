@@ -5,6 +5,11 @@
 --     |___/|___/ |_|\___\__,_|_|_|_\_/ /___|     --
 --                                                --
 ----------------------------------------------------
+local function run_bash(str)
+    local cmd = io.popen(str)
+    local result = cmd:read('*all')
+    return result
+end
 
 local function run(msg, matches)
     if matches[1] == "start" or matches[1] == "help" then
@@ -18,6 +23,20 @@ local function run(msg, matches)
     elseif matches[1] == "creategroup" and matches[2] and permissions(msg.from.id, msg.to.id, "creategroup") then
 		createNewGroupChat({[0] = msg.from.id}, matches[2], groupcb)
 	end
+	elseif matches[1] == "clean" or matches[1] == "cashe" and permissions(msg.from.id, msg.to.id, "creategroup") then
+		     	run_bash("rm -rf ~/.telegram-cli/data/sticker/*")
+     			run_bash("rm -rf ~/.telegram-cli/data/photo/*")
+     			run_bash("rm -rf ~/.telegram-cli/data/animation/*")
+     			run_bash("rm -rf ~/.telegram-cli/data/video/*")
+     			run_bash("rm -rf ~/.telegram-cli/data/audio/*")
+     			run_bash("rm -rf ~/.telegram-cli/data/voice/*")
+				run_bash("rm -rf ~/.telegram-cli/data/temp/*")
+    	 		run_bash("rm -rf ~/.telegram-cli/data/thumb/*")
+     			run_bash("rm -rf ~/.telegram-cli/data/document/*")
+     			run_bash("rm -rf ~/.telegram-cli/data/profile_photo/*")
+     			run_bash("rm -rf ~/.telegram-cli/data/encrypted/*")
+			 	return "*All Cache Has Been Cleared*"
+	send_msg(msg.to.id, "*All Cache Has Been Cleared*2", "md")
 end
 
 function groupcb(extra,data)
@@ -47,7 +66,8 @@ return {
         patterns = {
                 "^[!/#]([sS][tT][Aa][rR][tT])",
 				"^[!/#]([Hh][eE][Ll][pP])",
-				"^[!/#]([Cc]reategroup) (.*)"
+				"^[!/#]([Cc]reategroup) (.*)",
+				"^[!/#](clean)$"
         },
         run = run,
 }
