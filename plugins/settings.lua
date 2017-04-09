@@ -756,6 +756,9 @@ local function run(msg, matches)
 			--redis:set("settings:welcome:" .. msg.to.id, true)--
 			send_msg(msg.to.id, lang_text(msg.to.id, 'allONMSG'), 'md')
 			end
+		elseif matches[1] == "setname" or matches[1] == lang_text(msg.to.id, 'setnameCommand') and matche[2] and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+			changeChatTitle(msg.to.id, matche[2])
+			send_msg(msg.to.id, 'name changed!', 'md')
 	end
 end
 
@@ -795,6 +798,7 @@ return {
 		'^[!/#]([Rr]em[Rr]ules)$',
 		'^[!/#]([Nn]o[Rr]ules)$',
 		'^[!/#]([Aa]ll) (.*)$',
+		'^[!/#]([Ss]et[Na]ame) (.*)$',
 		--[['^[!/#]([Aa]ll) (text) (.*)$',
 		'^[!/#]([Aa]ll) (group) (.*)$',
 		'^[!/#]([Aa]ll) (media) (.*)$',]]--
