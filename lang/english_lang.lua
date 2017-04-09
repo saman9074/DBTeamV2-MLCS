@@ -188,6 +188,9 @@ local function run(msg, matches)
 		set_text(LANG, 'banall', '<b>Trying to ban all users...</b>')
 		set_text(LANG, 'setAbout', '<b>About changed to: </b>')
 		set_text(LANG, 'leave', '<b>Bye!</b>')
+		set_text(LANG, 'groupAdd', '`>` <b>Group added to moderation list.</b>')
+		set_text(LANG, 'groupRem', '`>` <b>Group removed from moderation list.</b>')
+		
 		
 		
 		-- gban.lua --
@@ -306,6 +309,21 @@ local function run(msg, matches)
 		
 		set_text(LANG, 'grouponCommand', 'groupon')
 		set_text(LANG, 'groupoffCommand', 'groupoff')
+		--promote.lua--
+		set_text(LANG, 'addCommand', 'add')
+		set_text(LANG, 'remCommand', 'rem')
+		set_text(LANG, 'adminCommand', 'admin')
+		set_text(LANG, 'modCommand', 'mod')
+		set_text(LANG, 'userCommand', 'user')
+		set_text(LANG, 'adminsCommand', 'admins')
+		set_text(LANG, 'modsCommand', 'mods')
+		set_text(LANG, 'kickedCommand', 'kicked')
+		set_text(LANG, 'banallCommand', 'banall')
+		set_text(LANG, 'tagallCommand', 'users')
+		set_text(LANG, 'botsCommand', 'bots')
+		set_text(LANG, 'leaveCommand', 'leave')
+		set_text(LANG, 'setaboutCommand', 'setabout')
+		
 --[[		set_text(LANG, 'Command', 'delall')
 		set_text(LANG, 'Command', 'delall')]]--
 		
