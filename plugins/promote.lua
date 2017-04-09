@@ -7,20 +7,21 @@
 ----------------------------------------------------
 
 local function run(msg, matches)
-  if matches[1] == "add" then
+  if matches[1] == "add" or matches[1] == lang_text(msg.to.id, 'addCommand') then
 	  if permissions(msg.from.id, msg.to.id, "add_moderation") then
 		  redis:set("moderation_group: " .. msg.to.id, true)
-		  send_msg(msg.to.id, "<b>Group added to moderation list.</b>", "html")
+		  send_msg(msg.to.id, lang_text(msg.to.id, 'groupAdd'), "html")
+			
 	  end
   end
-  if matches[1] == "rem" then
+  if matches[1] == "rem" or matches[1] == lang_text(msg.to.id, 'remCommand') then
 	  if permissions(msg.from.id, msg.to.id, "add_moderation") then
 		  redis:del("moderation_group: " .. msg.to.id)
-		  send_msg(msg.to.id, "<b>Group removed from moderation list.</b>", "html")
+		  send_msg(msg.to.id, lang_text(msg.to.id, 'groupRem'), "html")
 	  end
   end
   if redis:get("moderation_group: " .. msg.to.id) then
-	if matches[1] == "admin" then
+	if matches[1] == "admin" or matches[1] == lang_text(msg.to.id, 'adminCommand') then
 		if permissions(msg.from.id, msg.to.id, "promote_admin") then
 			if msg.reply_id then
 				redis:sadd('admins', msg.replied.id)
@@ -34,7 +35,7 @@ local function run(msg, matches)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'newAdmin') .. ": " .. matches[2], "html")
 			end
 		end
-	elseif matches[1] == "mod" then
+	elseif matches[1] == "mod" or matches[1] == lang_text(msg.to.id, 'modCommand') then
 		if permissions(msg.from.id, msg.to.id, "promote_mod") then
 			if msg.reply_id and not matches[2] then
 				redis:sadd('mods:'..msg.to.id, msg.replied.id)
@@ -52,7 +53,7 @@ local function run(msg, matches)
 				send_msg(msg.to.id, lang_text(msg.to.id, 'newMod') .. ": " .. matches[2], "html")
 			end
 		end
-	elseif matches[1] == "user" then
+	elseif matches[1] == "user" or matches[1] == lang_text(msg.to.id, 'userCommand') then
 		if permissions(msg.from.id, msg.to.id, "promote_user") then
 			if msg.reply_id and not matches[2] then
 				if new_is_sudo(msg.from.id) then
@@ -74,7 +75,7 @@ local function run(msg, matches)
 				send_msg(msg.to.id, "<code>></code> " .. matches[2] .. lang_text(msg.to.id, 'nowUser'), "html")
 			end
 		end
-	elseif matches[1] == "admins" then
+	elseif matches[1] == "admins" or matches[1] == lang_text(msg.to.id, 'adminsCommand') then
 		if permissions(msg.from.id, msg.to.id, "promote_user") then
 			local text = "<b>Admins:</b>\n"
 			for k, v in pairs(redis:smembers("admins")) do
@@ -82,7 +83,7 @@ local function run(msg, matches)
 			end
 			send_msg(msg.to.id, text, 'html')
 		end
-	elseif matches[1] == "mods" then
+	elseif matches[1] == "mods" or matches[1] == lang_text(msg.to.id, 'modsCommand') then
 		if permissions(msg.from.id, msg.to.id, "moderation") then
 			local text = "<b>Mods:</b>\n"
 			for k, v in pairs(redis:smembers("mods:" .. msg.to.id)) do
@@ -90,11 +91,11 @@ local function run(msg, matches)
 			end
 			send_msg(msg.to.id, text, 'html')
 		end
-	elseif matches[1] == "kicked" then
+	elseif matches[1] == "kicked" or matches[1] == lang_text(msg.to.id, 'kickedCommand') then
 		if permissions(msg.from.id, msg.to.id, "tagall") then
 			getChannelMembers(msg.to.id, 0, 'Kicked', 200, kicked_cb, msg.to.id)
 		end
-	elseif matches[1] == "banall" then
+	elseif matches[1] == "banall" or matches[1] == lang_text(msg.to.id, 'banallCommand') then
 		if permissions(msg.from.id, msg.to.id, "banall") then
 			getChannelMembers(msg.to.id, 0, 'Recent', 200, banall_cb, msg.to.id)
 		end
@@ -102,7 +103,7 @@ local function run(msg, matches)
   else
 	print("\27[32m> Not moderating this group.\27[39m")
   end		
-  if matches[1] == "users" or matches[1] == "members" or matches[1] == "tagall" then
+  if matches[1] == "users" or matches[1] == "members" or matches[1] == "tagall" or matches[1] == lang_text(msg.to.id, 'tagallCommand') then
 	  if permissions(msg.from.id, msg.to.id, "tagall") then
 		  if matches[2] then
 		  	getChannelMembers(msg.to.id, 0, 'Recent', 200, members_cb, {chat = msg.to.id, text = matches[2]})
@@ -110,17 +111,17 @@ local function run(msg, matches)
 			getChannelMembers(msg.to.id, 0, 'Recent', 200, members_cb, {chat = msg.to.id, text = nil})
 		  end
 	  end	
-  elseif matches[1] == "bots" then
+  elseif matches[1] == "bots" or matches[1] == lang_text(msg.to.id, 'botsCommand') then
 	  if permissions(msg.from.id, msg.to.id, "tagall") then
 		  getChannelMembers(msg.to.id, 0, 'Bots', 200, bots_cb, msg.to.id)
 	  end
 
-  elseif matches[1] == "leave" then
+  elseif matches[1] == "leave" or matches[1] == lang_text(msg.to.id, 'leaveCommand') then
 	  if permissions(msg.from.id, msg.to.id, "leave") then
 		  send_msg(msg.to.id, lang_text(msg.to.id, 'leave'), 'html')
 		  kick_user(msg.to.id, _config.our_id[1])
 	  end
-  elseif matches[1] == "setabout" and matches[2] then
+  elseif matches[1] == "setabout" or matches[1] == lang_text(msg.to.id, 'setaboutCommand') and matches[2] then
 	  if permissions(msg.from.id, msg.to.id, "setabout") then
 		  changeAbout(matches[2], ok_cb)
 		  send_msg(msg.to.id, lang_text(msg.to.id, 'setAbout') .. matches[2], 'html')
@@ -251,6 +252,24 @@ return {
 	"^[!/#](banall)$",
 	"^[!/#](leave)$",
 	"^[!/#](setabout) (.*)$",
+	--persian--
+	"^(اضافه)$",
+	"^(پاک)$",
+  	"^(ادمین)$",
+	"^([ادمین) (.*)$",
+    "^([مدیر)$",
+	"^([مدیر) (.*)$",
+    "^([کاربر)$",
+	"^([کاربر) (.*)$",
+    "^([ادمینها)$",
+    "^([مدیرها)$",
+	"^([کاربران)$",
+	"^([کاربران) (.*)$",
+	"^(رباتها)$",
+	"^(اخراجیها)$",
+	"^(بنهمه)$",
+	"^(خروج)$",
+	"^(درموردماست) (.*)$"
   },
   run = run
 }
