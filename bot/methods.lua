@@ -555,3 +555,11 @@ function delete_msg_user(chat_id, user_id)
         user_id_ = user_id
     }, cb or dl_cb, nil)
 end
+
+function changeChatTitle(chat_id, title, cb, cmd)
+  tdcli_function ({
+    ID = "ChangeChatTitle",
+    chat_id_ = chat_id,
+    title_ = title
+  }, cb or dl_cb, cmd)
+end
