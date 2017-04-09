@@ -285,8 +285,8 @@ local function run(msg, matches)
 		------------
 		-- commands.lua --
 		set_text(LANG, 'commands:0', 2)
-		set_text(LANG, 'commands:1', '#commands:اين دستور براي ديدن دستورات تمام پلاگين ها ميباشد.')
-		set_text(LANG, 'commands:2', '#commands [plugin]: براي گرفتن دستورات يک پلاگين.')
+		set_text(LANG, 'commands:1', 'دستورات: دریافت راهنمای تمای دستورات ربات')
+		set_text(LANG, 'commands:2', 'دستورات {نام پلاگین}: گرفتن راهنمای دستوران پلاگین مورد نظر')
 		-- export_gban.lua --
 		--	set_text(LANG, 'export_gban:0', 2)
 		--	set_text(LANG, 'export_gban:1', '#gbans installer: دريافت ليست بن گلوبال به صورت فايل لوا.')
@@ -324,11 +324,10 @@ local function run(msg, matches)
 		set_text(LANG, 'moderation:9', 'حذفسکوتهمه: رفع حالت سکوت گروه')
 		
 		-- settings.lua --
-		set_text(LANG, 'settings:0', 26)
-		set_text(LANG, 'settings:1', 'سرویس قفل/باز: خاموش یا روشن کردن و حذف تمام پیام های سرویس تلگرام')
-		set_text(LANG, 'settings:2', 'دعوت قفل/باز: خاموش یا روشن کردن دعوت به گروه')
-		set_text(LANG, 'settings:3', '#lang <language (en, es...)>: تغيير زبان ربات')
-		set_text(LANG, 'settings:4', '#photos on/off: خاموش کردن يا روشن کردن و حذف تمام عکس هاي اخير.')
+		set_text(LANG, 'settings:0', 25)
+		set_text(LANG, 'settings:1', '#lang <language (en, es...)>: تغيير زبان ربات')
+		set_text(LANG, 'settings:2', 'سرویس قفل/باز: خاموش یا روشن کردن و حذف تمام پیام های سرویس تلگرام')
+		set_text(LANG, 'settings:3', 'دعوت قفل/باز: خاموش یا روشن کردن دعوت به گروه')
 		set_text(LANG, 'settings:4', 'عکس قفل/باز: خاموش یا روشن کردن ارسال عکس به گروه')
 		set_text(LANG, 'settings:5', 'فیلم قفل/باز: خاموش یا روشن کردن ارسال فیلم به گروه')
 		set_text(LANG, 'settings:6', 'استیکر قفل/باز: خاموش یا روشن کردن ارسال استیکر به گروه')
@@ -351,7 +350,6 @@ local function run(msg, matches)
 		set_text(LANG, 'settings:23', 'همه {رسانهباز/رسانهقفل}: قفل یا بازکردن همه تنظیمات رسانه')
 		set_text(LANG, 'settings:24', 'همه {متنباز/متنقفل}: قفل یا بازکردن همه تنظیمات متن')
 		set_text(LANG, 'settings:25', 'همه {گروهباز/گروهقفل}: قفل یا بازکردن همه تنظیمات گروه')
-		set_text(LANG, 'settings:26', 'ولکام {رسانهباز/رسانهقفل}: قفل یا بازکردن همه تنظیمات رسانه')
 		
 		-- set_text(LANG, 'settings:5', '#bots on/off: خاموش يا روشن کردن و حذف تمام ربات هاي گروه.')
 
