@@ -580,7 +580,7 @@ local function run(msg, matches)
 		elseif matches[1]:lower() == "remrules" or matches[1] == lang_text(msg.to.id, 'remrulesCommand') and not matches[2] and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
 			redis:del("settings:rules:" .. msg.to.id, matches[2])
 			send_msg(msg.to.id, lang_text(msg.to.id, 'rulesDefault'), 'md')
-		
+		--[[
 		 elseif matches[1] == "all" or matches[1] == lang_text(msg.to.id, 'allCommand') and matches[2] and matches[3] and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
 			if matches[2] == 'media' or matches[2] == lang_text(msg.to.id, 'mediaCommand') then
 					if matches[3] == 'off' or matches[3] == lang_text(msg.to.id, 'offCommand') then
@@ -677,7 +677,7 @@ local function run(msg, matches)
 								send_msg(msg.to.id, lang_text(msg.to.id, 'grouponMSG'), 'md')
 						end
 			end
-		
+]]--
 	    elseif matches[1] == "all" or matches[1] == lang_text(msg.to.id, 'allCommand') and matches[2] and not matches[3] and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
 			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 			-- tgservices --
@@ -803,9 +803,9 @@ return {
 		'^[!/#]([Rr]em[Rr]ules)$',
 		'^[!/#]([Nn]o[Rr]ules)$',
 		'^[!/#]([Aa]ll) (.*)$',
-		'^[!/#]([Aa]ll) (text) (.*)$',
+		--[['^[!/#]([Aa]ll) (text) (.*)$',
 		'^[!/#]([Aa]ll) (group) (.*)$',
-		'^[!/#]([Aa]ll) (media) (.*)$',
+		'^[!/#]([Aa]ll) (media) (.*)$',]]--
 		--persian--
 		'^(تنظیمات)$',
 		'^(زبان) (.*)$',
@@ -840,9 +840,9 @@ return {
 		'^(قوانینست) (.*)$',
 		'^(حذفقوانین)$',
 		'^(همه) (.*)$',
-		'^(همه) (متن) (.*)$',
+		--[['^(همه) (متن) (.*)$',
 		'^(همه) (رسانه) (.*)$',
-		'^(همه) (گروه) (.*)$',
+		'^(همه) (گروه) (.*)$',]]--
 		'^(نوقوانین)$'
   	},
   	run = run,
