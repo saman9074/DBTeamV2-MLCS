@@ -22,7 +22,7 @@ local function run(msg, matches)
 		end
     elseif matches[1] == "creategroup" and matches[2] and permissions(msg.from.id, msg.to.id, "creategroup") then
 		createNewGroupChat({[0] = msg.from.id}, matches[2], groupcb)
-	end
+	
 	elseif matches[1] == "clean" or matches[1] == "cashe" and permissions(msg.from.id, msg.to.id, "creategroup") then
 		     	run_bash("rm -rf ~/.telegram-cli/data/sticker/*")
      			run_bash("rm -rf ~/.telegram-cli/data/photo/*")
@@ -36,7 +36,8 @@ local function run(msg, matches)
      			run_bash("rm -rf ~/.telegram-cli/data/profile_photo/*")
      			run_bash("rm -rf ~/.telegram-cli/data/encrypted/*")
 			 	return "*All Cache Has Been Cleared*"
-	send_msg(msg.to.id, "*All Cache Has Been Cleared*2", "md")
+				send_msg(msg.to.id, "*All Cache Has Been Cleared*2", "md")
+	end
 end
 
 function groupcb(extra,data)
