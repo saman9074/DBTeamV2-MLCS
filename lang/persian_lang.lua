@@ -269,8 +269,14 @@ local function run(msg, matches)
 		set_text(LANG, 'welcomeremCommand', 'حذف')
 		set_text(LANG, 'welcomeonCommand', 'نصب')
 		set_text(LANG, 'allCommand', 'همه')
-		set_text(LANG, 'textCommand', 'متن')
-		set_text(LANG, 'mediaCommand', 'رسانه')
+		set_text(LANG, 'textonCommand', 'متنباز')
+		set_text(LANG, 'mediaonCommand', 'رسانهباز')
+		
+		set_text(LANG, 'textoffCommand', 'متنقفل')
+		set_text(LANG, 'mediaoffCommand', 'رسانهقفل')
+		
+		set_text(LANG, 'grouponCommand', 'گروهباز')
+		set_text(LANG, 'groupoffCommand', 'گروهقفل')
 				
 		
 		
