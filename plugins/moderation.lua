@@ -254,8 +254,7 @@ local function run(msg, matches)
 			end
 		end
 	elseif matches[1] == "online" or matches[1] == lang_text(msg.to.id, 'onlineCommand') or matches[1] == lang_text(msg.to.id, 'online2Command') and not matches[2] then
-			send_msg(msg.to.id, lang_text(msg.to.id, 'OnlineMSG'), 'md')
-			delete_msg(msg.to.id, msg.id)
+			reply_msg(msg.to.id, lang_text(msg.to.id, 'OnlineMSG'),msg.id, 'md')
 	end
   else
 	print("\27[32m> Not moderating this group.\27[39m")
