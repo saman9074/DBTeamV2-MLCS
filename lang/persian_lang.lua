@@ -295,10 +295,10 @@ local function run(msg, matches)
 		--	set_text(LANG, 'gban_installer:0', 1)
 		--	set_text(LANG, 'gban_installer:1', '#install gbans: يکسان سازي بن گلوبال هاي شما و ربات db.')
 		-- welcome.lua --
-		set_text(LANG, 'welcome:0', 3)
-		set_text(LANG, 'welcome:1', '#setwelcome [text for welcome]. شما ميتوانيد با اين دستور متن خوش آمد گويي را تغيير دهيد.')
-		set_text(LANG, 'welcome:2', '#getwelcome - دريافت پيام خوش آمد گويي')
-		set_text(LANG, 'welcome:3', '#welcome on/off - خاموش يا روشن کردن پيام خوش آمد گويي')
+		set_text(LANG, 'welcome:0', 2)
+		set_text(LANG, 'welcome:1', 'ولکامست {پیام خوش آمد گویی}: با استفاده از دستور ولکامست میتوانید متن خوش آمد گویی را تغییر دهید.')
+		--set_text(LANG, 'welcome:2', '#getwelcome - دريافت پيام خوش آمد گويي')--
+		set_text(LANG, 'welcome:2', 'ولکام نصب/حذف: خاموش یا روشن کردن پیغام خوش آمد گویی')
 		-- giverank.lua --
 		set_text(LANG, 'promote:0', 6)
 		set_text(LANG, 'promote:1', '#admin (reply): اضافه کردن ادمين با استفاده از ريپلي کردن.')
@@ -309,43 +309,55 @@ local function run(msg, matches)
 		set_text(LANG, 'promote:6', '#user <user_id>/<user_name>:حذف ادمين با استفاده از شناسه يا نام کاربري.')
 		-- id.lua --
 		set_text(LANG, 'id:0', 1)
-		set_text(LANG, 'id:1', '#id (or reply): دريافت آيدي خود و گروه.')
+		set_text(LANG, 'id:1', 'شناسه (با ریپلی یا بدون آن): دریافت شناسه خود و گروه یا فرد ریپلی شده')
+		
 		-- moderation.lua --
-		set_text(LANG, 'moderation:0', 7)
-		set_text(LANG, 'moderation:1', '#kick <reply>/<id>/<username>:حذف کاربر با استفاده از ريپلي يا نام کاربري و شناسه.')
-		set_text(LANG, 'moderation:2', '#ban <reply>/<id>/<username>: مسدود کردن کاربران و مجاز نبودن ورود دوباره آنها.')
-		set_text(LANG, 'moderation:3', '#unban <reply>/<id>/<username>: رفع مسدوديت يک فرد با استفاده از ريپلي نام کاربري و شناسه.')
-		set_text(LANG, 'moderation:4', '#gban <reply>/<id>/<username>: بن جهاني فرد با اسفاده از ريپلي ناسه نام کاربري.')
-		set_text(LANG, 'moderation:5', '#ungban <reply>/<id>/<username>: رفع مسدوديت يک فرد .')
-		set_text(LANG, 'moderation:6', '#mute <reply>/<id>/<username>: سکوت يک فرد با استفاده از ريپلي شناسه نام کاربري.')
-		set_text(LANG, 'moderation:7', '#unmute <reply>/<id>/<username>: رفع حالت سکوت يک فرد.')
+		set_text(LANG, 'moderation:0', 9)
+		set_text(LANG, 'moderation:1', 'کیک {نام کاربری}/ {شناسه}/ {ریپلی}: حذف کاربر از گروه بااستفاده از نام کاربری ی شناسه یا ریپلی.')
+		set_text(LANG, 'moderation:2', 'بن {نام کاربری}/ {شناسه}/ {ریپلی}: مسدود کردن کاربر و حذف در صورت ورود مجدد به گروه')
+		set_text(LANG, 'moderation:3', 'حذفبن {نام کاربری}/ {شناسه}/ {ریپلی}: رفع مسدودیت یک فرد با استفاده از ریپلی، نام کاربری یا شناسه|این گزینه همچنین افراد مسدود شده در سوپر گروه را نیز آزاد میکند.')
+		set_text(LANG, 'moderation:4', 'جیبن {نام کاربری}/ {شناسه}/ {ریپلی}: مسدود کردن کاربر به صورت جهانی')
+		set_text(LANG, 'moderation:5', 'حذفجیبن {نام کاربری}/ {شناسه}/ {ریپلی}: رفع مسدودیت جهانی')
+		set_text(LANG, 'moderation:6', 'سکوت {نام کاربری}/ {شناسه}/ {ریپلی}: سکوت یک فرد با استفاده از ریپلی شناسه یا نام کاربری')
+		set_text(LANG, 'moderation:7', 'حذفسکوت {نام کاربری}/ {شناسه}/ {ریپلی}: رفع حالت سکوت یک فرد')
+		set_text(LANG, 'moderation:8', 'سکوتهمه {ثانیه}: سکوت همه گروه در صورت دادن ثانیه گروه به همان مدت در حالت سکوت قرار میگیرد.')
+		set_text(LANG, 'moderation:9', 'حذفسکوتهمه: رفع حالت سکوت گروه')
+		
 		-- settings.lua --
-		set_text(LANG, 'settings:0', 20)
-		set_text(LANG, 'settings:1', '#tgservices on/off: خاموش يا روشن کردن و حذف تمام پيام هاي تلگرام سرويس گذشته.')
-		set_text(LANG, 'settings:2', '#invite on/off: خاموش يا روشن کردن و حذف تمام پيام هاي گذشته .')
+		set_text(LANG, 'settings:0', 26)
+		set_text(LANG, 'settings:1', 'سرویس قفل/باز: خاموش یا روشن کردن و حذف تمام پیام های سرویس تلگرام')
+		set_text(LANG, 'settings:2', 'دعوت قفل/باز: خاموش یا روشن کردن دعوت به گروه')
 		set_text(LANG, 'settings:3', '#lang <language (en, es...)>: تغيير زبان ربات')
 		set_text(LANG, 'settings:4', '#photos on/off: خاموش کردن يا روشن کردن و حذف تمام عکس هاي اخير.')
-		set_text(LANG, 'settings:5', '#videos on/off: خاموش يا روشن کردن و حذف تمام فيلم هاي گذشته.')
-		set_text(LANG, 'settings:6', '#stickers on/off: روشن يا خاموش کردن مجاز بودن استيکر .')
-		set_text(LANG, 'settings:7', '#gifs on/off: روشن يا خاموش کردن مجاز بودن ارسال عکس متحرک.')
-		set_text(LANG, 'settings:8', '#voice on/off: روشن يا خاموش کردن ارسال صداي ضبط شده.')
-		set_text(LANG, 'settings:9', '#audios on/off: حذف صدا و اهنگ.')
-		set_text(LANG, 'settings:10', '#documents on/off: حذف فايل.')
-		set_text(LANG, 'settings:11', '#location on/off:ارسال مکان')
-		set_text(LANG, 'settings:12', '#games on/off: شروع کردن بازي .')
-		set_text(LANG, 'settings:13', '#spam on/off: هرزنامه.')
-		set_text(LANG, 'settings:14', '#forward on/off: قفل کردن فوروارد  یا باز کردن')
-		set_text(LANG, 'settings:15', '#floodtime <secs>: تعيين کردن حساسيت زمان فلود.')
-		set_text(LANG, 'settings:16', '#maxflood <msgs>: تعيين حساسيت فلود کردن.')
-		set_text(LANG, 'settings:17', '#links on/off: ارسال لينک.')
-		set_text(LANG, 'settings:28', '#arabic on/off: زبان عربي.')
-		set_text(LANG, 'settings:19', '#english on/off: زبان انگليسي.')
-		set_text(LANG, 'settings:20', '#emoji on/off: ارسال ايموجي.')
+		set_text(LANG, 'settings:4', 'عکس قفل/باز: خاموش یا روشن کردن ارسال عکس به گروه')
+		set_text(LANG, 'settings:5', 'فیلم قفل/باز: خاموش یا روشن کردن ارسال فیلم به گروه')
+		set_text(LANG, 'settings:6', 'استیکر قفل/باز: خاموش یا روشن کردن ارسال استیکر به گروه')
+		set_text(LANG, 'settings:7', 'گیف قفل/باز: خاموش یا روشن کردن ارسال گیف به گروه')
+		set_text(LANG, 'settings:8', 'ضبط قفل/باز: خاموش یا روشن کردن ارسال صدای ضبط شده به گروه')
+		set_text(LANG, 'settings:9', 'صدا قفل/باز: خاموش یا روشن کردن ارسال صدا و آهنگ به گروه')
+		set_text(LANG, 'settings:10', 'فایل قفل/باز: خاموش یا روشن کردن ارسال فایل به گروه')
+		set_text(LANG, 'settings:11', 'مکان قفل/باز: خاموش یا روشن کردن ارسال مکان به گروه')
+		set_text(LANG, 'settings:12', 'بازی قفل/باز: خاموش یا روشن کردن ارسال بازی به گروه')
+		set_text(LANG, 'settings:13', 'اسپم قفل/باز: خاموش یا روشن کردن هرزنامه')
+		set_text(LANG, 'settings:14', 'ریپورت قفل/باز: قفل یا باز کردن ریپورت، در صورت فعال بودن فردی اسپم نماید ریپورت میشود.')
+		set_text(LANG, 'settings:15', 'فوروارد قفل/باز: قفل فوروارد یا باز کردن آن')
+		set_text(LANG, 'settings:16', 'فلود قفل/باز: قفل یا باز کردن ارسال مکرر پیام')
+		set_text(LANG, 'settings:17', 'زمان {ثانیه}: تعیین زمان حساسیت فلود')
+		set_text(LANG, 'settings:18', 'مکس {تعداد}: تعیین تعداد حساسیت فلود')
+		set_text(LANG, 'settings:19', 'عربی قفل/باز: قفل یا بازکردن زبان عربی')
+		set_text(LANG, 'settings:20', 'انگلیسی قفل/باز: قفل یا بازکردن زبان انگلیسی')
+		set_text(LANG, 'settings:21', 'ایموجی قفل/باز: قفل یا بازکردن ایموجی')
+		set_text(LANG, 'settings:22', 'همه قفل/باز: قفل یا بازکردن همه تنظیمات')
+		set_text(LANG, 'settings:23', 'همه {رسانهباز/رسانهقفل}: قفل یا بازکردن همه تنظیمات رسانه')
+		set_text(LANG, 'settings:24', 'همه {متنباز/متنقفل}: قفل یا بازکردن همه تنظیمات متن')
+		set_text(LANG, 'settings:25', 'همه {گروهباز/گروهقفل}: قفل یا بازکردن همه تنظیمات گروه')
+		set_text(LANG, 'settings:26', 'ولکام {رسانهباز/رسانهقفل}: قفل یا بازکردن همه تنظیمات رسانه')
+		
 		-- set_text(LANG, 'settings:5', '#bots on/off: خاموش يا روشن کردن و حذف تمام ربات هاي گروه.')
 
-		if matches[1] == 'install' then
+		if matches[1] == 'install' or matches[1] == "نصب" then
 			return '`>` زبان فارسي با موفقيت نصب شد.'
-		elseif matches[1] == 'update' then
+		elseif matches[1] == 'update' or matches[1] == "بهروز" then
 			return '`>` زبان فارسي با موفقيت بروز رساني شد.'
 		end
 	else
@@ -356,7 +368,9 @@ end
 return {
 	patterns = {
 		'[!/#](install) (persian_lang)$',
-		'[!/#](update) (persian_lang)$'
+		'[!/#](update) (persian_lang)$',
+		'(نصب) (فارسی)$',
+		'(بهروز) (فارسی)$'
 	},
 	run = run
 }
