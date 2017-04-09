@@ -37,6 +37,8 @@ local function run(msg, matches)
 		set_text(LANG, 'stats', '*Chat stats*')
 
 		-- settings.lua --
+		set_text(LANG, 'setnameMSG', '`>`*Gruop name changed to:*')
+		
 		set_text(LANG, 'allOFFMSG', '`>`*all settings off.*')
 		set_text(LANG, 'allONMSG', '`>`*all settings on*')
 		
@@ -311,6 +313,9 @@ local function run(msg, matches)
 		
 		set_text(LANG, 'grouponCommand', 'groupon')
 		set_text(LANG, 'groupoffCommand', 'groupoff')
+		
+		set_text(LANG, 'setnameCommand', 'setname')
+		
 		--promote.lua--
 		set_text(LANG, 'addCommand', 'add')
 		set_text(LANG, 'remCommand', 'rem')
