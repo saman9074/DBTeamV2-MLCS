@@ -298,8 +298,14 @@ local function run(msg, matches)
 		set_text(LANG, 'welcomeremCommand', 'off')
 		set_text(LANG, 'welcomeonCommand', 'on')
 		set_text(LANG, 'allCommand', 'all')
-		set_text(LANG, 'textCommand', 'text')
-		set_text(LANG, 'mediaCommand', 'media')
+		set_text(LANG, 'textonCommand', 'texton')
+		set_text(LANG, 'mediaonCommand', 'mediaon')
+		
+		set_text(LANG, 'textoffCommand', 'textoff')
+		set_text(LANG, 'mediaoffCommand', 'mediaoff')
+		
+		set_text(LANG, 'grouponCommand', 'groupon')
+		set_text(LANG, 'groupoffCommand', 'groupoff')
 --[[		set_text(LANG, 'Command', 'delall')
 		set_text(LANG, 'Command', 'delall')]]--
 		
