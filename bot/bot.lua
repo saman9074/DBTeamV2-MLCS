@@ -9,6 +9,7 @@
 package.path = package.path ..';.luarocks/share/lua/5.2/?.lua' .. ';./bot/?.lua'
 package.cpath = package.cpath .. ';.luarocks/lib/lua/5.2/?.so'
 --tdcli = dofile('tdcli.lua')--
+tdcli = dofile('./tg/tdcli.lua')
 redis = require("redis")
 redis = redis.connect('127.0.0.1', 6379)
 
