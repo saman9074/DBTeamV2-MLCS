@@ -5,7 +5,7 @@
 --     |___/|___/ |_|\___\__,_|_|_|_\_/ /___|     --
 --                                                --
 ----------------------------------------------------
-
+tdcli = dofile('tdcli.lua')
 local function get_added_users(msg)
 	local users = ""
 	for i = 1, #msg.added, 1 do
@@ -757,7 +757,7 @@ local function run(msg, matches)
 			send_msg(msg.to.id, lang_text(msg.to.id, 'allONMSG'), 'md')
 			end
 		elseif matches[1] == "setname" or matches[1] == lang_text(msg.to.id, 'setnameCommand') and matche[2] and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
-			changeChatTitle(msg.to.id, matche[2])
+			tdcli.changeChatTitle(msg.to.id, matche[2])
 			send_msg(msg.to.id, 'name changed!', 'md')
 	end
 end
