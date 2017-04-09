@@ -220,6 +220,7 @@ local function run(msg, matches)
 		set_text(LANG, 'muteUserSec', '`>` The user has been *muted* for ')
 		set_text(LANG, 'unmuteUser', '`>` The user *can talk now.*')
 		set_text(LANG, 'unmuteChat', '`>` The users *can talk now.*')
+		set_text(LANG, 'OnlineMSG', 'yes, i am online!')
 
 		set_text(LANG, 'delXMsg', '`>` User $user *has deleted* `$num messages`.')
 
