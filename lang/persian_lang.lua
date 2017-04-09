@@ -33,6 +33,8 @@ local function run(msg, matches)
 		set_text(LANG, 'statsCommand', 'وضعیت')
 
 		-- settings.lua --
+		set_text(LANG, 'setnameMSG', '`>`*نام گروه با موفقیت تغییر یافت به:*')
+		
 		set_text(LANG, 'allOFFMSG', '`>`*تمام تنظیمات غیرفعال شد*')
 		set_text(LANG, 'allONMSG', '`>`*تمام تنظیمات فعال شد*')
 		
@@ -284,6 +286,7 @@ local function run(msg, matches)
 		
 		set_text(LANG, 'grouponCommand', 'گروهباز')
 		set_text(LANG, 'groupoffCommand', 'گروهقفل')
+		set_text(LANG, 'setnameCommand', 'نامگروه')
 		--promote.lua--
 		set_text(LANG, 'addCommand', 'اضافه')
 		set_text(LANG, 'remCommand', 'پاک')
