@@ -5,7 +5,7 @@
 --     |___/|___/ |_|\___\__,_|_|_|_\_/ /___|     --
 --                                                --
 ----------------------------------------------------
-tdcli = dofile('/root/DBTeamV2-MLCS/bot/tdcli.lua')
+
 --tdcli = require 'tdcli'--
 local function get_added_users(msg)
 	local users = ""
