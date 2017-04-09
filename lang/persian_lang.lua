@@ -191,6 +191,7 @@ local function run(msg, matches)
 		set_text(LANG, 'muteChatSec', '`>` گروه در حالت *سکوت* قرار گرفت برای ')
 		set_text(LANG, 'muteUserSec', '`>` کاربر در حالت *سکوت* قرار گرفت برای ')
 		set_text(LANG, 'delXMsg', '`>` User $user *has deleted* `$num messages`.')
+		set_text(LANG, 'OnlineMSG', 'آره خیالت تخت من آنلاینم.')
 
 		
 		-- commands.lua --
@@ -233,6 +234,9 @@ local function run(msg, matches)
 		set_text(LANG, 'muteallCommand', 'سکوتهمه')
 		set_text(LANG, 'unmuteallCommand', 'حذفسکوتهمه')
 		set_text(LANG, 'delallCommand', 'حذفهمه')
+		
+		set_text(LANG, 'onlineCommand', 'انلاینی')
+		set_text(LANG, 'online2Command', 'آنلاینی')
 		-- setting.lua --
 		set_text(LANG, 'langCommand', 'زبان')
 		set_text(LANG, 'settingsCommand', 'تنظیمات')
