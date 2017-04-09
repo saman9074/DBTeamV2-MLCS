@@ -757,10 +757,10 @@ local function run(msg, matches)
 			--redis:set("settings:welcome:" .. msg.to.id, true)--
 			send_msg(msg.to.id, lang_text(msg.to.id, 'allONMSG'), 'md')
 			end
-		elseif matches[1] == "setname" and matches[2] and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+		elseif matches[1] == "setname" or matches[1] == lang_text(msg.to.id, 'setnameCommand') and matches[2] and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
 			local gp_name = matches[2]
 			tdcli.changeChatTitle(msg.to.id, gp_name, dl_cb, nil)
-			send_msg(msg.to.id, 'name changed!', 'md')
+			send_msg(msg.to.id, lang_text(msg.to.id, 'setnameMSG').. " " .. matches[2], 'md')
 	end
 end
 
@@ -836,6 +836,7 @@ return {
 		'^(لینک)$',
 		'^(قوانین)$',
 		'^(قوانینست) (.*)$',
+		'^(نامگروه) (.*)$',
 		'^(حذفقوانین)$',
 		'^(همه) (.*)$',
 		--[['^(همه) (متن) (.*)$',
