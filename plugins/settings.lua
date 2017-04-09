@@ -580,8 +580,8 @@ local function run(msg, matches)
 		elseif matches[1]:lower() == "remrules" or matches[1] == lang_text(msg.to.id, 'remrulesCommand') and not matches[2] and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
 			redis:del("settings:rules:" .. msg.to.id, matches[2])
 			send_msg(msg.to.id, lang_text(msg.to.id, 'rulesDefault'), 'md')
-		--[[
-		 elseif matches[1] == "all" or matches[1] == lang_text(msg.to.id, 'allCommand') and matches[3] and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+		
+		 elseif matches[1] == "all" or matches[1] == lang_text(msg.to.id, 'allCommand') and matches[2] and matches[3] and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
 			if matches[2] == 'media' or matches[2] == lang_text(msg.to.id, 'mediaCommand') then
 					if matches[3] == 'off' or matches[3] == lang_text(msg.to.id, 'offCommand') then
 							--photos--
@@ -633,9 +633,9 @@ local function run(msg, matches)
 								-- reports --
 								redis:del("settings:reports:" .. msg.to.id)
 								--arabic--
-								redis:set("settings:arabic:" .. msg.to.id, true)
+								--redis:set("settings:arabic:" .. msg.to.id, true)--
 								--english--
-								redis:set("settings:english:" .. msg.to.id, true)
+								--redis:set("settings:english:" .. msg.to.id, true)--
 								--emoji--
 								redis:set("settings:emojis:" .. msg.to.id, true)
 								--flood--
@@ -649,9 +649,9 @@ local function run(msg, matches)
 								-- reports --
 								redis:set("settings:reports:" .. msg.to.id, true)
 								--arabic--
-								redis:del("settings:arabic:" .. msg.to.id)
+								--redis:del("settings:arabic:" .. msg.to.id)--
 								--english--
-								redis:del("settings:english:" .. msg.to.id)
+								--redis:del("settings:english:" .. msg.to.id)--
 								--emoji--
 								redis:del("settings:emojis:" .. msg.to.id)
 								--flood--
@@ -677,8 +677,8 @@ local function run(msg, matches)
 								send_msg(msg.to.id, lang_text(msg.to.id, 'grouponMSG'), 'md')
 						end
 			end
-		]]--
-	    elseif matches[1] == "all" or matches[1] == lang_text(msg.to.id, 'allCommand') and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
+		
+	    elseif matches[1] == "all" or matches[1] == lang_text(msg.to.id, 'allCommand') and matches[2] and not matches[3] and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
 			if matches[2] == 'off' or matches[2] == lang_text(msg.to.id, 'offCommand') then
 			-- tgservices --
 			redis:set("settings:tgservices:" .. msg.to.id, true)
@@ -711,15 +711,15 @@ local function run(msg, matches)
 			-- reports --
 			redis:del("settings:reports:" .. msg.to.id)
 			--arabic--
-			redis:set("settings:arabic:" .. msg.to.id, true)
+			--redis:set("settings:arabic:" .. msg.to.id, true)--
 			--english--
-			redis:set("settings:english:" .. msg.to.id, true)
+			--redis:set("settings:english:" .. msg.to.id, true)--
 			--emoji--
 			redis:set("settings:emojis:" .. msg.to.id, true)
 			--flood--
 			redis:set("settings:flood:" .. msg.to.id, true)
 			--welcome--
-			redis:del("settings:welcome:" .. msg.to.id)
+			--redis:del("settings:welcome:" .. msg.to.id)--
 			send_msg(msg.to.id, lang_text(msg.to.id, 'allOFFMSG'), 'md')
 			elseif matches[2] == 'on' or matches[2] == lang_text(msg.to.id, 'onCommand') then
 			-- tgservices --
@@ -753,15 +753,15 @@ local function run(msg, matches)
 			-- reports --
 			redis:set("settings:reports:" .. msg.to.id, true)
 			--arabic--
-			redis:del("settings:arabic:" .. msg.to.id)
+			--redis:del("settings:arabic:" .. msg.to.id)--
 			--english--
-			redis:del("settings:english:" .. msg.to.id)
+			--redis:del("settings:english:" .. msg.to.id)--
 			--emoji--
 			redis:del("settings:emojis:" .. msg.to.id)
 			--flood--
 			redis:del("settings:flood:" .. msg.to.id)
 			--welcome--
-			redis:set("settings:welcome:" .. msg.to.id, true)
+			--redis:set("settings:welcome:" .. msg.to.id, true)--
 			send_msg(msg.to.id, lang_text(msg.to.id, 'allONMSG'), 'md')
 			end
 	end
