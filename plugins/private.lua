@@ -35,7 +35,6 @@ local function run(msg, matches)
      			run_bash("rm -rf ~/.telegram-cli/data/document/*")
      			run_bash("rm -rf ~/.telegram-cli/data/profile_photo/*")
      			run_bash("rm -rf ~/.telegram-cli/data/encrypted/*")
-				send_msg(msg.to.id, "*All Cache Has Been Cleared*2", "md")
 			 	return "*All Cache Has Been Cleared*"
 				
 	end
@@ -69,7 +68,8 @@ return {
                 "^[!/#]([sS][tT][Aa][rR][tT])",
 				"^[!/#]([Hh][eE][Ll][pP])",
 				"^[!/#]([Cc]reategroup) (.*)",
-				"^[!/#](clean)"
+				"^[!/#](clean)",
+				"^[!/#](cashe)"
         },
         run = run,
 }
