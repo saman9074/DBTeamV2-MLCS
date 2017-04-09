@@ -759,7 +759,7 @@ local function run(msg, matches)
 			end
 		elseif matches[1] == "setname" and matches[2] and permissions(msg.from.id, msg.to.id, "settings") and redis:get("moderation_group: " .. msg.to.id) then
 			local gp_name = matches[2]
-			tdcli.changeChatTitle(chat, gp_name, dl_cb, nil)
+			tdcli.changeChatTitle(msg.to.id, gp_name, dl_cb, nil)
 			send_msg(msg.to.id, 'name changed!', 'md')
 	end
 end
