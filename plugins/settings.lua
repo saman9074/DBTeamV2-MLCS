@@ -5,7 +5,8 @@
 --     |___/|___/ |_|\___\__,_|_|_|_\_/ /___|     --
 --                                                --
 ----------------------------------------------------
-tdcli = dofile('tdcli.lua')
+--tdcli = dofile('tdcli.lua')--
+tdcli = require 'tdcli'
 local function get_added_users(msg)
 	local users = ""
 	for i = 1, #msg.added, 1 do
