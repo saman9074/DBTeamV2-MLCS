@@ -161,7 +161,8 @@ local function run(msg, matches)
 		set_text(LANG, 'setAbout', '<b>اطلاعات تغییر کرد به:</b>')
 		set_text(LANG, 'leave', '<b>خدانگهدار!</b>')
 		set_text(LANG, 'groupAdd', '`>` <b>گروه به لیست مدیریتی اضافه شد.</b>')
-		set_text(LANG, 'groupRem', '`>` <b>گروه از لیست مدیریتی حذف گردید.</
+		set_text(LANG, 'groupRem', '`>` <b>گروه از لیست مدیریتی حذف شد.</b>')
+		
 		
 		
 		-- gban.lua --
