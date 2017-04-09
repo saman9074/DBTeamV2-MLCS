@@ -160,6 +160,8 @@ local function run(msg, matches)
 		set_text(LANG, 'banall', '<b>تلاش برای مسدود سازی تمام کاربران ...</b>')
 		set_text(LANG, 'setAbout', '<b>اطلاعات تغییر کرد به:</b>')
 		set_text(LANG, 'leave', '<b>خدانگهدار!</b>')
+		set_text(LANG, 'groupAdd', '`>` <b>گروه به لیست مدیریتی اضافه شد.</b>')
+		set_text(LANG, 'groupRem', '`>` <b>گروه از لیست مدیریتی حذف گردید.</
 		
 		
 		-- gban.lua --
@@ -277,7 +279,21 @@ local function run(msg, matches)
 		
 		set_text(LANG, 'grouponCommand', 'گروهباز')
 		set_text(LANG, 'groupoffCommand', 'گروهقفل')
-				
+		--promote.lua--
+		set_text(LANG, 'addCommand', 'اضافه')
+		set_text(LANG, 'remCommand', 'پاک')
+		set_text(LANG, 'adminCommand', 'ادمین')
+		set_text(LANG, 'modCommand', 'مدیر')
+		set_text(LANG, 'userCommand', 'کاربر')
+		set_text(LANG, 'adminsCommand', 'ادمینها')
+		set_text(LANG, 'modsCommand', 'مدیرها')
+		set_text(LANG, 'kickedCommand', 'اخراجیها')
+		set_text(LANG, 'banallCommand', 'بنهمه')
+		set_text(LANG, 'tagallCommand', 'کاربران')
+		set_text(LANG, 'botsCommand', 'رباتها')
+		set_text(LANG, 'leaveCommand', 'خروج')
+		set_text(LANG, 'setaboutCommand', 'درموردماست')
+		
 		
 		
 		------------
