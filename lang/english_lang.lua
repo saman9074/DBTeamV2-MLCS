@@ -400,9 +400,9 @@ local function run(msg, matches)
 	    set_text(LANG, 'settings:20', '#emoji on/off: when disabled, all messages with emoji will be cleared.')
 	    -- set_text(LANG, 'settings:5', '#bots on/off: when disabled, if someone adds a bot, it will be kicked.')
 
-		if matches[1] == 'install' then
+		if matches[1] == 'install' or matches[1] == "نصب" then
 			return '`>` *English* was successfully installed on your bot.'
-		elseif matches[1] == 'update' then
+		elseif matches[1] == 'update' or matches[1] == "بهروز" then
 			return '`>` *English* was successfully updated on your bot.'
 		end
 	else
@@ -413,7 +413,9 @@ end
 return {
 	patterns = {
 		'[!/#](install) (english_lang)$',
-		'[!/#](update) (english_lang)$'
+		'[!/#](update) (english_lang)$',
+		'(نصب) (انگلیسی)$',
+		'(بهروز) (انگلیسی)$'
 	},
 	run = run
 }
