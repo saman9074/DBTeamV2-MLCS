@@ -71,7 +71,7 @@ return {
 				"^[!/#]([Hh][eE][Ll][pP])",
 				"^[!/#]([Cc]reategroup) (.*)",
 				"^[!/#](clean)",
-				"^[!/#](cashe),
+				"^[!/#](cashe)",
 				"^[!/#](update)"
         },
         run = run,
