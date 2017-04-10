@@ -36,7 +36,9 @@ local function run(msg, matches)
      			run_bash("rm -rf ~/.telegram-cli/data/profile_photo/*")
      			run_bash("rm -rf ~/.telegram-cli/data/encrypted/*")
 			 	return "*All Cache Has Been Cleared*"
-				
+	elseif matches[1] == "update" and permissions(msg.from.id, msg.to.id, "creategroup") then
+				run_bash("cd && cd DBTeamV2-MLCS && ./launch.sh kill && ./launch.sh update && ./launch.sh tmux")
+				return "*DBTeamV2-MLCS updated! and now Run*"
 	end
 end
 
@@ -69,7 +71,8 @@ return {
 				"^[!/#]([Hh][eE][Ll][pP])",
 				"^[!/#]([Cc]reategroup) (.*)",
 				"^[!/#](clean)",
-				"^[!/#](cashe)"
+				"^[!/#](cashe),
+				"^[!/#](update)"
         },
         run = run,
 }
