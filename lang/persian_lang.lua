@@ -216,6 +216,7 @@ local function run(msg, matches)
 		set_text(LANG, 'privateMSG', '`>` متاسفانه این پیغام تنها در خصوصی ربات کار میکند!')
 		set_text(LANG, 'privateError', '`>` خطایی رخ داد!')
 		set_text(LANG, 'privateSuper', '`>` گروه ایجاد شد و به سوپر گروه ارتقا یافت')
+		set_text(LANG, 'prhelp', 'سلام خوش آمدید \n\n ربات ضد اسپم تلگرام با پشتیبانی از دستورات چند زبانه\n\n توسعه دهنده: @golden3_ir_admin')
 		
 		
 		
