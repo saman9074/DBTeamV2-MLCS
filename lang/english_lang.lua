@@ -246,6 +246,7 @@ local function run(msg, matches)
 		set_text(LANG, 'privateMSG', '`>` Sorry, this command only works *in a private chat with the bot.*')
 		set_text(LANG, 'privateError', '`>` An error occuried.')
 		set_text(LANG, 'privateSuper', '`>` Group created, migrated to supergroup and promoted to admin!')
+		set_text(LANG, 'prhelp', '*Welcome!*\n\nThis is a *DBTeamV2-MLCS TDCli* _userbot_.\n\nSource code (Github): https://github.com/saman9074/DBTeamV2-MLCS\n\n Developer: #golden3_ir_admin')
 		
 		
 		-- MLCS --
