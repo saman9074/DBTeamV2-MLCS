@@ -64,7 +64,7 @@ local function run(msg, matches)
 				if c ~= 200 then return nil end
 				local tab = json.decode(b)
 				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
-	elseif matches[1] == "ali" and matches[2] then
+	elseif matches[1] == "ali" or matches[1] == "علی" and matches[2] then
 			    
  				
 				local url = "http://api.golden3.ir/Program/chatbot/conversation_start.php?&convo_id=" .. msg.from.first_name .. "_" .. msg.id .. "&say=".. matches[2] 
@@ -83,7 +83,9 @@ return {
 	 '^(will) (.*)$',
 	 '^(pr) (.*)$',
 	 '^(ch) (.*)$',
-	 '^(ali) (.*)$'
+	 '^(ali) (.*)$',
+	 '^(علی) (.*)$'
+
   }, 
   run = run 
 }
