@@ -5,6 +5,7 @@
 do
 	
 local json = require('cjson')
+requests = require('requests')
 	
 function translate(source_lang, target_lang, text)
   local path = "http://translate.google.com/translate_a/single"
@@ -37,16 +38,17 @@ local function run(msg, matches)
     	local text = matches[1]
     return translate(nil, nil, text)
 	elseif matches[1] =="ch" and matches[2] then
-			local http = libs.net.http();
-
+		--	local http = libs.net.http();--
+response = requests.get('http://api.program-o.com/v2/chatbot/?bot_id=10&say='..matches[2]..'&convo_id=exampleusage_2231232&format=json')
+--[[
     local resp = http:request({
         method = "get", 
         url = "http://api.program-o.com/v2/chatbot/?bot_id=10&say="..matches[2].."&convo_id=exampleusage_2231232&format=json"
-    }); 
+    }); ]]--
 
 
-    		local json_full = resp.content;
-			local tab = json.decode(json_full)
+    		--local json_full = resp.content;--
+			local tab = json.decode(response.text)
 			reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
     end
 end
