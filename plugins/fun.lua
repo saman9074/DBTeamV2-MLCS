@@ -38,7 +38,7 @@ local function run(msg, matches)
     if matches[1] == "tr" and matches[2] then
     	local text = matches[1]
     	return translate(nil, nil, text)
-	elseif matches[1] == "ch" and msg.reply_id and msg.replied.id == "360630346" then
+	elseif matches[1] == "ch" then
  				local url = "http://api.program-o.com/v2/chatbot/?bot_id=10&say="..matches[2].."&convo_id=exampleusage_2231232&format=json"
   				local b,c = http.request(url)
 				if c ~= 200 then return nil end
