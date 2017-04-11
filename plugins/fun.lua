@@ -39,29 +39,29 @@ local function run(msg, matches)
     	local text = matches[1]
     	return translate(nil, nil, text)
 	elseif matches[1] == "eli" and matches[2] then
- 				local url = "http://api.program-o.com/v2/chatbot/?bot_id=15&say="..matches[2].."&convo_id=exampleusage_" .. msg.id .. "&format=json"
+ 				local url = "http://api.program-o.com/v2/chatbot/?bot_id=15&say="..matches[2].."&convo_id=".. msg.id.first_name .. "_" .. msg.id .. "&format=json"
   				local b,c = http.request(url)
 				if c ~= 200 then return nil end
 				local tab = json.decode(b)
 				reply_msg(msg.to.id,tab['botsay'],msg.id, 'md')
 	elseif matches[1] == "will" and matches[2] then
- 				local url = "http://api.program-o.com/v2/chatbot/?bot_id=10&say="..matches[2].."&convo_id=exampleusage_" .. msg.id .. "&format=json"
+ 				local url = "http://api.program-o.com/v2/chatbot/?bot_id=10&say="..matches[2].."&convo_id=".. msg.id.first_name .. "_" .. msg.id .. "&format=json"
   				local b,c = http.request(url)
 				if c ~= 200 then return nil end
 				local tab = json.decode(b)
 				reply_msg(msg.to.id,tab['botsay'],msg.id, 'md')
 	elseif matches[1] == "pr" and matches[2] then
- 				local url = "http://api.program-o.com/v2/chatbot/?bot_id=6&say="..matches[2].."&convo_id=exampleusage_" .. msg.id .. "&format=json"
+ 				local url = "http://api.program-o.com/v2/chatbot/?bot_id=6&say="..matches[2].."&convo_id=".. msg.id.first_name .. "_" .. msg.id .. "&format=json"
   				local b,c = http.request(url)
 				if c ~= 200 then return nil end
 				local tab = json.decode(b)
 				reply_msg(msg.to.id,tab['botsay'],msg.id, 'md')
 	elseif matches[1] == "ch" and matches[2] then
- 				local url = "http://api.program-o.com/v2/chatbot/?bot_id=12&say="..matches[2].."&convo_id=exampleusage_" .. msg.id .. "&format=json"
+ 				local url = "http://api.program-o.com/v2/chatbot/?bot_id=12&say="..matches[2].."&convo_id=".. msg.id.first_name .. "_" .. msg.id .. "&format=json"
   				local b,c = http.request(url)
 				if c ~= 200 then return nil end
 				local tab = json.decode(b)
-				reply_msg(msg.to.id,tab['botsay'],msg.id, 'md')
+				reply_msg(msg.to.id, msg.id.first_name .. tab['botsay'],msg.id, 'md')
     end
 end
 
