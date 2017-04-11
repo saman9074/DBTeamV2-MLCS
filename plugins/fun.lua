@@ -3,7 +3,11 @@
 -- http://translate.google.com/translate_a/single?client=t&ie=UTF-8&oe=UTF-8&hl=en&dt=t&tl=en&sl=auto&text=hello
 --]]
 do
-
+	
+local json = require('cjson')
+local tab = json.decode('{"convo_id":"exampleusage_1231232","usersay":"WHAT IS YOUR NAME","botsay":"Yes or No?"}')
+json_string = json.encode(tab)
+	
 function translate(source_lang, target_lang, text)
   local path = "http://translate.google.com/translate_a/single"
   -- URL query parameters
@@ -28,15 +32,14 @@ function translate(source_lang, target_lang, text)
 
   return trans
 end
-xml:loadFile("a.xml", base)
+
 
 local function run(msg, matches)
     if matches[1] == "tr" and matches[2] then
     	local text = matches[1]
     return translate(nil, nil, text)
 	elseif matches[1] =="ch" and not matches[2] then
-			test = xml.program_o.bot_name[1]:value()
-			send_msg(msg.to.id, test, "md")
+			send_msg(msg.to.id, json_string[1], "md")
 
     end
 end
