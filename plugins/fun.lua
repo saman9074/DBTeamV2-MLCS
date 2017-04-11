@@ -67,7 +67,7 @@ local function run(msg, matches)
 	elseif matches[1] == "ali" and matches[2] then
 			    
  				
-				local url = "http://localhost/Program/chatbot/conversation_start.php?&say=".. matches[2] .. "&convo_id=" .. msg.from.firs_name .. "_" .. msg.id
+				local url = "http://localhost/Program/chatbot/conversation_start.php?&say=".. matches[2] .. "&convo_id=" .. msg.from.first_name .. "_" .. msg.id
   				local b,c = http.request(url)
 				if c ~= 200 then return nil end
 				local tab = json.decode(b)
