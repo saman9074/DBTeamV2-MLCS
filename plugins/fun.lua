@@ -39,7 +39,7 @@ local function run(msg, matches)
     	local text = matches[1]
     return translate(nil, nil, text)
 	elseif matches[1] =="ch" and not matches[2] then
-			send_msg(msg.to.id, json_string[1], "md")
+			send_msg(msg.to.id, "bot: "..json_string[botsay], "md")
 
     end
 end
