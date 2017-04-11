@@ -37,7 +37,7 @@ local function run(msg, matches)
     	local text = matches[1]
     return translate(nil, nil, text)
 	elseif matches[1] =="ch" and not matches[2] then
-			test = xml.program_o.bot_name[]:value()
+			test = xml.program_o.bot_name[1]:value()
 			send_msg(msg.to.id, test, "md")
 
     end
