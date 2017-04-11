@@ -3,8 +3,6 @@
 -- http://translate.google.com/translate_a/single?client=t&ie=UTF-8&oe=UTF-8&hl=en&dt=t&tl=en&sl=auto&text=hello
 --]]
 do
-	
-	local xml = require("xmlSimple.lua").newParser()
 
 function translate(source_lang, target_lang, text)
   local path = "http://translate.google.com/translate_a/single"
