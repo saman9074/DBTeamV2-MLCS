@@ -42,14 +42,16 @@ local function run(msg, matches)
 		--	local http = libs.net.http();--
 --response = requests.get('http://api.program-o.com/v2/chatbot/?bot_id=10&say='..matches[2]..'&convo_id=exampleusage_2231232&format=json')--
 
-    local resp = http:request({
+    --[[local resp = http:request({
         method = "get", 
         url = "http://api.program-o.com/v2/chatbot/?bot_id=10&say="..matches[2].."&convo_id=exampleusage_2231232&format=json"
-    }); 
-
+    }); ]]--
+ local url = "http://api.program-o.com/v2/chatbot/?bot_id=10&say="..matches[2].."&convo_id=exampleusage_2231232&format=json"
+  local b,c = http.request(url)
+if c ~= 200 then return nil end
 
     		--local json_full = resp.content;--
-			local tab = json.decode(resp.content)
+			local tab = json.decode(b)
 			reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
     end
 end
