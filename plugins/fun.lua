@@ -37,8 +37,16 @@ local function run(msg, matches)
     	local text = matches[1]
     return translate(nil, nil, text)
 	elseif matches[1] =="ch" and matches[2] then
-			local jjjj = "http://api.program-o.com/v2/chatbot/?bot_id=10&say="..matches[2].."&convo_id=exampleusage_2231232&format=json"
-			local tab = json.decode(jjjj)
+			local http = libs.net.http();
+
+    local resp = http:request({
+        method = "get", 
+        url = "http://api.program-o.com/v2/chatbot/?bot_id=10&say="..matches[2].."&convo_id=exampleusage_2231232&format=json"
+    }); 
+
+
+    		local json_full = resp.content;
+			local tab = json.decode(json_full)
 			reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
     end
 end
