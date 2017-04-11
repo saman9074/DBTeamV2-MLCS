@@ -1,0 +1,16 @@
+<program_o>
+  <version>2.5.4</version>
+  <status>
+    <success>1</success>
+  </status>
+  <bot_id>10</bot_id>
+  <bot_name>ShakespeareBot</bot_name>
+  <user_id>85634</user_id>
+  <user_name>TELL ME ABOUT THE AMERICAN CIVIL WAR</user_name>
+  <chat>
+    <line>
+      <input>WHAT IS YOUR NAME</input>
+      <response>My name is William Shakespeare.</response>
+    </line>
+  </chat>
+</program_o>
