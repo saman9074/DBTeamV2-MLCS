@@ -57,8 +57,8 @@ local function run(msg, matches)
 				local tab = json.decode(b)
 				reply_msg(msg.to.id,tab['botsay'],msg.id, 'md')
 	elseif matches[1] == "ch" and matches[2] then
-			    flname = msg.from.first_name
- 				send_msg(msg.to.id, "http://api.program-o.com/v2/chatbot/?bot_id=12&say="..matches[2].."&convo_id=".. flname .. "_" .. msg.id .. "&format=json", 'md')
+			    
+ 				send_msg(msg.to.id, "http://api.program-o.com/v2/chatbot/?bot_id=12&say="..matches[2].."&convo_id=".. msg.from.first_name .. "_" .. msg.id .. "&format=json", 'md')
 				--[[local url = "http://api.program-o.com/v2/chatbot/?bot_id=12&say="..matches[2].."&convo_id=".. (msg.from.first_name or msg.from.username or msg.from.last_name) .. "_" .. msg.id .. "&format=json"
   				local b,c = http.request(url)
 				if c ~= 200 then return nil end
