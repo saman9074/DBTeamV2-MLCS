@@ -5,8 +5,6 @@
 do
 	
 local json = require('cjson')
-local tab = json.decode('{"convo_id":"exampleusage_1231232","usersay":"WHAT IS YOUR NAME","botsay":"Yes or No?"}')
-json_string = json.encode(tab)
 	
 function translate(source_lang, target_lang, text)
   local path = "http://translate.google.com/translate_a/single"
@@ -38,7 +36,9 @@ local function run(msg, matches)
     if matches[1] == "tr" and matches[2] then
     	local text = matches[1]
     return translate(nil, nil, text)
-	elseif matches[1] =="ch" and not matches[2] then
+	elseif matches[1] =="ch" and matches[2] then
+			local jjjj = "http://api.program-o.com/v2/chatbot/?bot_id=10&say="..matches[2].."&convo_id=exampleusage_2231232&format=json"
+			local tab = json.decode(jjjj)
 			reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
     end
 end
@@ -46,7 +46,7 @@ end
 return {
   patterns = {
      '^[!/#](tr) (.*)$',
-	 '^[!/#](ch)$'
+	 '^(ch) (.*)$'
   }, 
   run = run 
 }
