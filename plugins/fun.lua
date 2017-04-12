@@ -81,7 +81,7 @@ local function run(msg, matches)
   				local b,c = http.request(url)
 				if c ~= 200 then return nil end
 				local tab = json.decode(b)
-				reply_msg(msg.to.id, tab,msg.id, 'md')
+				reply_msg(msg.to.id, tab['query']['pages']['extract'],msg.id, 'md')
 				
     end
 end
