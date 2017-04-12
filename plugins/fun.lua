@@ -76,6 +76,12 @@ local function run(msg, matches)
 				if c ~= 200 then return nil end
 				local tab = json.decode(b)
 				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
+	elseif matches[1] == "wiki" and matches[2] then
+				local url = "http://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&explaintext=&redirects=&titles=" .. matches[2]
+  				local b,c = http.request(url)
+				if c ~= 200 then return nil end
+				local tab = json.decode(b)
+				reply_msg(msg.to.id, tab['extract'],msg.id, 'md')
 				
     end
 end
