@@ -83,12 +83,12 @@ local function run(msg, matches)
 				local tab = json.decode(b)
 				local encoded = json.encode( b )
 				local encoded = json.encode( b, { indent = true } )
-				local decoded, pos, msg = json.decode( encoded )
-				if not decoded then
-    					reply_msg(msg.to.id, "*error!*" ,msg.id, 'md')
-				else
-					   reply_msg(msg.to.id, decoded,msg.id, 'md')
-				end
+				--local decoded, pos, msg = json.decode( encoded )--
+				--if not decoded then--
+    					--reply_msg(msg.to.id, "*error!*" ,msg.id, 'md')--
+				--else--
+					   reply_msg(msg.to.id, encoded,msg.id, 'md')
+				--end--
 				
 				
     end
