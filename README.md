@@ -40,9 +40,11 @@ sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y; sudo apt-get autoclean; 
 sudo apt-get install git redis-server libconfig8-dev libjansson-dev lua5.2 liblua5.2-dev lua-lgi glib-2.0 libnotify-dev libssl-dev libssl1.0.0 make libstdc++6 g++-4.9 unzip libreadline-gplv2-dev libreadline5-dev tmux -y
 
 #luarocks install
-sudo apt-get instal luarocks
-luarocks install serpent
- 
+wget http://luarocks.org/releases/luarocks-2.2.2.tar.gz
+tar zxpf luarocks-2.2.2.tar.gz
+cd luarocks-2.2.2
+./configure; sudo make bootstrap
+sudo luarocks install serpent
 ```
 
 Arch:
