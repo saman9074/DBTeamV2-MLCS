@@ -5,7 +5,6 @@
 do
 	
 local json = require('cjson')
-	htmlEntities = require('htmlEntities')--require('src/htmlEntities')
 --requests = require('requests')--
 	http = require("socket.http")
 	local https = require 'ssl.https'
