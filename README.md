@@ -45,6 +45,8 @@ tar zxpf luarocks-2.2.2.tar.gz
 cd luarocks-2.2.2
 ./configure; sudo make bootstrap
 sudo luarocks install serpent
+#if error clone
+git config --global url."https://".insteadOf git://
 ```
 
 Arch:
