@@ -87,7 +87,7 @@ local function run(msg, matches)
 				if not decoded then
     					reply_msg(msg.to.id, "*error!*" ,msg.id, 'md')
 				else
-					   reply_msg(msg.to.id, decoded.extract,msg.id, 'md')
+					   reply_msg(msg.to.id, decoded.extract[0],msg.id, 'md')
 				end
 				
 				
