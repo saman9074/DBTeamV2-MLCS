@@ -82,7 +82,16 @@ local function run(msg, matches)
   				local b,c = https.request(url)
 				if c ~= 200 then return nil end
 				local tab = json.decode(b)
-				reply_msg(msg.to.id, tab['extract'],msg.id, 'md')
+				local encoded = json.encode( t, { indent = true } )
+			    local decoded, pos, msg = json.decode( encoded )
+				if not decoded then
+   					 --print( "Decode failed at "..tostring(pos)..": "..tostring(msg) )--
+					reply_msg(msg.to.id, "Decode failed at "..tostring(pos)..": "..tostring(msg),msg.id, 'md')
+				else
+    				--print( decoded.name2[4] )  --> 23.54--
+					reply_msg(msg.to.id, decoded.extract,msg.id, 'md')
+				end
+				
 				
 				
     end
