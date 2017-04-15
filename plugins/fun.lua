@@ -3,15 +3,9 @@
 -- http://translate.google.com/translate_a/single?client=t&ie=UTF-8&oe=UTF-8&hl=en&dt=t&tl=en&sl=auto&text=hello
 --]]
 do
-local hex_to_char = function(x)
-  return string.char(tonumber(x, 16))
-end
-
-local unescape = function(url)
-  return url:gsub("%%(%x%x)", hex_to_char)
-end
 	
 local json = require('cjson')
+	htmlEntities = require('htmlEntities')--require('src/htmlEntities')
 --requests = require('requests')--
 	http = require("socket.http")
 	local https = require 'ssl.https'
@@ -86,6 +80,8 @@ local function run(msg, matches)
 				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
 	elseif matches[1] == "wiki" and matches[2] then
 				local url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[2]
+				local t,c = https.request(url)
+				if c ~= 200 then return nil end
   				--[[local t,c = https.request(url)
 				if c ~= 200 then return nil end
 				local decode = json.decode(t)
@@ -98,7 +94,8 @@ local function run(msg, matches)
 					--reply_msg(msg.to.id, "Decode failed at "..tostring(pos)..": "..tostring(msg),msg.id, 'md')--
 				--else--
     				--print( decoded.name2[4] )  --> 23.54----]]
-					reply_msg(msg.to.id, "jj: " .. unescape(url),msg.id, 'md')
+				local dec = htmlEntities.decode(t)
+					reply_msg(msg.to.id, "jj: " .. dec,msg.id, 'md')
 			--	end--
 				
 				
