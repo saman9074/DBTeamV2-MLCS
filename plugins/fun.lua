@@ -94,7 +94,19 @@ local function run(msg, matches)
 				--else--
     				--print( decoded.name2[4] )  --> 23.54----]]
 				local dec = htmlEntities.decode(t)
-					reply_msg(msg.to.id, "jj: " .. dec,msg.id, 'html')
+				local o = ""
+
+				string.gsub(">"..dec.."<",">(.-)<", function(a)
+				o=o..a
+				end )
+
+				local p = ""
+
+				string.gsub(";"..o.."&",";(.-)&", function(a)
+				p=p..a
+				end )
+
+					reply_msg(msg.to.id, matches[2] .. ": " .. p,msg.id, 'md')
 			--	end--
 				
 				
