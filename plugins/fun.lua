@@ -79,7 +79,7 @@ local function run(msg, matches)
 	elseif matches[1] == "wiki" and matches[2] then
 				local url = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=" .. matches[2]
   				local b,c = http.request(url)
-				if c ~= 200 then return nil end
+				--if c ~= 200 then return nil end--
 				local tab = json.decode(b)
 				reply_msg(msg.to.id, "json: " .. b,msg.id, 'md')
 				
