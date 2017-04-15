@@ -79,18 +79,18 @@ local function run(msg, matches)
 				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
 	elseif matches[1] == "wiki" and matches[2] then
 				local url = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=" .. matches[2]
-  				local b,c = https.request(url)
+  				local t,c = https.request(url)
 				if c ~= 200 then return nil end
-				local encoded = json.encode( b )
-				local encoded = json.encode( b, { indent = true } )
-			    local decoded, pos, msg = json.decode( encoded )
-				if not decoded then
+				local decode = json.decode(t)
+				--local encoded = json.encode( t, { indent = true } )--
+			    --local decoded, pos, msg = json.decode( encoded )--
+				--if not decoded then--
    					 --print( "Decode failed at "..tostring(pos)..": "..tostring(msg) )--
-					reply_msg(msg.to.id, "Decode failed at "..tostring(pos)..": "..tostring(msg),msg.id, 'md')
-				else
+					--reply_msg(msg.to.id, "Decode failed at "..tostring(pos)..": "..tostring(msg),msg.id, 'md')--
+				--else--
     				--print( decoded.name2[4] )  --> 23.54--
-					reply_msg(msg.to.id, decoded.extract,msg.id, 'md')
-				end
+					reply_msg(msg.to.id, decode,msg.id, 'md')
+			--	end--
 				
 				
 				
