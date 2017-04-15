@@ -3,6 +3,13 @@
 -- http://translate.google.com/translate_a/single?client=t&ie=UTF-8&oe=UTF-8&hl=en&dt=t&tl=en&sl=auto&text=hello
 --]]
 do
+local hex_to_char = function(x)
+  return string.char(tonumber(x, 16))
+end
+
+local unescape = function(url)
+  return url:gsub("%%(%x%x)", hex_to_char)
+end
 	
 local json = require('cjson')
 --requests = require('requests')--
@@ -78,8 +85,8 @@ local function run(msg, matches)
 				local tab = json.decode(b)
 				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
 	elseif matches[1] == "wiki" and matches[2] then
-				local url = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=" .. matches[2]
-  				local t,c = https.request(url)
+				local url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[2]
+  				--[[local t,c = https.request(url)
 				if c ~= 200 then return nil end
 				local decode = json.decode(t)
 				local encoded = json.encode( decode )
@@ -90,8 +97,8 @@ local function run(msg, matches)
    					 --print( "Decode failed at "..tostring(pos)..": "..tostring(msg) )--
 					--reply_msg(msg.to.id, "Decode failed at "..tostring(pos)..": "..tostring(msg),msg.id, 'md')--
 				--else--
-    				--print( decoded.name2[4] )  --> 23.54--
-					reply_msg(msg.to.id, "jj: " .. encoded,msg.id, 'md')
+    				--print( decoded.name2[4] )  --> 23.54----]]
+					reply_msg(msg.to.id, "jj: " .. unescape(url),msg.id, 'md')
 			--	end--
 				
 				
