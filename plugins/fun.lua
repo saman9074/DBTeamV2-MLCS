@@ -67,8 +67,9 @@ local function run(msg, matches)
 	elseif matches[1] == "ali" and matches[2] then
 				local url = "http://api.golden3.ir/chatbot/chatbot/conversation_start.php?bot_id=1&say=" .. matches[2] .. "&convo_id=userid_" .. msg.id
   				local b,c = http.request(url)
-				reply_msg(msg.to.id, b,msg.id, 'md')
-				--[[if c ~= 200 then return nil end
+				if c ~= 200 then return nil end
+				send_msg(msg.to.id, "json:" .. b, 'md')
+				--[[
 				local tab = json.decode(b)
 				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')]]--
 	elseif matches[1] == "علی" and matches[2] then
