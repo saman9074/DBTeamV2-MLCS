@@ -91,7 +91,7 @@ local function run(msg, matches)
 					--reply_msg(msg.to.id, "Decode failed at "..tostring(pos)..": "..tostring(msg),msg.id, 'md')--
 				--else--
     				--print( decoded.name2[4] )  --> 23.54--
-					reply_msg(msg.to.id, "jj: " .. decode['extract'],msg.id, 'md')
+					reply_msg(msg.to.id, "jj: " .. decode,msg.id, 'md')
 			--	end--
 				
 				
