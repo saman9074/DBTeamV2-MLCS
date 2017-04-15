@@ -82,6 +82,8 @@ local function run(msg, matches)
   				local t,c = https.request(url)
 				if c ~= 200 then return nil end
 				local decode = json.decode(t)
+				local encoded = json.encode( decode )
+				local decode = json.decode(encoded)			
 				--local encoded = json.encode( t, { indent = true } )--
 			    --local decoded, pos, msg = json.decode( encoded )--
 				--if not decoded then--
