@@ -76,12 +76,20 @@ local function run(msg, matches)
 				if c ~= 200 then return nil end
 				local tab = json.decode(b)
 				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
-	elseif matches[1] == "jack" and matches[2] then
-				local url = "http://api.golden3.ir/chatbot/chatbot/conversation_start.php?bot_id=2&say=" .. matches[2] .. "&convo_id=userid_" .. msg.id
+	elseif matches[1] == "wiki" and matches[2] then
+				local url = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=" .. matches[2]
   				local b,c = http.request(url)
 				if c ~= 200 then return nil end
 				local tab = json.decode(b)
-				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
+				local encoded = json.encode( b )
+				local encoded = json.encode( b, { indent = true } )
+				local decoded, pos, msg = json.decode( encoded )
+				if not decoded then
+    					reply_msg(msg.to.id, "*error!*" ,msg.id, 'md')
+				else
+					   reply_msg(msg.to.id, decoded.extract,msg.id, 'md')
+				end
+				
 				
     end
 end
@@ -97,7 +105,7 @@ return {
 	 '^(20q) (.*)$',
 	 '^(20) (.*)$',
 	 '^(علی) (.*)$',
-     '^(jack) (.*)$'
+     '^(wiki) (.*)$'
 
   }, 
   run = run 
