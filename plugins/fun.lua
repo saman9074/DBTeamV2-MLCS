@@ -16,7 +16,11 @@ function split(s, delimiter)
     end
     return result;
 end
-	
+local function run_bash(str)
+    local cmd = io.popen(str)
+    local result = cmd:read('*all')
+    return result
+end	
 function translate(source_lang, target_lang, text)
   local path = "http://translate.google.com/translate_a/single"
   -- URL query parameters
@@ -120,6 +124,7 @@ local function run(msg, matches)
 					local file = io.open("./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html", "w")
                 	file:write(dec)
 					file:close()
+				    run_bash("iconv -t UTF-8 " .. "./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html")
 					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[2] ..  '.html')
 					--os.remove('./data/userid_' .. msg.id .. "_" .. matches[2] ..  '.txt')--
 				end
