@@ -112,7 +112,7 @@ local function run(msg, matches)
 					f:close()
 					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[2] ..  '.html')
 					--os.remove('./data/userid_' .. msg.id .. "_" .. matches[2] ..  '.txt')--
-				end
+				--end--
 	elseif matches[1] == "wiki" and matches[2] and not matches[3] then
 				local url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[2] .. "&lang=en"
 				local t,c = https.request(url)
@@ -136,7 +136,7 @@ local function run(msg, matches)
 					f:close()
 					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[2] ..  '.html')
 					--os.remove('./data/userid_' .. msg.id .. "_" .. matches[2] ..  '.txt')--
-				end
+				--end--
 				
 				
     end
