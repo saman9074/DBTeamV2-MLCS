@@ -105,7 +105,7 @@ local function run(msg, matches)
 				count = string.len(p)
 				if count <= 4096 then
 			   		s = split(p, "\n")
-					reply_msg(msg.to.id, matches[3] .. ": " .. s[0],msg.id, 'md')
+					reply_msg(msg.to.id, matches[3] .. ": " .. s[1],msg.id, 'md')
 				else 
 					local f = io.open("./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html", "w")
                 	f:write(dec)
@@ -127,9 +127,10 @@ local function run(msg, matches)
 				p=p..a
 				end )
 				count = string.len(p)
+				p = string.gsub(p, "%s+", "")
 				if count <= 4096 then
 			   		s = split(p, "\n")
-					reply_msg(msg.to.id, matches[2] .. ": " .. s[0],msg.id, 'md')
+					reply_msg(msg.to.id, matches[2] .. ": " .. s[1],msg.id, 'md')
 				else 
 					local f = io.open("./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html", "w")
                 	f:write(dec)
