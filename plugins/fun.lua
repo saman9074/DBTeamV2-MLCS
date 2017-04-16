@@ -108,7 +108,7 @@ local function run(msg, matches)
                 file:write(p)
 				file:close()
 				--reply_msg(msg.to.id, matches[2] .. ": " .. p,msg.id, 'md')	--
-				 send_document(msg.to.id, './data/userid_' .. msg.id .. '.txt")
+				 send_document(msg.to.id, './data/userid_' .. msg.id .. '.txt')
 				
 				
     end
