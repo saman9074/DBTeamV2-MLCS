@@ -121,7 +121,7 @@ local function run(msg, matches)
                 	file:write(p)
 					file:close()
 					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[2] ..  '.txt')
-					os.remove('./data/userid_' .. msg.id .. "_" .. matches[2] ..  '.txt')
+					--os.remove('./data/userid_' .. msg.id .. "_" .. matches[2] ..  '.txt')--
 				end
 				
 				
