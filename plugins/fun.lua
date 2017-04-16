@@ -77,38 +77,20 @@ local function run(msg, matches)
 				if c ~= 200 then return nil end
 				local tab = json.decode(b)
 				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
-	elseif matches[1] == "wiki" and matches[2] then
-				local url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[2]
+	elseif matches[1] == "wiki" and matches[2] ~= nil and matches[3] then
+				local url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[3] .. "&lang=" .. matches[2]
 				local t,c = https.request(url)
 				if c ~= 200 then return nil end
-  				--[[local t,c = https.request(url)
-				if c ~= 200 then return nil end
-				local decode = json.decode(t)
-				local encoded = json.encode( decode )
-				local decode = json.decode(encoded)			
-				--local encoded = json.encode( t, { indent = true } )--
-			    --local decoded, pos, msg = json.decode( encoded )--
-				--if not decoded then--
-   					 --print( "Decode failed at "..tostring(pos)..": "..tostring(msg) )--
-					--reply_msg(msg.to.id, "Decode failed at "..tostring(pos)..": "..tostring(msg),msg.id, 'md')--
-				--else--
-    				--print( decoded.name2[4] )  --> 23.54----]]
 				local dec = htmlEntities.decode(t)
 				local o = ""
-
 				string.gsub(">"..dec.."<",">(.-)<", function(a)
 				o=o..a
 				end )
-
 				local p = ""
-
 				string.gsub(";"..o.."&",";(.-)&", function(a)
 				p=p..a
 				end )
-
-					reply_msg(msg.to.id, matches[2] .. ": " .. p,msg.id, 'md')
-			--	end--
-				
+				reply_msg(msg.to.id, matches[3] .. ": " .. p,msg.id, 'md')				
 				
 				
     end
@@ -125,7 +107,7 @@ return {
 	 '^(20q) (.*)$',
 	 '^(20) (.*)$',
 	 '^(علی) (.*)$',
-     '^(wiki) (.*)$'
+     '^(wiki) (.*) (.*)$'
 
   }, 
   run = run 
