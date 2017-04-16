@@ -36,6 +36,7 @@ local function run(msg, matches)
      			run_bash("rm -rf ~/.telegram-cli/data/document/*")
      			run_bash("rm -rf ~/.telegram-cli/data/profile_photo/*")
      			run_bash("rm -rf ~/.telegram-cli/data/encrypted/*")
+				run_bash("rm data/userid*")
 			 	return "*All Cache Has Been Cleared*"
 			else
 				send_msg(msg.to.id, lang_text(msg.to.id, 'privateMSG'), "md")
