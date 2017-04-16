@@ -91,6 +91,20 @@ local function run(msg, matches)
 				p=p..a
 				end )
 				reply_msg(msg.to.id, matches[3] .. ": " .. p,msg.id, 'md')				
+	elseif matches[1] == "wiki" and matches[2] and not matches[3] then
+				local url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[2] .. "&lang=en"
+				local t,c = https.request(url)
+				if c ~= 200 then return nil end
+				local dec = htmlEntities.decode(t)
+				local o = ""
+				string.gsub(">"..dec.."<",">(.-)<", function(a)
+				o=o..a
+				end )
+				local p = ""
+				string.gsub(";"..o.."&",";(.-)&", function(a)
+				p=p..a
+				end )
+				reply_msg(msg.to.id, matches[2] .. ": " .. p,msg.id, 'md')				
 				
 				
     end
@@ -107,7 +121,8 @@ return {
 	 '^(20q) (.*)$',
 	 '^(20) (.*)$',
 	 '^(علی) (.*)$',
-     '^(wiki) (.*) (.*)$'
+     '^(wiki) (.*) (.*)$',
+	 '^(wiki) (.*)$'
 
   }, 
   run = run 
