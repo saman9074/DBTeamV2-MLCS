@@ -110,21 +110,6 @@ local function run(msg, matches)
 					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[3] ..  '.html')
 					sleep(4)
 					run_bash("rm ./data/userid_" .. msg.id .. "_" .. matches[3] .. ".html")
-				elseif matches[2] ~= nil and not matches[3] then
-					local url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[2] .. "&lang=en"
-					local t,c = https.request(url)
-					if c ~= 200 then return nil end
-					local dec = htmlEntities.decode(t)
-					hd = '<html><head><meta charset="UTF-8"></head> <body dir="ltr">'
-					local f = io.open("./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html", "w")
-                	f:write(hd)
-					f:close()			
-					local f = io.open("./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html", "a+")
-                	f:write(dec .. '</body> </html>')
-					f:close()										
-				    send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[2] ..  '.html')
-					sleep(4)
-					run_bash("rm ./data/userid_" .. msg.id .. "_" .. matches[2] .. ".html")
 				else
 					local url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[3] .. "&lang=" .. matches[2]
 					local t,c = https.request(url)
