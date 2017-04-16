@@ -102,7 +102,8 @@ local function run(msg, matches)
 				string.gsub(";"..o.."&",";(.-)&", function(a)
 				p=p..a
 				end )
-				count = string.len(p)
+				p = string.gsub(p, "%s+", "")
+				count = string.len(p)				
 				if count <= 4096 then
 			   		s = split(p, "\n")
 					reply_msg(msg.to.id, matches[3] .. ": " .. s[1],msg.id, 'md')
@@ -127,7 +128,6 @@ local function run(msg, matches)
 				p=p..a
 				end )
 				count = string.len(p)
-				p = string.gsub(p, "%s+", "")
 				if count <= 4096 then
 			   		s = split(p, "\n")
 					reply_msg(msg.to.id, matches[2] .. ": " .. s[1],msg.id, 'md')
