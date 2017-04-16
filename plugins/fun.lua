@@ -107,7 +107,7 @@ local function run(msg, matches)
 				local url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[2] .. "&lang=en"
 				local t,c = https.request(url)
 				if c ~= 200 then return nil end
-				local f = assert(io.open('test.html', 'w'))
+				local file = assert(io.open('test.html', 'w'))
                 	file:write(t)
 					file:close()
 				    --run_bash("iconv -t UTF-8 " .. "./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html")--
