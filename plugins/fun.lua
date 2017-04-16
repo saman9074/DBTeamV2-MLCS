@@ -124,7 +124,7 @@ local function run(msg, matches)
 					local file = io.open("./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html", "w")
                 	file:write(dec)
 					file:close()
-				    run_bash("iconv -t UTF-8 " .. "./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html")
+				    --run_bash("iconv -t UTF-8 " .. "./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html")--
 					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[2] ..  '.html')
 					--os.remove('./data/userid_' .. msg.id .. "_" .. matches[2] ..  '.txt')--
 				end
