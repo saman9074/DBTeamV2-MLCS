@@ -94,6 +94,7 @@ local function run(msg, matches)
 				local t,c = https.request(url)
 				if c ~= 200 then return nil end
 				local dec = htmlEntities.decode(t)
+				reply_msg(msg.to.id, matches[3] .. ": " .. dec .. "***" .. t,msg.id, 'md')
 				--[[count = string.len(p)				
 				if count <= 4096 then
 			   		s = split(p, "\n")
@@ -102,7 +103,7 @@ local function run(msg, matches)
 					local f = io.open("./data/userid_" .. msg.id .. "_" .. matches[3] ..  ".html", "w")
                 	f:write(dec)
 					f:close()
-					reply_msg(msg.to.id, matches[3] .. ": " .. dec,msg.id, 'md')
+					
 					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[3] ..  '.html')
 					--os.remove('./data/userid_' .. msg.id .. "_" .. matches[2] ..  '.txt')--
 				--end--
