@@ -112,7 +112,7 @@ local function run(msg, matches)
 				string.gsub(";"..o.."&",";(.-)&", function(a)
 				p=p..a
 				end )
-				local _, count = string.gsub(p, " %-%-", "")
+				count = string.len(s)
 				reply_msg(msg.to.id, matches[2] .. ": " .. count,msg.id, 'md')
 				--[[if count <= 10 then
 			   		s = split(p, "\n")
