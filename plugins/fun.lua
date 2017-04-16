@@ -108,7 +108,7 @@ local function run(msg, matches)
 				local t,c = https.request(url)
 				if c ~= 200 then return nil end
 				reply_msg(msg.to.id, "jjjj: " .. t,msg.id, 'md')				
-				local dec = htmlEntities.decode(t)
+				--[[local dec = htmlEntities.decode(t)
 				local o = ""
 				string.gsub(">"..dec.."<",">(.-)<", function(a)
 				o=o..a
@@ -128,7 +128,7 @@ local function run(msg, matches)
 				    --run_bash("iconv -t UTF-8 " .. "./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html")--
 					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[2] ..  '.html')
 					--os.remove('./data/userid_' .. msg.id .. "_" .. matches[2] ..  '.txt')--
-				end
+				end]]--
 				
 				
     end
