@@ -99,11 +99,11 @@ local function run(msg, matches)
 				local t,c = https.request(url)
 				if c ~= 200 then return nil end
 				local dec = htmlEntities.decode(t)
-				count = string.len(p)				
+				--[[count = string.len(p)				
 				if count <= 4096 then
 			   		s = split(p, "\n")
 					reply_msg(msg.to.id, matches[3] .. ": " .. s[1],msg.id, 'md')
-				else
+				else]]--
 					hd = '<head><meta charset="UTF-8"></head>'
 					local f = io.open("./data/userid_" .. msg.id .. "_" .. matches[3] ..  ".html", "w")
                 	f:write(hd)
@@ -117,7 +117,7 @@ local function run(msg, matches)
 					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[3] ..  '.html')
 					sleep(4)
 					run_bash("rm ./data/userid_" .. msg.id .. "_" .. matches[3] .. ".html")
-				end
+				--end--
 	elseif matches[1] == "wiki" and matches[2] and not matches[3] then
 				local url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[2] .. "&lang=en"
 				local t,c = https.request(url)
@@ -131,11 +131,11 @@ local function run(msg, matches)
 				string.gsub(";"..o.."&",";(.-)&", function(a)
 				p=p..a
 				end )
-				count = string.len(p)
+				--[[count = string.len(p)
 				if count <= 4096 then--
 			   		s = split(p, "\n")
 					reply_msg(msg.to.id, matches[2] .. ": " .. s[1],msg.id, 'md')
-				else
+				else]]--
 					hd = '<head><meta charset="UTF-8"></head>'
 					local f = io.open("./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html", "w")
                 	f:write(hd)
@@ -148,7 +148,7 @@ local function run(msg, matches)
 					sleep(4)
 					run_bash("rm ./data/userid_" .. msg.id .. "_" .. matches[2] .. ".html")
 					
-			end
+			--end--
 				
 				
     end
