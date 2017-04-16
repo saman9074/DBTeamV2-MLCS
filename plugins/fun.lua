@@ -102,6 +102,7 @@ local function run(msg, matches)
 					local f = io.open("./data/userid_" .. msg.id .. "_" .. matches[3] ..  ".html", "w")
                 	f:write(dec)
 					f:close()
+					reply_msg(msg.to.id, matches[3] .. ": " .. dec,msg.id, 'md')
 					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[3] ..  '.html')
 					--os.remove('./data/userid_' .. msg.id .. "_" .. matches[2] ..  '.txt')--
 				--end--
