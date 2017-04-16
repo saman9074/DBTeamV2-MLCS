@@ -113,7 +113,7 @@ local function run(msg, matches)
 				p=p..a
 				end )
 				local _, count = string.gsub(p, " %-%-", "")
-				if count <= 100 then
+				if count <= 10 then
 			   		s = split(p, "\n")
 					reply_msg(msg.to.id, matches[2] .. ": " .. s[1],msg.id, 'md')
 				else 
