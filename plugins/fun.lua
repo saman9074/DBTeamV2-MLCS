@@ -95,29 +95,37 @@ local function run(msg, matches)
 				local tab = json.decode(b)
 				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
 	elseif matches[1] == "wiki" and matches[2] ~= nil and matches[3] then
-				local url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[3] .. "&lang=" .. matches[2]
-				local t,c = https.request(url)
-				if c ~= 200 then return nil end
-				local dec = htmlEntities.decode(t)
-				--[[count = string.len(p)				
-				if count <= 4096 then
-			   		s = split(p, "\n")
-					reply_msg(msg.to.id, matches[3] .. ": " .. s[1],msg.id, 'md')
-				else]]--
+				if matches[2] == "fa" or matches[2] == فارسی" then
+					local url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[3] .. "&lang=fa"
+					local t,c = https.request(url)
+					if c ~= 200 then return nil end
+					local dec = htmlEntities.decode(t)
 					hd = '<html><head><meta charset="UTF-8"></head> <body dir="rtl">'
 					local f = io.open("./data/userid_" .. msg.id .. "_" .. matches[3] ..  ".html", "w")
                 	f:write(hd)
-					f:close()
-			
+					f:close()			
 					local f = io.open("./data/userid_" .. msg.id .. "_" .. matches[3] ..  ".html", "a+")
                 	f:write(dec .. '</body> </html>')
-					f:close()
-					
-					
+					f:close()										
 					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[3] ..  '.html')
 					sleep(4)
 					run_bash("rm ./data/userid_" .. msg.id .. "_" .. matches[3] .. ".html")
-				--end--
+				else
+					local url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[3] .. "&lang=" .. matches[2]
+					local t,c = https.request(url)
+					if c ~= 200 then return nil end
+					local dec = htmlEntities.decode(t)
+					hd = '<html><head><meta charset="UTF-8"></head> <body dir="ltr">'
+					local f = io.open("./data/userid_" .. msg.id .. "_" .. matches[3] ..  ".html", "w")
+                	f:write(hd)
+					f:close()			
+					local f = io.open("./data/userid_" .. msg.id .. "_" .. matches[3] ..  ".html", "a+")
+                	f:write(dec .. '</body> </html>')
+					f:close()										
+					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[3] ..  '.html')
+					sleep(4)
+					run_bash("rm ./data/userid_" .. msg.id .. "_" .. matches[3] .. ".html")
+				end
 	elseif matches[1] == "wiki" and matches[2] and not matches[3] then
 				local url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[2] .. "&lang=en"
 				local t,c = https.request(url)
