@@ -102,7 +102,7 @@ local function run(msg, matches)
 				string.gsub(";"..o.."&",";(.-)&", function(a)
 				p=p..a
 				end )
-				p = string.gsub(p, "%s+", "")
+				p = string.gsub(p, "%s", "")
 				count = string.len(p)				
 				if count <= 4096 then
 			   		s = split(p, "\n")
