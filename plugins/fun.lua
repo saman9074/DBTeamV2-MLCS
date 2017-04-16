@@ -99,12 +99,12 @@ local function run(msg, matches)
 				if count <= 4096 then
 			   		s = split(p, "\n")
 					reply_msg(msg.to.id, matches[3] .. ": " .. s[1],msg.id, 'md')
-				else ]]--
+				else
 					local f = io.open("./data/userid_" .. msg.id .. "_" .. matches[3] ..  ".html", "w")
                 	f:write(dec)
 					f:close()
 					
-					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[3] ..  '.html')
+					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[3] ..  '.html')]]--
 					--os.remove('./data/userid_' .. msg.id .. "_" .. matches[2] ..  '.txt')--
 				--end--
 	elseif matches[1] == "wiki" and matches[2] and not matches[3] then
