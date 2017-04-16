@@ -90,21 +90,20 @@ local function run(msg, matches)
 				local tab = json.decode(b)
 				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
 	elseif matches[1] == "wiki" and matches[2] ~= nil and matches[3] then
-				local url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[3] .. "&lang" .. matches[2]
-				--[[local t,c = https.request(url)
+				local url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[3] .. "&lang=" .. matches[2]
+				local t,c = https.request(url)
 				if c ~= 200 then return nil end
-				local dec = htmlEntities.decode(t)]]--
-				reply_msg(msg.to.id, matches[3] .. ": " .. url,msg.id, 'md')
+				local dec = htmlEntities.decode(t)
 				--[[count = string.len(p)				
 				if count <= 4096 then
 			   		s = split(p, "\n")
 					reply_msg(msg.to.id, matches[3] .. ": " .. s[1],msg.id, 'md')
-				else
+				else]]--
 					local f = io.open("./data/userid_" .. msg.id .. "_" .. matches[3] ..  ".html", "w")
                 	f:write(dec)
 					f:close()
 					
-					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[3] ..  '.html')]]--
+					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[3] ..  '.html')
 					--os.remove('./data/userid_' .. msg.id .. "_" .. matches[2] ..  '.txt')--
 				--end--
 	elseif matches[1] == "wiki" and matches[2] and not matches[3] then
