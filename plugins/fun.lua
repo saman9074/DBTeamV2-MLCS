@@ -113,7 +113,8 @@ local function run(msg, matches)
 				p=p..a
 				end )
 				local _, count = string.gsub(p, " %-%-", "")
-				if count <= 10 then
+				reply_msg(msg.to.id, matches[2] .. ": " .. count,msg.id, 'md')
+				--[[if count <= 10 then
 			   		s = split(p, "\n")
 					reply_msg(msg.to.id, matches[2] .. ": " .. s[1],msg.id, 'md')
 				else 
@@ -122,7 +123,7 @@ local function run(msg, matches)
 					file:close()
 					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[2] ..  '.txt')
 					os.remove('./data/userid_' .. msg.id .. "_" .. matches[2] ..  '.txt')
-				end
+				end]]--
 				
 				
     end
