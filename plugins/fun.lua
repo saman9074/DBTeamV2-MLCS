@@ -8,6 +8,14 @@ local json = require('cjson')
 --requests = require('requests')--
 	http = require("socket.http")
 	local https = require 'ssl.https'
+
+function split(s, delimiter)
+    result = {};
+    for match in (s..delimiter):gmatch("(.-)"..delimiter) do
+        table.insert(result, match);
+    end
+    return result;
+end
 	
 function translate(source_lang, target_lang, text)
   local path = "http://translate.google.com/translate_a/single"
@@ -96,19 +104,24 @@ local function run(msg, matches)
 				local t,c = https.request(url)
 				if c ~= 200 then return nil end
 				local dec = htmlEntities.decode(t)
-				local o = ""
+				--[[local o = ""
 				string.gsub(">"..dec.."<",">(.-)<", function(a)
 				o=o..a
 				end )
 				local p = ""
 				string.gsub(";"..o.."&",";(.-)&", function(a)
 				p=p..a
-				end )
-				local file = io.open("./data/userid_" .. msg.id .. ".txt", "w")
+				end )]]--
+			   s = split(dec, "\n")
+ 
+				for key, value in pairs(s) do
+				reply_msg(msg.to.id, matches[2] .. ": " .. key..'='..value,msg.id, 'md')
+				end
+				--[[local file = io.open("./data/userid_" .. msg.id .. ".txt", "w")
                 file:write(p)
 				file:close()
 				--reply_msg(msg.to.id, matches[2] .. ": " .. p,msg.id, 'md')	--
-				 send_document(msg.to.id, './data/userid_' .. msg.id .. '.txt')
+				 send_document(msg.to.id, './data/userid_' .. msg.id .. '.txt')--]]
 				
 				
     end
