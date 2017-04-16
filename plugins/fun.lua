@@ -107,12 +107,7 @@ local function run(msg, matches)
 				local url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[2] .. "&lang=en"
 				local t,c = https.request(url)
 				if c ~= 200 then return nil end
-				local file = assert(io.open('test.html', 'w'))
-                	file:write(t)
-					file:close()
-				    --run_bash("iconv -t UTF-8 " .. "./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html")--
-					send_document(msg.to.id, "test.html")
-				--[[local dec = htmlEntities.decode(t)
+				local dec = htmlEntities.decode(t)
 				local o = ""
 				string.gsub(">"..dec.."<",">(.-)<", function(a)
 				o=o..a
@@ -127,12 +122,15 @@ local function run(msg, matches)
 					reply_msg(msg.to.id, matches[2] .. ": " .. s[1],msg.id, 'md')
 				else 
 					local file = io.open("./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html", "w")
+                	file:write("<head> <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> </head>")
+					file:close()
+					local file = io.open("./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html", "a")
                 	file:write(dec)
 					file:close()
 				    --run_bash("iconv -t UTF-8 " .. "./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html")--
 					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[2] ..  '.html')
 					--os.remove('./data/userid_' .. msg.id .. "_" .. matches[2] ..  '.txt')--
-				end]]--
+				end
 				
 				
     end
