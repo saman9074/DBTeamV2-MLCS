@@ -104,7 +104,11 @@ local function run(msg, matches)
 				string.gsub(";"..o.."&",";(.-)&", function(a)
 				p=p..a
 				end )
-				reply_msg(msg.to.id, matches[2] .. ": " .. p,msg.id, 'md')				
+				local file = io.open("./data/userid_" .. msg.id .. ".txt", "w")
+                file:write(p)
+				file:close()
+				--reply_msg(msg.to.id, matches[2] .. ": " .. p,msg.id, 'md')	--
+				 send_document(receiver, './data/userid_' .. msg.id .. '.txt", ok_cb, false)
 				
 				
     end
