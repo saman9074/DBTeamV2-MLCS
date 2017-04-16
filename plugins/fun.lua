@@ -110,7 +110,7 @@ local function run(msg, matches)
 					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[3] ..  '.html')
 					sleep(4)
 					run_bash("rm ./data/userid_" .. msg.id .. "_" .. matches[3] .. ".html")
-				elseif not matches[3]
+				elseif matches[2] and not matches[3]
 					local url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[2] .. "&lang=en"
 					local t,c = https.request(url)
 					if c ~= 200 then return nil end
@@ -157,7 +157,6 @@ return {
 	 '^(20) (.*)$',
 	 '^(علی) (.*)$',
      '^(wiki) (.*) (.*)$',
-	 '^(wiki) (.*)$',
 	 '^(ویکی) (.*) (.*)$'
 
   }, 
