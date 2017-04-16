@@ -110,7 +110,7 @@ local function run(msg, matches)
 					
 					
 					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[3] ..  '.html')
-					run_bash("rm /data/userid_" .. msg.id .. "_" .. matches[3] .. ".html")
+					run_bash("rm ./data/userid_" .. msg.id .. "_" .. matches[3] .. ".html")
 				end
 	elseif matches[1] == "wiki" and matches[2] and not matches[3] then
 				local url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[2] .. "&lang=en"
@@ -139,7 +139,7 @@ local function run(msg, matches)
                 	f:write(dec)
 					f:close()
 					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[2] ..  '.html')
-					run_bash("rm /data/userid_" .. msg.id .. "_" .. matches[2] .. ".html")
+					run_bash("rm ./data/userid_" .. msg.id .. "_" .. matches[2] .. ".html")
 			end
 				
 				
