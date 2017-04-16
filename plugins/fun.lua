@@ -102,12 +102,11 @@ local function run(msg, matches)
 				string.gsub(";"..o.."&",";(.-)&", function(a)
 				p=p..a
 				end )
-				p = string.gsub(p, "%s", "")
-				count = string.len(p)				
+				--[[count = string.len(p)				
 				if count <= 4096 then
 			   		s = split(p, "\n")
 					reply_msg(msg.to.id, matches[3] .. ": " .. s[1],msg.id, 'md')
-				else 
+				else ]]--
 					local f = io.open("./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html", "w")
                 	f:write(dec)
 					f:close()
@@ -128,10 +127,10 @@ local function run(msg, matches)
 				p=p..a
 				end )
 				count = string.len(p)
-				if count <= 4096 then
+				--[[if count <= 4096 then--
 			   		s = split(p, "\n")
 					reply_msg(msg.to.id, matches[2] .. ": " .. s[1],msg.id, 'md')
-				else 
+				--else]] --
 					local f = io.open("./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html", "w")
                 	f:write(dec)
 					f:close()
