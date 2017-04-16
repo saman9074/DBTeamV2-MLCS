@@ -94,6 +94,7 @@ local function run(msg, matches)
 			    	url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[3] .. "&lang=fa"
 				else
 					url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[3] .. "&lang=fa" .. matches[2]
+				end
 				local t,c = https.request(url)
 				if c ~= 200 then return nil end
 				local dec = htmlEntities.decode(t)
