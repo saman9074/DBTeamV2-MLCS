@@ -112,10 +112,8 @@ local function run(msg, matches)
 				string.gsub(";"..o.."&",";(.-)&", function(a)
 				p=p..a
 				end )
-				--local utf8 = unicode.utf8--
 				count = string.len(p)
-				reply_msg(msg.to.id, matches[2] .. ": " .. count,msg.id, 'md')
-				--[[if count <= 10 then
+				if count <= 1024 then
 			   		s = split(p, "\n")
 					reply_msg(msg.to.id, matches[2] .. ": " .. s[1],msg.id, 'md')
 				else 
@@ -124,7 +122,7 @@ local function run(msg, matches)
 					file:close()
 					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[2] ..  '.txt')
 					os.remove('./data/userid_' .. msg.id .. "_" .. matches[2] ..  '.txt')
-				end]]--
+				end
 				
 				
     end
