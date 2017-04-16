@@ -121,14 +121,10 @@ local function run(msg, matches)
 			   		s = split(p, "\n")
 					reply_msg(msg.to.id, matches[2] .. ": " .. s[1],msg.id, 'md')
 				else 
-					ht = '<head> <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> </head>'
-					local file = io.open("./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html", "w")
-                	file:write(ht)
-					file:close()
-					local f = io.open("./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html", "a")
+					local f = io.open("./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html", "w")
                 	f:write(dec)
 					f:close()
-				    --run_bash("iconv -t UTF-8 " .. "./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html")--
+				    run_bash('iconv -f "windows-1252" -t "UTF-8" ' .. "./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html")
 					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[2] ..  '.html')
 					--os.remove('./data/userid_' .. msg.id .. "_" .. matches[2] ..  '.txt')--
 				end
