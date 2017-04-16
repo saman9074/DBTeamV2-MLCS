@@ -94,14 +94,6 @@ local function run(msg, matches)
 				local t,c = https.request(url)
 				if c ~= 200 then return nil end
 				local dec = htmlEntities.decode(t)
-				local o = ""
-				string.gsub(">"..dec.."<",">(.-)<", function(a)
-				o=o..a
-				end )
-				local p = ""
-				string.gsub(";"..o.."&",";(.-)&", function(a)
-				p=p..a
-				end )
 				--[[count = string.len(p)				
 				if count <= 4096 then
 			   		s = split(p, "\n")
