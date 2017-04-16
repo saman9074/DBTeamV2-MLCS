@@ -16,6 +16,11 @@ function split(s, delimiter)
     end
     return result;
 end
+	
+function sleep(n)
+  os.execute("sleep " .. tonumber(n))
+end
+	
 local function run_bash(str)
     local cmd = io.popen(str)
     local result = cmd:read('*all')
@@ -138,9 +143,10 @@ local function run(msg, matches)
 					local f = io.open("./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html", "a+")
                 	f:write(dec)
 					f:close()
-					if send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[2] ..  '.html') ~= nil then
-							run_bash("rm ./data/userid_" .. msg.id .. "_" .. matches[2] .. ".html")
-					end
+					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[2] ..  '.html')
+					sleep(5)
+					run_bash("rm ./data/userid_" .. msg.id .. "_" .. matches[2] .. ".html")
+					
 			end
 				
 				
