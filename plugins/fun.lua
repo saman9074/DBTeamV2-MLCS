@@ -107,6 +107,7 @@ local function run(msg, matches)
 				local url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[2] .. "&lang=en"
 				local t,c = https.request(url)
 				if c ~= 200 then return nil end
+				reply_msg(msg.to.id, "jjjj: " .. t,msg.id, 'md')				
 				local dec = htmlEntities.decode(t)
 				local o = ""
 				string.gsub(">"..dec.."<",">(.-)<", function(a)
