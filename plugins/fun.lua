@@ -104,19 +104,19 @@ local function run(msg, matches)
 				local t,c = https.request(url)
 				if c ~= 200 then return nil end
 				local dec = htmlEntities.decode(t)
-				--[[local o = ""
+				local o = ""
 				string.gsub(">"..dec.."<",">(.-)<", function(a)
 				o=o..a
 				end )
 				local p = ""
 				string.gsub(";"..o.."&",";(.-)&", function(a)
 				p=p..a
-				end )]]--
-			   s = split(dec, "\n")
+				end )
+			   s = split(p, "\n")
  
-				for key, value in pairs(s) do
-				reply_msg(msg.to.id, matches[2] .. ": " .. key..'='..value,msg.id, 'md')
-				end
+				
+				reply_msg(msg.to.id, matches[2] .. ": " .. s[1],msg.id, 'md')
+				
 				--[[local file = io.open("./data/userid_" .. msg.id .. ".txt", "w")
                 file:write(p)
 				file:close()
