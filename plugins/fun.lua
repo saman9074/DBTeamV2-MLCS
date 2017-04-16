@@ -138,8 +138,8 @@ local function run(msg, matches)
 					local f = io.open("./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html", "a+")
                 	f:write(dec)
 					f:close()
-					if send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[2] ..  '.html') then
-					run_bash("rm ./data/userid_" .. msg.id .. "_" .. matches[2] .. ".html")
+					if send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[2] ..  '.html') ~= nil then
+							run_bash("rm ./data/userid_" .. msg.id .. "_" .. matches[2] .. ".html")
 					end
 			end
 				
