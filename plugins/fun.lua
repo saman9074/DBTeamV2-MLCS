@@ -117,10 +117,10 @@ local function run(msg, matches)
 			   		s = split(p, "\n")
 					reply_msg(msg.to.id, matches[2] .. ": " .. s[1],msg.id, 'md')
 				else 
-					local file = io.open("./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".txt", "w")
-                	file:write(p)
+					local file = io.open("./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".html", "w")
+                	file:write(dec)
 					file:close()
-					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[2] ..  '.txt')
+					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[2] ..  '.html')
 					--os.remove('./data/userid_' .. msg.id .. "_" .. matches[2] ..  '.txt')--
 				end
 				
