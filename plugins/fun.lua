@@ -114,13 +114,15 @@ local function run(msg, matches)
 				end )
 				local _, count = string.gsub(p, " %-%-", "")
 				if count <= 4069 then
-			   	s = split(p, "\n")
-				reply_msg(msg.to.id, matches[2] .. ": " .. s[1],msg.id, 'md')
+			   		s = split(p, "\n")
+					reply_msg(msg.to.id, matches[2] .. ": " .. s[1],msg.id, 'md')
 				else 
-				local file = io.open("./data/userid_" .. msg.id .. ".txt", "w")
-                file:write(p)
-				file:close()
-				send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[2] ..  '.txt')
+					local file = io.open("./data/userid_" .. msg.id .. "_" .. matches[2] ..  ".txt", "w")
+                	file:write(p)
+					file:close()
+					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[2] ..  '.txt')
+					os.remove('./data/userid_' .. msg.id .. "_" .. matches[2] ..  '.txt')
+				end
 				
 				
     end
