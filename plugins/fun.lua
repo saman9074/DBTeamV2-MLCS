@@ -94,8 +94,8 @@ local function run(msg, matches)
 				if c ~= 200 then return nil end
 				local tab = json.decode(b)
 				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
-	elseif matches[1] == "wiki" and matches[2] ~= nil and matches[3] then
-				if matches[2] == "fa" or matches[2] == فارسی" then
+	elseif matches[1] == "wiki" or matches[1] == "ویکی" and matches[2] ~= nil and matches[3] then
+				if matches[2] == "fa" or matches[2] == "فارسی" then
 					local url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[3] .. "&lang=fa"
 					local t,c = https.request(url)
 					if c ~= 200 then return nil end
@@ -174,7 +174,8 @@ return {
 	 '^(20) (.*)$',
 	 '^(علی) (.*)$',
      '^(wiki) (.*) (.*)$',
-	 '^(wiki) (.*)$'
+	 '^(wiki) (.*)$',
+	 '^(ویکی) (.*) (.*)$'
 
   }, 
   run = run 
