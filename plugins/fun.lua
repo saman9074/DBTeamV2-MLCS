@@ -115,6 +115,7 @@ local function run(msg, matches)
 					
 					
 					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[3] ..  '.html')
+					sleep(4)
 					run_bash("rm ./data/userid_" .. msg.id .. "_" .. matches[3] .. ".html")
 				end
 	elseif matches[1] == "wiki" and matches[2] and not matches[3] then
@@ -144,7 +145,7 @@ local function run(msg, matches)
                 	f:write(dec)
 					f:close()
 					send_document(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[2] ..  '.html')
-					sleep(5)
+					sleep(4)
 					run_bash("rm ./data/userid_" .. msg.id .. "_" .. matches[2] .. ".html")
 					
 			end
