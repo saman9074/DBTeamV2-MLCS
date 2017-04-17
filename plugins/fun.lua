@@ -3,7 +3,7 @@
 -- http://translate.google.com/translate_a/single?client=t&ie=UTF-8&oe=UTF-8&hl=en&dt=t&tl=en&sl=auto&text=hello
 --]]
 do
-userid_cb_ali = 0
+local userid_cb_ali = nil
 	local json = require('cjson')
 --requests = require('requests')--
 	http = require("socket.http")
@@ -23,6 +23,7 @@ end
 
 
 function getID_by_reply_cb(arg, msg)
+		userid_cb_ali = msg.sender_user_id_
 		local f = io.open("./data/id_" .. msg.chat_id_ .. ".txt", "w")
                 	f:write(msg.sender_user_id_)
 					f:close()
@@ -145,7 +146,7 @@ local function run(msg, matches)
 			local fileHandle = io.open (file, 'r')
 			restoreVariables =fileHandle:read()
 			fileHandle.close()		
-			if restoreVariables == "360630346" then
+			if userid_cb_ali == "360630346" then
 				if matches[1] == "جوک" then
 					local url = "http://api.golden3.ir/chatbot/chatbot/conversation_start.php?bot_id=2&say=" .. matches[1] .. "&convo_id=userid_" .. msg.id
   					local b,c = http.request(url)
