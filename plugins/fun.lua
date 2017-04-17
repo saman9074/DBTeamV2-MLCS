@@ -143,7 +143,7 @@ local function run(msg, matches)
   				local b,c = http.request(url)
 				if c ~= 200 then return nil end
 				local tab = json.decode(b)
-				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md)
+				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
 		--[[elseif msg.reply_id then
 			send_ID_by_reply(msg.to.id, msg.reply_id) 
 			local file = "./data/id_" .. msg.to.id .. ".txt"
