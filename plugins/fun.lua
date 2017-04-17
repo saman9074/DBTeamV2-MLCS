@@ -150,6 +150,12 @@ local function run(msg, matches)
 				if c ~= 200 then return nil end
 				local tab = json.decode(b)
 				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
+		elseif matches[1] == "mob" and matches[2] then
+					local url = "http://api.golden3.ir/decoder/mob.php?device=" .. matches[2]
+					local t,c = https.request(url)
+					if c ~= 200 then return nil end
+					local dec = htmlEntities.decode(t)
+					reply_msg(msg.to.id, dec,msg.id, 'html')
 		--[[elseif msg.reply_id then
 			send_ID_by_reply(msg.to.id, msg.reply_id) 
 			local file = "./data/id_" .. msg.to.id .. ".txt"
@@ -186,7 +192,7 @@ return {
 	 '^(ch) (.*)$',
 	 '^([Aa]li) (.*)$',
 	 '^(20q) (.*)$',
-	 '^(20) (.*)$',
+	 '^(mob) (.*)$',
 	 '^(علی) (.*)$',
 	 '^(جوک)$',			
      '^(wiki) (.*) (.*)$',
