@@ -119,7 +119,7 @@ function get_msg_info(chat_id, message_id, cb_function, extra)
 end
 
 
-function get_msg_info(chat_id, message_id, cb, extra)
+function get_msg_info_cb(chat_id, message_id, cb, extra)
   	tdcli_function ({
     	ID = "GetMessage",
     	chat_id_ = chat_id,
