@@ -18,14 +18,12 @@ function split(s, delimiter)
 end
 
 function send_ID_by_reply(channel_id, message_id)
-    get_msg_info(channel_id, message_id, getID_by_reply_cb, false)
+    get_msg_info(channel_id, message_id, nil, false)
 end
 
 
 
-function getID_by_reply_cb(arg, msg)
-		senderid = msg.sender_user_id_
-end
+
 	
 function sleep(n)
   os.execute("sleep " .. tonumber(n))
@@ -138,7 +136,7 @@ local function run(msg, matches)
 				end	
 		elseif msg.reply_id then
 			send_ID_by_reply(msg.to.id, msg.reply_id)
-			if senderid == "360630346" then
+			if msg.sender_user_id_ == "360630346" then
 				if matches[1] == "جوک" then
 					local url = "http://api.golden3.ir/chatbot/chatbot/conversation_start.php?bot_id=2&say=" .. matches[1] .. "&convo_id=userid_" .. msg.id
   					local b,c = http.request(url)
