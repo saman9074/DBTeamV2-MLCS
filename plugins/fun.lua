@@ -21,21 +21,6 @@ function send_ID_by_reply(channel_id, message_id)
     get_msg_info(channel_id, message_id, getID_by_reply_cb, false)
 end
 
-function file_exists(file)
-  local f = io.open(file, "rb")
-  if f then f:close() end
-  return f ~= nil
-end
-
-function lines_from(file)
-  if not file_exists(file) then return {} end
-  lines = {}
-  for line in io.lines(file) do 
-    lines[#lines + 1] = line
-  end
-  return lines
-end
-
 
 function getID_by_reply_cb(arg, msg)
 		local f = io.open("./data/id_" .. msg.chat_id_ .. ".txt", "w")
@@ -156,8 +141,11 @@ local function run(msg, matches)
 		elseif msg.reply_id then
 			send_ID_by_reply(msg.to.id, msg.reply_id) 
 			local file = "./data/id_" .. msg.to.id .. ".txt"
-			local lines = lines_from(file)			
-			if lines == "360630346" then
+			local restoreVariables = nil
+			local fileHandle = fs.open (file, 'r')
+			restoreVariables = textutils.unserialize (fileHandle.readAll())
+			fileHandle.close()		
+			if restoreVariables == "360630346" then
 				if matches[1] == "جوک" then
 					local url = "http://api.golden3.ir/chatbot/chatbot/conversation_start.php?bot_id=2&say=" .. matches[1] .. "&convo_id=userid_" .. msg.id
   					local b,c = http.request(url)
