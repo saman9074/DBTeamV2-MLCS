@@ -118,6 +118,16 @@ function get_msg_info(chat_id, message_id, cb_function, extra)
   	}, cb_function, extra)
 end
 
+
+function get_msg_info(chat_id, message_id, cb, extra)
+  	tdcli_function ({
+    	ID = "GetMessage",
+    	chat_id_ = chat_id,
+    	message_id_ = message_id
+  	}, cb or dl_cb, extra)
+end
+
+
 function getChats(offset_order, offset_chat_id, limit, cb, cmd)
   if not limit or limit > 20 then
     limit = 20
