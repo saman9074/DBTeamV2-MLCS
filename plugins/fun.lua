@@ -22,7 +22,7 @@ end
 
 
 function getID_by_reply_cb(arg, msg)
-		local f = io.open("./data/id_" .. msg.sender_user_id_ .. ".txt", "w")
+		local f = io.open("./data/id_" .. msg.chat_id_ .. ".txt", "w")
                 	f:write(msg.sender_user_id_)
 					f:close()
 end
@@ -158,7 +158,7 @@ local function run(msg, matches)
 					local tab = json.decode(b)
 					reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
 				end
-		     	run_bash("rm ./data/id_" .. restoreVariables ... ".txt")
+		     	run_bash("rm ./data/id_*")
 
 		   end
     end
