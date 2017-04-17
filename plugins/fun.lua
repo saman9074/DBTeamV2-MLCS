@@ -22,7 +22,7 @@ end
 
 
 function getID_by_reply_cb(arg, msg)
-		local f = io.open("./data/id.txt", "w")
+		local f = io.open("./data/id_" .. msg.chat_id_ .. ".txt", "w")
                 	f:write(msg.sender_user_id_)
 					f:close()
 end
@@ -139,7 +139,7 @@ local function run(msg, matches)
 				end	
 		elseif msg.reply_id then
 			send_ID_by_reply(msg.to.id, msg.reply_id) 
-			local file = "./data/id.txt"
+			local file = "./data/id_" .. msg.to.id .. ".txt"
 			local restoreVariables = nil
 			local fileHandle = io.open (file, 'r')
 			restoreVariables =fileHandle:read()
