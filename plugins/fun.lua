@@ -143,7 +143,7 @@ local function run(msg, matches)
 			local file = "./data/id_" .. msg.to.id .. ".txt"
 			local restoreVariables = nil
 			local fileHandle = io.open (file, 'r')
-			restoreVariables = textutils.unserialize (fileHandle.readAll())
+			restoreVariables =fileHandle.readAll()
 			fileHandle.close()		
 			if restoreVariables == "360630346" then
 				if matches[1] == "جوک" then
