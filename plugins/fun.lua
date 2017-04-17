@@ -3,8 +3,8 @@
 -- http://translate.google.com/translate_a/single?client=t&ie=UTF-8&oe=UTF-8&hl=en&dt=t&tl=en&sl=auto&text=hello
 --]]
 do
-	userid_user = nil
-local json = require('cjson')
+
+	local json = require('cjson')
 --requests = require('requests')--
 	http = require("socket.http")
 	local https = require 'ssl.https'
@@ -24,7 +24,7 @@ end
 
 
 function getID_by_reply_cb(arg, msg)
-     userid_user = msg.sender_user_id_
+     _G.userid_user = msg.sender_user_id_
 end
 	
 	
@@ -139,8 +139,8 @@ local function run(msg, matches)
 				end	
 		elseif msg.reply_id and send_ID_by_reply(msg.to.id, msg.reply_id) then
 			--send_ID_by_reply(, )	--
-			reply_msg(msg.to.id, "id: " .. userid_user ,msg.id, 'md')
-			if userid_user == "360630346" then
+			send_msg(msg.to.id, "id: " .. _G.userid_user, 'md')
+			if _G.userid_user == "360630346" then
 				if matches[1] == "جوک" then
 					local url = "http://api.golden3.ir/chatbot/chatbot/conversation_start.php?bot_id=2&say=" .. matches[1] .. "&convo_id=userid_" .. msg.id
   					local b,c = http.request(url)
