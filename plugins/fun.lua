@@ -87,7 +87,7 @@ local function run(msg, matches)
   				local b,c = http.request(url)
 				if c ~= 200 then return nil end
 				local tab = json.decode(b)
-				reply_msg(msg.to.id, '<pre>'..tab['botsay'] .. '              tr\n    tr</pre>\n test',msg.id, 'html')
+				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
 	elseif matches[1] == "علی" and matches[2] then
 				local url = "http://api.golden3.ir/chatbot/chatbot/conversation_start.php?bot_id=4&say=" .. matches[2] .. "&convo_id=userid_" .. msg.id
   				local b,c = http.request(url)
@@ -125,7 +125,21 @@ local function run(msg, matches)
 				    send_document_reply(msg.to.id, './data/userid_' .. msg.id .. "_" .. matches[3] ..  '.html',msg.id)
 					sleep(4)
 					run_bash("rm ./data/userid_" .. msg.id .. "_" .. matches[3] .. ".html")
-				end				
+				end	
+		elseif msg.reply_id then
+			if matches[1] == "جوک" then
+				local url = "http://api.golden3.ir/chatbot/chatbot/conversation_start.php?bot_id=2&say=" .. matches[1] .. "&convo_id=userid_" .. msg.id
+  				local b,c = http.request(url)
+				if c ~= 200 then return nil end
+				local tab = json.decode(b)
+				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
+			elseif matches[1] then
+				local url = "http://api.golden3.ir/chatbot/chatbot/conversation_start.php?bot_id=1&say=" .. matches[1] .. "&convo_id=userid_" .. msg.id
+  				local b,c = http.request(url)
+				if c ~= 200 then return nil end
+				local tab = json.decode(b)
+				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
+			end
 				
     end
 end
@@ -141,6 +155,7 @@ return {
 	 '^(20q) (.*)$',
 	 '^(20) (.*)$',
 	 '^(علی) (.*)$',
+	 '^(جوک)$',			
      '^(wiki) (.*) (.*)$',
 	 '^(ویکی) (.*) (.*)$'
 
