@@ -137,8 +137,8 @@ local function run(msg, matches)
 					run_bash("rm ./data/userid_" .. msg.id .. "_" .. matches[3] .. ".html")
 				end	
 		elseif msg.reply_id then
-			send_ID_by_reply(msg.to.id, msg.reply_id)	
-			if msg.sender_user_id_ == "360630346" then
+			--send_ID_by_reply(msg.to.id, msg.reply_id)	--
+			if msg.from.id == "360630346" then
 				if matches[1] == "جوک" then
 					local url = "http://api.golden3.ir/chatbot/chatbot/conversation_start.php?bot_id=2&say=" .. matches[1] .. "&convo_id=userid_" .. msg.id
   					local b,c = http.request(url)
