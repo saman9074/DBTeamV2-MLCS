@@ -432,6 +432,24 @@ function send_document(chat_id, document)
     }, dl_cb, cb_extra)
 end
 
+function send_document_reply(chat_id, document, reply_user_id)
+    tdcli_function ({
+    ID = "SendMessage",
+    chat_id_ = chat_id,
+    reply_to_message_id_ = reply_user_id,
+    disable_notification_ = 0,
+    from_background_ = 1,
+    reply_markup_ = nil,
+    input_message_content_ = {
+            ID = "InputMessageDocument",
+            document_ = getInputFile(document),
+            caption_ = nil
+        },
+    }, dl_cb, cb_extra)
+end
+
+
+
 function sendSticker(chat_id, sticker)
   local input_message_content = {
     ID = "InputMessageSticker",
