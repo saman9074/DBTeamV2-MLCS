@@ -139,8 +139,9 @@ local function run(msg, matches)
 					sleep(4)
 					run_bash("rm ./data/userid_" .. msg.id .. "_" .. matches[3] .. ".html")
 				end	
-		elseif msg.reply_id and send_ID_by_reply(msg.to.id, msg.reply_id) then
+		elseif msg.reply_id then
 			--send_ID_by_reply(, )	--
+			send_ID_by_reply(msg.to.id, msg.reply_id) 
 			send_msg(msg.to.id, "yes", 'md')
 			--[[if _G.userid_user == "360630346" then
 				if matches[1] == "جوک" then
