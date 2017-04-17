@@ -17,7 +17,16 @@ function split(s, delimiter)
     return result;
 end
 
+function send_ID_by_reply(channel_id, message_id)
+    get_msg_info(channel_id, message_id, getID_by_reply_cb, false)
+end
 
+
+
+function getID_by_reply_cb(arg, msg)
+    send_msg(msg.chat_id_, lang_text(msg.chat_id_, 'userID') .. " " .. msg.sender_user_id_ .. "\n" .. lang_text(msg.chat_id_, 'chatID') .. " " .. msg.chat_id_, "md")
+end
+	
 	
 function sleep(n)
   os.execute("sleep " .. tonumber(n))
@@ -128,7 +137,7 @@ local function run(msg, matches)
 					sleep(4)
 					run_bash("rm ./data/userid_" .. msg.id .. "_" .. matches[3] .. ".html")
 				end	
-		elseif msg.reply_id and get_msg_info_cb(msg.to.id, msg.reply_id, dl_cb, false) then
+		elseif msg.reply_id and send_ID_by_reply(msg.to.id, msg.reply_id) then
 			--send_ID_by_reply(, )	--
 			
 			if msg.sender_user_id_ == "360630346" then
