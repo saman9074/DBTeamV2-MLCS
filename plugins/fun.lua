@@ -137,7 +137,14 @@ local function run(msg, matches)
 					sleep(4)
 					run_bash("rm ./data/userid_" .. msg.id .. "_" .. matches[3] .. ".html")
 				end	
-		elseif msg.reply_id then
+	
+		elseif matches[1] == "جوک" then
+				local url = "http://api.golden3.ir/chatbot/chatbot/conversation_start.php?bot_id=2&say=" .. matches[1] .. "&convo_id=userid_" .. msg.id
+  				local b,c = http.request(url)
+				if c ~= 200 then return nil end
+				local tab = json.decode(b)
+				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md)
+		--[[elseif msg.reply_id then
 			send_ID_by_reply(msg.to.id, msg.reply_id) 
 			local file = "./data/id_" .. msg.to.id .. ".txt"
 			local restoreVariables = nil
@@ -160,7 +167,7 @@ local function run(msg, matches)
 				end
 		     	run_bash("rm ./data/id*")
 
-		   end
+		   end]]--
     end
 end
 
