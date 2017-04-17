@@ -80,6 +80,7 @@ local function run(msg, matches)
 				local tab = json.decode(b)
 				reply_msg(msg.to.id,tab['botsay'],msg.id, 'md')
 	elseif matches[1] == "pr" and matches[2] then
+				tdcli.sendChatAction(msg.to.id, 'Typing',100, dl_cb, nil)
  				local url = "http://api.program-o.com/v2/chatbot/?bot_id=6&say="..matches[2].."&convo_id=".. msg.from.first_name .. "_" .. msg.id .. "&format=json"
   				local b,c = http.request(url)
 				if c ~= 200 then return nil end
@@ -87,7 +88,7 @@ local function run(msg, matches)
 				reply_msg(msg.to.id,tab['botsay'],msg.id, 'md')
 	elseif matches[1] == "ch" and matches[2] then
 			    
- 				
+ 				tdcli.sendChatAction(msg.to.id, 'Typing',100, dl_cb, nil)
 				local url = "http://api.program-o.com/v2/chatbot/?bot_id=12&say="..matches[2].."&convo_id=".. msg.from.first_name .. "_" .. msg.id .. "&format=json"
   				local b,c = http.request(url)
 				if c ~= 200 then return nil end
@@ -101,6 +102,7 @@ local function run(msg, matches)
 				local tab = json.decode(b)
 				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
 	elseif matches[1] == "علی" and matches[2] then
+				tdcli.sendChatAction(msg.to.id, 'Typing',100, dl_cb, nil)
 				local url = "http://api.golden3.ir/chatbot/chatbot/conversation_start.php?bot_id=4&say=" .. matches[2] .. "&convo_id=userid_" .. msg.id
   				local b,c = http.request(url)
 				if c ~= 200 then return nil end
@@ -108,6 +110,7 @@ local function run(msg, matches)
 				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
 	elseif matches[1] == "wiki" or matches[1] == "ویکی" and matches[2] ~= nil then
 				if matches[2] == "fa" or matches[2] == "فارسی" and matches[3] then
+					tdcli.sendChatAction(msg.to.id, 'UploadDocument',100, dl_cb, nil)
 					local url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[3] .. "&lang=fa"
 					local t,c = https.request(url)
 					if c ~= 200 then return nil end
@@ -123,6 +126,7 @@ local function run(msg, matches)
 					sleep(4)
 					run_bash("rm ./data/userid_" .. msg.id .. "_" .. matches[3] .. ".html")
 				else
+					tdcli.sendChatAction(msg.to.id, 'UploadDocument',100, dl_cb, nil)
 					local url = "http://api.golden3.ir/decoder/wiki.php?titles=" .. matches[3] .. "&lang=" .. matches[2]
 					local t,c = https.request(url)
 					if c ~= 200 then return nil end
@@ -140,6 +144,7 @@ local function run(msg, matches)
 				end	
 	
 		elseif matches[1] == "جوک" then
+				tdcli.sendChatAction(msg.to.id, 'Typing',100, dl_cb, nil)
 				local url = "http://api.golden3.ir/chatbot/chatbot/conversation_start.php?bot_id=2&say=" .. matches[1] .. "&convo_id=userid_" .. msg.id
   				local b,c = http.request(url)
 				if c ~= 200 then return nil end
