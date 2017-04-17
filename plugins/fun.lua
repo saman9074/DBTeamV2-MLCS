@@ -158,7 +158,7 @@ local function run(msg, matches)
 					local tab = json.decode(b)
 					reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
 				end
-		     	run_bash("rm ./data/id.txt")
+		    -- 	run_bash("rm ./data/id.txt")--
 
 		   end
     end
