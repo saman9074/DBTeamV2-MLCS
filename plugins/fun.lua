@@ -18,7 +18,7 @@ function split(s, delimiter)
 end
 
 function send_ID_by_reply(channel_id, message_id)
-    get_msg_info(channel_id, message_id, , false)
+    get_msg_info(channel_id, message_id, false, false)
 end
 
 
