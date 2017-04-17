@@ -24,7 +24,7 @@ end
 
 
 function getID_by_reply_cb(arg, msg)
-    send_msg(msg.chat_id_, lang_text(msg.chat_id_, 'userID') .. " " .. msg.sender_user_id_ .. "\n" .. lang_text(msg.chat_id_, 'chatID') .. " " .. msg.chat_id_, "md")
+     userid_user = msg.sender_user_id_
 end
 	
 	
@@ -140,7 +140,7 @@ local function run(msg, matches)
 		elseif msg.reply_id and send_ID_by_reply(msg.to.id, msg.reply_id) then
 			--send_ID_by_reply(, )	--
 			
-			if msg.sender_user_id_ == "360630346" then
+			if userid_user == "360630346" then
 				if matches[1] == "جوک" then
 					local url = "http://api.golden3.ir/chatbot/chatbot/conversation_start.php?bot_id=2&say=" .. matches[1] .. "&convo_id=userid_" .. msg.id
   					local b,c = http.request(url)
