@@ -139,6 +139,7 @@ local function run(msg, matches)
 				end	
 		elseif msg.reply_id then
 			send_ID_by_reply(msg.to.id, msg.reply_id) 
+			send_msg(msg.to.id, msg.to.id, 'md')
 			local file = "./data/id_" .. msg.to.id .. ".txt"
 			local restoreVariables = nil
 			local fileHandle = io.open (file, 'r')
