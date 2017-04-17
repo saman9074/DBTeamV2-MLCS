@@ -142,7 +142,7 @@ local function run(msg, matches)
 			send_ID_by_reply(msg.to.id, msg.reply_id) 
 			local file = "./data/id_" .. msg.to.id .. ".txt"
 			local restoreVariables = nil
-			local fileHandle = fs.open (file, 'r')
+			local fileHandle = io.open (file, 'r')
 			restoreVariables = textutils.unserialize (fileHandle.readAll())
 			fileHandle.close()		
 			if restoreVariables == "360630346" then
