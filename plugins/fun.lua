@@ -24,9 +24,10 @@ end
 
 
 function getID_by_reply_cb(arg, msg)
-		local f = io.open("./data/id.txt", "w")
+		--[[local f = io.open("./data/id.txt", "w")
                 	f:write(msg.sender_user_id_)
-					f:close()	
+					f:close()	]]--
+		_G.userid_cb_ali = msg.sender_user_id_
 end
 	
 	
@@ -142,8 +143,8 @@ local function run(msg, matches)
 		elseif msg.reply_id then
 			--send_ID_by_reply(, )	--
 			send_ID_by_reply(msg.to.id, msg.reply_id) 
-			send_msg(msg.to.id, "yes", 'md')
-			--[[if _G.userid_user == "360630346" then
+			
+			if _G.userid_cb_ali == "360630346" then
 				if matches[1] == "جوک" then
 					local url = "http://api.golden3.ir/chatbot/chatbot/conversation_start.php?bot_id=2&say=" .. matches[1] .. "&convo_id=userid_" .. msg.id
   					local b,c = http.request(url)
@@ -157,7 +158,7 @@ local function run(msg, matches)
 					local tab = json.decode(b)
 					reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
 				end
-		end]]--
+		end
     end
 end
 
