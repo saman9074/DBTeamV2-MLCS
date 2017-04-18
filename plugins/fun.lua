@@ -65,7 +65,7 @@ end
 
 local function run(msg, matches)
     if matches[1] == "tr" and matches[2] then
-		reply_msg(msg.to.id,msg,msg.id, 'md
+		reply_msg(msg.to.id,msg,msg.id, 'md')
 	--[[elseif matches[1] == "eli" and matches[2] then
  				local url = "http://api.program-o.com/v2/chatbot/?bot_id=15&say="..matches[2].."&convo_id=".. msg.from.first_name .. "_" .. msg.id .. "&format=json"
   				local b,c = http.request(url)
