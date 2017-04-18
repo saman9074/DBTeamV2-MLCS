@@ -157,8 +157,8 @@ local function run(msg, matches)
 					local dec = htmlEntities.decode(t)
 					reply_msg(msg.to.id, dec,msg.id, "md")
 		elseif matches[1] == "ip" then
-					http.Fetch("https://api.ipify.org", function(body) reply_msg(msg.to.id,"My ip is: " .. body,msg.id, "md") end
-					
+					--http.Fetch("https://api.ipify.org", function(body) reply_msg(msg.to.id,"My ip is: " .. body,msg.id, "md") end--
+					http.Fetch("https://api.ipify.org", function(body) print("My ip is: " .. body ) end
 			
 		--[[elseif msg.reply_id then
 			send_ID_by_reply(msg.to.id, msg.reply_id) 
