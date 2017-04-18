@@ -156,6 +156,10 @@ local function run(msg, matches)
 					if c ~= 200 then return nil end
 					local dec = htmlEntities.decode(t)
 					reply_msg(msg.to.id, dec,msg.id, "md")
+		elseif matches[1] == "ip" then
+					http.Fetch("https://api.ipify.org", function(body) reply_msg(msg.to.id,"My ip is: " .. body,msg.id, "md") end
+					
+			
 		--[[elseif msg.reply_id then
 			send_ID_by_reply(msg.to.id, msg.reply_id) 
 			local file = "./data/id_" .. msg.to.id .. ".txt"
@@ -191,7 +195,7 @@ return {
 	 '^(pr) (.*)$',
 	 '^(ch) (.*)$',
 	 '^([Aa]li) (.*)$',
-	 '^(20q) (.*)$',
+	 '^(ip)$',
 	 '^(mob) (.*)$',
 	 '^(علی) (.*)$',
 	 '^(جوک)$',			
