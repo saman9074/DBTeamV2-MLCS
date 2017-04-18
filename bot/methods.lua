@@ -1,4 +1,5 @@
 function send_msg(chat_id, text, parse)
+	tdcli.sendChatAction(msg.to.id, 'Typing',100, dl_cb, nil)
     tdcli_function ({
     	ID="SendMessage",
     	chat_id_ = chat_id,
