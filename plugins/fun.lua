@@ -67,7 +67,7 @@ local function run(msg, matches)
     if matches[1] == "tr" and matches[2] then
     	local text = matches[1]
     	return translate(nil, nil, text)
-	elseif matches[1] == "eli" and matches[2] then
+	--[[elseif matches[1] == "eli" and matches[2] then
  				local url = "http://api.program-o.com/v2/chatbot/?bot_id=15&say="..matches[2].."&convo_id=".. msg.from.first_name .. "_" .. msg.id .. "&format=json"
   				local b,c = http.request(url)
 				if c ~= 200 then return nil end
@@ -93,7 +93,7 @@ local function run(msg, matches)
   				local b,c = http.request(url)
 				if c ~= 200 then return nil end
 				local tab = json.decode(b)
-				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
+				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')]]--
 	elseif matches[1] == "ali" and matches[2] then
 				tdcli.sendChatAction(msg.to.id, 'Typing',100, dl_cb, nil)
 				local url = "http://api.golden3.ir/chatbot/chatbot/conversation_start.php?bot_id=1&say=" .. matches[2] .. "&convo_id=userid_" .. msg.id
@@ -150,8 +150,25 @@ local function run(msg, matches)
 				if c ~= 200 then return nil end
 				local tab = json.decode(b)
 				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
-		elseif matches[1] == "mob" and matches[2] then
-					local url = "http://api.golden3.ir/decoder/mob.php?device=" .. matches[2]
+		elseif matches[1] == "mob" then
+				if matches[2] and not matches[3] and not matches [4] then
+					tdcli.sendChatAction(msg.to.id, 'Typing',100, dl_cb, nil)			
+					local url = "http://api.golden3.ir/decoder/mob.php?device=" .. matches[2] .. "&n=0"
+					local t,c = http.request(url)
+					if c ~= 200 then return nil end
+					local dec = htmlEntities.decode(t)
+					reply_msg(msg.to.id, dec,msg.id, "md")
+				elseif matches[2] and matches[3] and not matches [4] then
+					tdcli.sendChatAction(msg.to.id, 'Typing',100, dl_cb, nil)			
+					tdcli.sendChatAction(msg.to.id, 'Typing',100, dl_cb, nil)			
+					local url = "http://api.golden3.ir/decoder/mob.php?device=" .. matches[2] .. "&n=" .. matches[3]
+					local t,c = http.request(url)
+					if c ~= 200 then return nil end
+					local dec = htmlEntities.decode(t)
+					reply_msg(msg.to.id, dec,msg.id, "md")
+			elseif matches[2] and matches[3] and matches [4] then
+					tdcli.sendChatAction(msg.to.id, 'Typing',100, dl_cb, nil)			
+					local url = "http://api.golden3.ir/decoder/mob.php?device=" .. matches[2] .. "&n=" .. matches[3] .. "&brand=" .. matches[4] 
 					local t,c = http.request(url)
 					if c ~= 200 then return nil end
 					local dec = htmlEntities.decode(t)
@@ -197,6 +214,8 @@ return {
 	 '^([Aa]li) (.*)$',
 	 '^(ip)$',
 	 '^(mob) (.*)$',
+	 '^(mob) (.*) (.*)$',
+	 '^(mob) (.*) (.*) (.*)$',
 	-- '^(علی) (.*)$',--
 	 '^(جوک)$',			
      '^(wiki) (.*) (.*)$',
