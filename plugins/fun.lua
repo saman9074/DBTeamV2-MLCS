@@ -103,9 +103,10 @@ local function run(msg, matches)
 	elseif matches[1] == "voice" and matches[2] then
 				tdcli.sendChatAction(msg.to.id, 'RecordVideo',100, dl_cb, nil)
 				local url = "http://api.golden3.ir/decoder/voice.php"
-				local file = download_to_file(url,'BD-UniQue.mp3')
-				send_document_reply(msg.to.id,file,msg.id)
-				reply_msg(msg.to.id, s,msg.id, 'md')
+				--local file = download_to_file(url,'BD-UniQue.mp3')--
+				local b,c = http.request(url)
+				if c ~= 200 then return nil end			
+				send_document_reply(msg.to.id,b,msg.id)
 	elseif matches[1] == "علی" and matches[2] then
 				tdcli.sendChatAction(msg.to.id, 'Typing',100, dl_cb, nil)
 				local url = "http://api.golden3.ir/chatbot/chatbot/conversation_start.php?bot_id=4&say=" .. matches[2] .. "&convo_id=userid_" .. msg.id
