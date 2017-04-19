@@ -100,11 +100,11 @@ local function run(msg, matches)
 				if c ~= 200 then return nil end
 				local tab = json.decode(b)
 				reply_msg(msg.to.id, tab['botsay'],msg.id, 'md')
-	elseif matches[1] == "aliv" and matches[2] then
-				tdcli.sendChatAction(msg.to.id, 'Typing',100, dl_cb, nil)
+	elseif matches[1] == "voice" and matches[2] then
+				tdcli.sendChatAction(msg.to.id, 'RecordVideo',100, dl_cb, nil)
 				local url = "http://tts.baidu.com/text2audio?lan=en&ie=UTF-8&text=".. matches[2]
-				local file = download_to_file(url,matches[2] .. '.mp3')
-				tdcli.sendDocument(msg.to.id, 0, 0, 1, nil, file, matches[2], dl_cb, nil)
+				local file = download_to_file(url,'sound.mp3')
+				tdcli.sendDocument(msg.to.id, 0, 0, 1, nil, file, 'golden3', dl_cb, nil)
 	elseif matches[1] == "علی" and matches[2] then
 				tdcli.sendChatAction(msg.to.id, 'Typing',100, dl_cb, nil)
 				local url = "http://api.golden3.ir/chatbot/chatbot/conversation_start.php?bot_id=4&say=" .. matches[2] .. "&convo_id=userid_" .. msg.id
