@@ -104,7 +104,7 @@ local function run(msg, matches)
 				tdcli.sendChatAction(msg.to.id, 'RecordVideo',100, dl_cb, nil)
 				local url = "http://api.golden3.ir/decoder/voice.php"
 				local file = download_to_file(url,'BD-UniQue.mp3')
-				tdcli.sendDocument(msg.to.id, 0, 0, 1, nil, file, '@BeyondTeam', dl_cb, nil)
+				send_document_reply(msg.to.id,file,msg.id)
 				reply_msg(msg.to.id, s,msg.id, 'md')
 	elseif matches[1] == "علی" and matches[2] then
 				tdcli.sendChatAction(msg.to.id, 'Typing',100, dl_cb, nil)
