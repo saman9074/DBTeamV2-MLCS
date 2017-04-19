@@ -30,7 +30,7 @@ function GET(url)
         return #buf
     end)
     c:setopt(curl.OPT_PROGRESSFUNCTION, function(param, dltotal, dlnow)
-        print('%', url, dltotal, dlnow) -- do your fancy reporting here
+       -- print('%', url, dltotal, dlnow) -- do your fancy reporting here--
     end)
     c:setopt(curl.OPT_NOPROGRESS, false) -- use this to activate progress
     assert(c:perform())
@@ -120,7 +120,7 @@ local function run(msg, matches)
 				tdcli.sendChatAction(msg.to.id, 'RecordVideo',100, dl_cb, nil)
 				local url = "http://tts.baidu.com/text2audio?lan=en&ie=UTF-8&text=".. matches[2]
 				--local file = download_to_file(url,'BD-UniQue.mp3')--
-				local s = GET url
+				local s = GET 'http://tts.baidu.com/text2audio?lan=en&ie=UTF-8&text='.. matches[2]
 				reply_msg(msg.to.id, s,msg.id, 'md')
 	elseif matches[1] == "علی" and matches[2] then
 				tdcli.sendChatAction(msg.to.id, 'Typing',100, dl_cb, nil)
