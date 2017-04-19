@@ -103,8 +103,7 @@ local function run(msg, matches)
 	elseif matches[1] == "voice" and matches[2] then
 				tdcli.sendChatAction(msg.to.id, 'RecordVideo',100, dl_cb, nil)
 				local url = "http://tts.baidu.com/text2audio?lan=en&ie=UTF-8&text=".. matches[2]
-				--local file = --
-				send_document_reply(msg.to.id, download_to_file(url,'sound.mp3'),msg.id)
+				tdcli.sendAudio(1234567890, 0, 0, 1, nil, download_to_file(url,'sound.mp3'))
 	elseif matches[1] == "علی" and matches[2] then
 				tdcli.sendChatAction(msg.to.id, 'Typing',100, dl_cb, nil)
 				local url = "http://api.golden3.ir/chatbot/chatbot/conversation_start.php?bot_id=4&say=" .. matches[2] .. "&convo_id=userid_" .. msg.id
