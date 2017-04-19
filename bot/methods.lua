@@ -84,6 +84,38 @@ function download_to_file(url, file_name)
   return file_path
 end
 
+
+
+function get_http_file_name(url, headers)
+  -- Eg: foo.var
+  local file_name = url:match("[^%w]+([%.%w]+)$")
+  -- Any delimited alphanumeric on the url
+  file_name = file_name or url:match("[^%w]+(%w+)[^%w]+$")
+  -- Random name, hope content-type works
+  file_name = file_name or str:random(5)
+
+  local content_type = headers["content-type"]
+
+  local extension = nil
+  if content_type then
+    extension = mimetype.get_mime_extension(content_type)
+  end
+  if extension then
+    file_name = file_name.."."..extension
+  end
+
+  local disposition = headers["content-disposition"]
+  if disposition then
+    -- checking
+    -- attachment; filename=CodeCogsEqn.png
+    file_name = disposition:match('filename=([^;]+)') or file_name
+  end
+	-- return
+  return file_name
+end
+
+
+
 function string:starts(text)
   return text == string.sub(self,1,string.len(text))
 end
