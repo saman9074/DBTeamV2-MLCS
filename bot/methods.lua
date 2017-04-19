@@ -74,7 +74,7 @@ function download_to_file(url, file_name)
 
   file_name = file_name or get_http_file_name(url, headers)
 
-  local file_path = "data/"..file_name
+  local file_path = "./data/"..file_name
   -- print("Saved to: "..file_path)
 	-- uncomment if needed
   file = io.open(file_path, "w+")
