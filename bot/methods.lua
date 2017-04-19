@@ -45,6 +45,14 @@ function createNewGroupChat(user_ids, title, cb, cmd)
   }, cb or dl_cb, cmd)
 end
 
+function download_to_file(url, file_name)
+  local respbody = {}
+  local options = {
+    url = url,
+    sink = ltn12.sink.table(respbody),
+    redirect = true
+}
+
 function migrateGroupChatToChannelChat(chat_id, cb, cmd)
   tdcli_function ({
     ID = "MigrateGroupChatToChannelChat",
