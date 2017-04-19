@@ -84,6 +84,10 @@ function download_to_file(url, file_name)
   return file_path
 end
 
+function string:starts(text)
+  return text == string.sub(self,1,string.len(text))
+end
+
 function migrateGroupChatToChannelChat(chat_id, cb, cmd)
   tdcli_function ({
     ID = "MigrateGroupChatToChannelChat",
