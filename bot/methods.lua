@@ -46,12 +46,42 @@ function createNewGroupChat(user_ids, title, cb, cmd)
 end
 
 function download_to_file(url, file_name)
+  -- print to server
+  -- print("url to download: "..url)
+  -- uncomment if needed
   local respbody = {}
   local options = {
     url = url,
     sink = ltn12.sink.table(respbody),
     redirect = true
-}
+  }
+
+  -- nil, code, headers, status
+  local response = nil
+
+  if url:starts('https') then
+    options.redirect = false
+    response = {https.request(options)}
+  else
+    response = {http.request(options)}
+  end
+
+  local code = response[2]
+  local headers = response[3]
+  local status = response[4]
+
+  if code ~= 200 then return nil end
+
+  file_name = file_name or get_http_file_name(url, headers)
+
+  local file_path = "data/"..file_name
+  -- print("Saved to: "..file_path)
+	-- uncomment if needed
+  file = io.open(file_path, "w+")
+  file:write(table.concat(respbody))
+  file:close()
+
+  return file_path
 end
 
 function migrateGroupChatToChannelChat(chat_id, cb, cmd)
