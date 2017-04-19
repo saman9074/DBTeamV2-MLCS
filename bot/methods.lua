@@ -52,6 +52,7 @@ function download_to_file(url, file_name)
     sink = ltn12.sink.table(respbody),
     redirect = true
 }
+end
 
 function migrateGroupChatToChannelChat(chat_id, cb, cmd)
   tdcli_function ({
