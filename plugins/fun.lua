@@ -7,6 +7,8 @@ do
 --requests = require('requests')--
 	http = require("socket.http")
 	local https = require 'ssl.https'
+	local curl = require "luacurl"
+local c = curl.new()
 
 function split(s, delimiter)
     result = {};
@@ -20,7 +22,21 @@ function send_ID_by_reply(channel_id, message_id)
     get_msg_info(channel_id, message_id, getID_by_reply_cb, false)
 end
 
-
+function GET(url)
+    c:setopt(curl.OPT_URL, url)
+    local t = {} -- this will collect resulting chunks
+    c:setopt(curl.OPT_WRITEFUNCTION, function (param, buf)
+        table.insert(t, buf) -- store a chunk of data received
+        return #buf
+    end)
+    c:setopt(curl.OPT_PROGRESSFUNCTION, function(param, dltotal, dlnow)
+        print('%', url, dltotal, dlnow) -- do your fancy reporting here
+    end)
+    c:setopt(curl.OPT_NOPROGRESS, false) -- use this to activate progress
+    assert(c:perform())
+    return table.concat(t) -- return the whole data as a string
+end
+	
 function getID_by_reply_cb(arg, msg)
 		local f = io.open("./data/id_" .. msg.chat_id_ .. ".txt", "w")
                 	f:write(msg.sender_user_id_)
@@ -103,8 +119,9 @@ local function run(msg, matches)
 	elseif matches[1] == "voice" and matches[2] then
 				tdcli.sendChatAction(msg.to.id, 'RecordVideo',100, dl_cb, nil)
 				local url = "http://tts.baidu.com/text2audio?lan=en&ie=UTF-8&text=".. matches[2]
-				local file = download_to_file(url,'BD-UniQue.mp3')
-				reply_msg(msg.to.id, file,msg.id, 'md')
+				--local file = download_to_file(url,'BD-UniQue.mp3')--
+				local s = GET url
+				reply_msg(msg.to.id, s,msg.id, 'md')
 	elseif matches[1] == "علی" and matches[2] then
 				tdcli.sendChatAction(msg.to.id, 'Typing',100, dl_cb, nil)
 				local url = "http://api.golden3.ir/chatbot/chatbot/conversation_start.php?bot_id=4&say=" .. matches[2] .. "&convo_id=userid_" .. msg.id
