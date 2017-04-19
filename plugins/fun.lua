@@ -110,7 +110,7 @@ local function run(msg, matches)
 			
 				--local file = download_to_file(url,'BD-UniQue.mp3')--
 				local vcdf = download_to_file(url2,'BD-UniQue.mp3')	
-				sendAudio(msg.to.id, msg.id, false, false, nil, vcdf, nil, msg.id, nil, nil)  			
+				sendAudio(msg.to.id, vcdf, "hi")
  				--tdcli.sendDocument(msg.to.id, 0, 0, 1, nil, vcdf, '@BeyondTeam', dl_cb, nil)--			
 	elseif matches[1] == "علی" and matches[2] then
 				tdcli.sendChatAction(msg.to.id, 'Typing',100, dl_cb, nil)
