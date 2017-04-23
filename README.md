@@ -58,7 +58,25 @@ sudo yaourt -S git redis-server libconfig8-dev libjansson-dev lua5.2 liblua5.2-d
 Fedora:
 ```bash
 sudo dnf install git redis-server libconfig8-dev libjansson-dev lua5.2 liblua5.2-dev lua-lgi glib-2.0 libnotify-dev libssl-dev libssl1.0.0 tmux
-```                   
+```    
+
+CentOS:
+```bash
+sudo yum install git tmux
+yum install wget
+wget -r --no-parent -A 'epel-release-*.rpm' http://dl.fedoraproject.org/pub/epel/7/x86_64/e/
+rpm -Uvh dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-*.rpm
+yum install redis
+systemctl start redis.service
+sudo yum install lua-devel openssl-devel libconfig-devel readline-devel libevent-devel gcc make unzip gcc-c++ expat-devel
+git clone https://github.com/akheron/jansson
+cd jansson*
+./configure
+make
+make install
+sudo yum install luarocks libnotify-devel glib openssl libconfig
+```  
+
 ---------------------------------
 
 After installing the dependencies, lets install the bot:
